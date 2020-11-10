@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_miarmario"
+        android:title="MiArmario"
+        android:icon="@drawable/mi_armario"/>
+    <item
+        android:id="@+id/navigation_sugerencias"
+        android:icon="@drawable/_suge3"
+        android:title="Sugerencias" />
+
+    <item
+        android:id="@+id/navigation_busqueda"
+        android:icon="@drawable/busqueda"
+        android:title="Busqueda" />
+
+    <item
+        android:id="@+id/navigation_amigos"
+        android:title="Amigos"
+        android:icon="@drawable/_amigos"/>
+
+</menu>

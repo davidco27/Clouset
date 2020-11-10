@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+   <ImageView
+       android:id="@+id/foto"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:src="@drawable/pantalon" />
+
+   <TextView
+       android:layout_marginTop="10dp"
+       android:id="@+id/nombre"
+       android:layout_width="150dp"
+       android:text="Pantalones a rayas"
+       android:layout_height="wrap_content"
+       android:layout_toRightOf="@+id/foto"
+       android:layout_marginLeft="10dp" />
+   <TextView
+       android:id="@+id/marca"
+       android:layout_marginTop="10dp"
+       android:layout_width="100dp"
+       android:text="Stradivarius"
+       android:layout_height="wrap_content"
+       android:layout_toRightOf="@+id/nombre"
+       android:layout_marginLeft="10dp" />
+   <TextView
+       android:id="@+id/tipoPrenda"
+       android:layout_width="100dp"
+       android:text="Pantalon"
+       android:layout_height="wrap_content"
+       android:layout_toRightOf="@+id/foto"
+       android:layout_below="@+id/nombre"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="20dp"/>
+   <TextView
+       android:id="@+id/color"
+       android:layout_width="120dp"
+       android:text="Azul oscuro"
+       android:layout_height="wrap_content"
+       android:layout_toRightOf="@+id/tipoPrenda"
+       android:layout_below="@+id/nombre"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="20dp"/>
+
+
+
+</RelativeLayout>

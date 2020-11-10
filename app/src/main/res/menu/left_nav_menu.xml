@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/add"
+        android:title="Añadir Prenda" />
+    <item
+        android:id="@+id/navigation_post"
+        android:icon="@drawable/post"
+        android:title="Postear Outfits" />
+
+    <item
+        android:id="@+id/navigation_filtrar"
+        android:icon="@drawable/filter"
+        android:title="Filtrar" />
+
+
+</menu>

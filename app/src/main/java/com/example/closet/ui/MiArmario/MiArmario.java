@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 public class MiArmario extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton btnMenu;
+    private String prueba;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_miarmario, container, false);

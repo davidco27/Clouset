@@ -2,9 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>This is easy!</comment>
-    <entry key="ddbb.connection">jdbc:postgresql://127.0.0.1:51023/Clouset</entry>
-    <entry key="ddbb.user">cliente</entry>
-    <entry key="ddbb.password">cliente</entry>
-    <entry key="host">127.3.5.1</entry>
-    <entry key="port">1488</entry>
+    <entry key="ddbb.connection">jdbc:postgresql://localhost:5432/Clouset</entry>
+    <entry key="ddbb.user">postgres</entry>
+    <entry key="ddbb.password">root</entry>
+    <entry key="host">172.16.10.45</entry>
+    <entry key="port">8081</entry>
 </properties>

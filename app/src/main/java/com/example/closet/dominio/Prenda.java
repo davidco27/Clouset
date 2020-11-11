@@ -1,15 +1,14 @@
 package com.example.closet.dominio;
 
-import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
 
 public class Prenda implements Serializable {
-    private Drawable foto;
+    private byte[] foto;
     private String id,marca,tipo,color,link;
     private float valoracion;
 
-    public Prenda(float valoracion,Drawable foto,String id,String tipo,String marca,String color,String link) {
+    public Prenda(float valoracion,byte[] foto,String id,String tipo,String marca,String color,String link) {
         this.valoracion=valoracion;
         this.foto = foto;
         this.id=id;
@@ -31,7 +30,7 @@ public class Prenda implements Serializable {
         this.valoracion = valoracion;
     }
 
-    public Drawable getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 

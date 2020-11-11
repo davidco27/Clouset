@@ -1,8 +1,5 @@
 package com.example.closet.comunicacionserver;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import com.example.closet.dominio.Prenda;
 
@@ -27,7 +24,6 @@ public class SocketServer extends Thread {
         start();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void run() {
         InputStream in = null;
         OutputStream out = null;

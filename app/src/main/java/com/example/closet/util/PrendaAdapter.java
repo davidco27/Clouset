@@ -1,6 +1,7 @@
 package com.example.closet.util;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import com.example.closet.R;
 
 import com.example.closet.dominio.Prenda;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class PrendaAdapter extends ArrayAdapter<Prenda> {
@@ -47,7 +49,9 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         holder.id.setText(prenda.getId());
         holder.color.setText(prenda.getColor());
         holder.tipo.setText(prenda.getTipo());
-        holder.foto.setImageDrawable(prenda.getFoto());
+        ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());
+        Drawable drw = Drawable.createFromStream(is, "articleImage");
+        holder.foto.setImageDrawable(drw);
         return convertView;
     }
 }

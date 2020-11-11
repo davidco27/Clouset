@@ -1,8 +1,10 @@
 package com.example.closet.comunicacionserver;
+import android.graphics.Bitmap;
+
 import com.example.closet.dominio.Prenda;
 
-import org.apache.log4j.Logger;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -19,6 +21,9 @@ public class Client {
     private int port;
 
     public static void main(String args[]) {
+     //   ByteArrayOutputStream stream = new ByteArrayOutputStream();
+      //  bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+       // byte[] imageInByte = stream.toByteArray();
         conectarseBD("/insertPrenda",new Prenda(5.4f,null,"Id distinto","Vaqueros","Zara","Azul marino",
                 "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"));
         conectarseBD("/getPrenda",null);
@@ -28,7 +33,6 @@ public class Client {
         //Configure connections
         String host = PropertiesISW.getInstance().getProperty("host");
         int port = Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
-        Logger.getRootLogger().info("Host: " + host + " port" + port);
         //Create a cliente class
         Client cliente = new Client(host, port);
         HashMap<String, Object> session = new HashMap<String, Object>();
@@ -51,7 +55,6 @@ public class Client {
                 System.out.println("PRENDA GUARDADA CORRECTAMENTE");
                 break;
             default:
-                Logger.getRootLogger().info("Option not found");
                 System.out.println("\nError a la vuelta");
                 break;
 

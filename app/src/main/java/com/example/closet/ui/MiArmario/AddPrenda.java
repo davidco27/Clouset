@@ -16,14 +16,30 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.closet.R;
+import com.example.closet.comunicacionserver.Client;
+import com.example.closet.dominio.Prenda;
+
+import java.io.ByteArrayOutputStream;
 
 public class AddPrenda extends Fragment {
     private Button btnGuardar,btnFoto;
+    private Bitmap bm;
     private ImageView img;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_prenda, container, false);
        btnGuardar=view.findViewById(R.id.btn2);
+       btnGuardar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+                  ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                 bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+               byte[] image = stream.toByteArray();
+
+               Client.conectarseBD("/insertPrenda",new Prenda(5.4f,image,"Pene","Vaqueros","Zara","Azul marino",
+                       "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"));
+           }
+       });
        btnFoto=view.findViewById(R.id.btnFoto);
        img=view.findViewById(R.id.foto);
        btnFoto.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +58,7 @@ public class AddPrenda extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bm =(Bitmap) data.getExtras().get("data");
+         bm =(Bitmap) data.getExtras().get("data");
         img.setImageBitmap(bm);
 
     }

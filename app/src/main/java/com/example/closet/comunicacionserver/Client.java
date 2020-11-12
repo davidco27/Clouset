@@ -1,4 +1,6 @@
 package com.example.closet.comunicacionserver;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.example.closet.dominio.Prenda;
@@ -18,21 +20,25 @@ import java.util.HashMap;
 
 public class Client {
     private String host;
+    private static Context activity;
     private int port;
 
     public static void main(String args[]) {
      //   ByteArrayOutputStream stream = new ByteArrayOutputStream();
       //  bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
        // byte[] imageInByte = stream.toByteArray();
-        conectarseBD("/insertPrenda",new Prenda(5.4f,null,"Id distinto","Vaqueros","Zara","Azul marino",
-                "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"));
-        conectarseBD("/getPrenda",null);
+       // conectarseBD("/insertPrenda",new Prenda(5.4f,null,"Id distinto","Vaqueros","Zara","Azul marino",
+         //       "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"));
+        //conectarseBD("/getPrenda",null);
     }
 
-    public static void conectarseBD(String peticion,Prenda prenda) {
+    public static void conectarseBD(String peticion, Prenda prenda, Context ac) {
+        activity=ac;
         //Configure connections
-        String host = PropertiesISW.getInstance().getProperty("host");
-        int port = Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
+        String host ="172.24.144.215";
+                //PropertiesISW.getInstance().getProperty("host");
+        int port = 8081;
+                //Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
         //Create a cliente class
         Client cliente = new Client(host, port);
         HashMap<String, Object> session = new HashMap<String, Object>();
@@ -71,8 +77,6 @@ public class Client {
     public void sent(Message messageOut, Message messageIn) {
         try {
 
-            System.out.println("Connecting to host " + host + " on port " + port + ".");
-
             Socket echoSocket = null;
             OutputStream out = null;
             InputStream in = null;
@@ -95,9 +99,13 @@ public class Client {
 
 
             } catch (UnknownHostException e) {
+                new AlertDialog.Builder(activity).setTitle("ERROR").setMessage("PENE")
+                        .setPositiveButton(android.R.string.ok, null).setCancelable(false).create().show();
                 System.err.println("Unknown host: " + host);
                 System.exit(1);
             } catch (IOException e) {
+                new AlertDialog.Builder(activity).setTitle("CONECTAR").setMessage("ZION")
+                        .setPositiveButton(android.R.string.ok, null).setCancelable(false).create().show();
                 System.err.println("Unable to get streams from servers");
                 System.exit(1);
             }

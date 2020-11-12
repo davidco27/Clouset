@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SocketServer extends Thread {
-    public static final int PORT_NUMBER = 8081;
+    public static final int PORT_NUMBER = 1000;
 
     protected Socket socket;
 
@@ -25,6 +25,7 @@ public class SocketServer extends Thread {
     }
 
     public void run() {
+        System.out.println("PEnefdsafa " + socket.getInetAddress().getHostAddress());
         InputStream in = null;
         OutputStream out = null;
         try {

@@ -35,9 +35,9 @@ public class Client {
     public static void conectarseBD(String peticion, Prenda prenda, Context ac) {
         activity=ac;
         //Configure connections
-        String host ="172.24.144.215";
+        String host ="172.16.10.45";
                 //PropertiesISW.getInstance().getProperty("host");
-        int port = 8081;
+        int port = 1000;
                 //Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
         //Create a cliente class
         Client cliente = new Client(host, port);
@@ -48,6 +48,8 @@ public class Client {
         mensajeEnvio.setSession(session);
         mensajeEnvio.setPrenda(prenda);
         cliente.sent(mensajeEnvio, mensajeVuelta);
+        new AlertDialog.Builder(activity).setTitle("CONECTAR").setMessage("MORANT")
+                .setPositiveButton(android.R.string.ok, null).setCancelable(false).create().show();
 
 
         switch (mensajeVuelta.getContext()) {
@@ -87,10 +89,9 @@ public class Client {
                 out = echoSocket.getOutputStream();
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 
+
                 //Create the objetct to send
                 objectOutputStream.writeObject(messageOut);
-
-
                 // create a DataInputStream so we can read data from it.
                 ObjectInputStream objectInputStream = new ObjectInputStream(in);
                 Message msg = (Message) objectInputStream.readObject();

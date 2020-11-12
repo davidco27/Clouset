@@ -14,6 +14,9 @@ public class PrendaControler {
     public void getPrenda(ArrayList<Prenda> lista) {
         PrendaDAO.getPrendas(lista);
     }
+    public void getPrendaId(ArrayList<Prenda> lista,String id) {
+        PrendaDAO.getPrendaId(lista,id);
+    }
     public void insertPrenda(Prenda prenda) {
         PrendaDAO.insertPrendas(prenda);
     }

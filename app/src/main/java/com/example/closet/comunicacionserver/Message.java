@@ -13,6 +13,7 @@ public class Message implements Serializable {
     private Prenda prenda;
     private static final long serialVersionUID = 1L;
     private String context;
+    private String idPrenda;
     private Map<String, Object> session;
 
 
@@ -20,6 +21,14 @@ public class Message implements Serializable {
         context=new String();
         session=new HashMap<String, Object>();
 
+    }
+
+    public void setIdPrenda(String idPrenda) {
+        this.idPrenda = idPrenda;
+    }
+
+    public String getIdPrenda() {
+        return idPrenda;
     }
 
     public void setPrenda(Prenda prenda) {

@@ -4,12 +4,13 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -59,22 +60,25 @@ public class AddPrenda extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
          bm =(Bitmap) data.getExtras().get("data");
-        img.setImageBitmap(bm);
 
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                // bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                //byte[] image = stream.toByteArray();
-                Client.conectarseBD("/insertPrenda",new Prenda(5.4f,null,"Pollo","Vaqueros","Zara","Azul marino",
-                        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"),getContext());
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                 bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] image = stream.toByteArray();
+                Client.conectarseBD("/insertPrenda",new Prenda(9.5f,image,"peadf","iadsf","Hitler","Franco",
+                        "afdsfa"),"");
+                Prenda p=Client.conectarseBD("/getPrendaId",null,"pnp").get(0);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(p.getFoto() , 0,p.getFoto().length);
+                img.setImageBitmap(bitmap);
             }
         });
 

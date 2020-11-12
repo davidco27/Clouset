@@ -2,6 +2,7 @@ package com.example.closet.comunicacionserver;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.StrictMode;
 
 import com.example.closet.dominio.Prenda;
 
@@ -12,8 +13,11 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,21 +27,12 @@ public class Client {
     private static Context activity;
     private int port;
 
-    public static void main(String args[]) {
-     //   ByteArrayOutputStream stream = new ByteArrayOutputStream();
-      //  bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-       // byte[] imageInByte = stream.toByteArray();
-       // conectarseBD("/insertPrenda",new Prenda(5.4f,null,"Id distinto","Vaqueros","Zara","Azul marino",
-         //       "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"));
-        //conectarseBD("/getPrenda",null);
-    }
 
-    public static void conectarseBD(String peticion, Prenda prenda, Context ac) {
-        activity=ac;
+    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda,String idPrenda) {
         //Configure connections
-        String host ="172.16.10.45";
+        String host ="192.168.43.215";
                 //PropertiesISW.getInstance().getProperty("host");
-        int port = 1000;
+        int port = 8080;
                 //Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
         //Create a cliente class
         Client cliente = new Client(host, port);
@@ -47,17 +42,20 @@ public class Client {
         mensajeEnvio.setContext(peticion);
         mensajeEnvio.setSession(session);
         mensajeEnvio.setPrenda(prenda);
+        mensajeEnvio.setIdPrenda(idPrenda);
         cliente.sent(mensajeEnvio, mensajeVuelta);
-        new AlertDialog.Builder(activity).setTitle("CONECTAR").setMessage("MORANT")
-                .setPositiveButton(android.R.string.ok, null).setCancelable(false).create().show();
 
+        ArrayList<Prenda> listaPrendas=null;
 
         switch (mensajeVuelta.getContext()) {
             case "/getPrendaResponse":
-                ArrayList<Prenda> listaPrendas = (ArrayList<Prenda>) (mensajeVuelta.getSession().get("Prenda"));
+                 listaPrendas = (ArrayList<Prenda>) (mensajeVuelta.getSession().get("Prenda"));
                 for (Prenda prenda2 : listaPrendas) {
                     System.out.println(prenda2.getId() + " " + prenda2.getMarca() + " " + prenda2.getValoracion());
                 }
+                break;
+            case "/getPrendaIdResponse":
+                listaPrendas = (ArrayList<Prenda>) (mensajeVuelta.getSession().get("Prenda"));
                 break;
             case "/insertPrendaResponse":
                 System.out.println("PRENDA GUARDADA CORRECTAMENTE");
@@ -67,6 +65,7 @@ public class Client {
                 break;
 
         }
+        return listaPrendas;
     }
 
 
@@ -76,47 +75,53 @@ public class Client {
     }
 
 
-    public void sent(Message messageOut, Message messageIn) {
-        try {
+    public void sent(final Message messageOut, final Message messageIn) {
+                try {
 
-            Socket echoSocket = null;
-            OutputStream out = null;
-            InputStream in = null;
+                    Socket echoSocket = null;
+                    OutputStream out = null;
+                    InputStream in = null;
 
-            try {
-                echoSocket = new Socket(host, port);
-                in = echoSocket.getInputStream();
-                out = echoSocket.getOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
-
-
-                //Create the objetct to send
-                objectOutputStream.writeObject(messageOut);
-                // create a DataInputStream so we can read data from it.
-                ObjectInputStream objectInputStream = new ObjectInputStream(in);
-                Message msg = (Message) objectInputStream.readObject();
-                messageIn.setContext(msg.getContext());
-                messageIn.setSession(msg.getSession());
+                    try {
+                        try{
+                        StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
+                        StrictMode.setThreadPolicy(tp);
+                        echoSocket = new Socket(host, port);}
+                        catch (Exception e){
+                        }
+                        in = echoSocket.getInputStream();
+                        out = echoSocket.getOutputStream();
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 
 
-            } catch (UnknownHostException e) {
-                new AlertDialog.Builder(activity).setTitle("ERROR").setMessage("PENE")
-                        .setPositiveButton(android.R.string.ok, null).setCancelable(false).create().show();
-                System.err.println("Unknown host: " + host);
-                System.exit(1);
-            } catch (IOException e) {
-                new AlertDialog.Builder(activity).setTitle("CONECTAR").setMessage("ZION")
-                        .setPositiveButton(android.R.string.ok, null).setCancelable(false).create().show();
-                System.err.println("Unable to get streams from servers");
-                System.exit(1);
+                        //Create the objetct to send
+                        objectOutputStream.writeObject(messageOut);
+                        // create a DataInputStream so we can read data from it.
+                        ObjectInputStream objectInputStream = new ObjectInputStream(in);
+                        Message msg = (Message) objectInputStream.readObject();
+                        messageIn.setContext(msg.getContext());
+                        messageIn.setSession(msg.getSession());
+
+
+                    } catch (UnknownHostException e) {
+                        System.err.println("Unknown host: " + host);
+                        System.exit(1);
+                    } catch (IOException e) {
+
+                        System.err.println("Unable to get streams from servers");
+                        System.exit(1);
+                    }
+
+                    /** Closing all the resources */
+                    out.close();
+                    in.close();
+                    echoSocket.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
 
-            /** Closing all the resources */
-            out.close();
-            in.close();
-            echoSocket.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
+
 }

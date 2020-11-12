@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SocketServer extends Thread {
-    public static final int PORT_NUMBER = 1000;
+    public static final int PORT_NUMBER = 8080;
 
     protected Socket socket;
 
@@ -25,7 +25,6 @@ public class SocketServer extends Thread {
     }
 
     public void run() {
-        System.out.println("PEnefdsafa " + socket.getInetAddress().getHostAddress());
         InputStream in = null;
         OutputStream out = null;
         try {
@@ -45,6 +44,16 @@ public class SocketServer extends Thread {
                     controler.getPrenda(lista);
                     mensajeOut.setContext("/getPrendaResponse");
                     HashMap<String,Object> session=new HashMap<String, Object>();
+                    session.put("Prenda",lista);
+                    mensajeOut.setSession(session);
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
+                case "/getPrendaId":
+                     controler=new PrendaControler();
+                     lista=new ArrayList<Prenda>();
+                    controler.getPrendaId(lista,mensajeIn.getIdPrenda());
+                    mensajeOut.setContext("/getPrendaIdResponse");
+                     session=new HashMap<String, Object>();
                     session.put("Prenda",lista);
                     mensajeOut.setSession(session);
                     objectOutputStream.writeObject(mensajeOut);

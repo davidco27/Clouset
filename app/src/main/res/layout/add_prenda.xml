@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -12,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo de prenda :"/>
-<EditText
+<Spinner
     android:layout_toRightOf="@+id/tipoT"
-    android:layout_marginTop="35dp"
+    android:layout_marginTop="50dp"
     android:id="@+id/tipo"
-    android:layout_width="60dp"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
     />
     <TextView
@@ -30,10 +29,27 @@
         android:text="Marca :"/>
     <EditText
         android:id="@+id/marca"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/tipoT"
         android:layout_toRightOf="@+id/marcaT"
-        android:layout_width="60dp"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        />
+    <TextView
+        android:textSize="15dp"
+        android:id="@+id/colorT"
+        android:layout_below="@id/marcaT"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Color :"/>
+    <EditText
+        android:id="@+id/color"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/marcaT"
+        android:layout_toRightOf="@+id/colorT"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         />
 
@@ -45,18 +61,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar prenda"/>
-    <Button
-        android:id="@+id/btnFoto"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@id/marca"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hacer foto"/>
-    <ImageView
-        android:id="@+id/foto"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginLeft="50dp"/>
+
 </RelativeLayout>

@@ -5,22 +5,18 @@ import java.io.Serializable;
 
 public class Prenda implements Serializable {
     private byte[] foto;
-    private String id,marca,tipo,color,link;
+    private String id,marca,tipo,color;
     private float valoracion;
 
-    public Prenda(float valoracion,byte[] foto,String id,String tipo,String marca,String color,String link) {
+    public Prenda(float valoracion,byte[] foto,String id,String tipo,String marca,String color) {
         this.valoracion=valoracion;
         this.foto = foto;
         this.id=id;
         this.tipo=tipo;
         this.marca=marca;
         this.color=color;
-        this.link=link;
     }
 
-    public String getLink() {
-        return link;
-    }
 
     public float getValoracion() {
         return valoracion;

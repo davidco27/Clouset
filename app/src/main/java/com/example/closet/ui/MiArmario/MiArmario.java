@@ -22,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 
 import com.example.closet.R;
+import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;
 import com.example.closet.util.PrendaAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -34,6 +35,7 @@ public class MiArmario extends Fragment implements NavigationView.OnNavigationIt
     private String prueba;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        ArrayList<Prenda> prendas= Client.conectarseBD("/getPrenda",null,"");
         View view = inflater.inflate(R.layout.fragment_miarmario, container, false);
         final DrawerLayout drawer = view.findViewById(R.id.drawer_layout);
         NavigationView navigationView = view.findViewById(R.id.nav_view2);
@@ -46,9 +48,6 @@ public class MiArmario extends Fragment implements NavigationView.OnNavigationIt
                 drawer.openDrawer(Gravity.LEFT);
             }
         });
-        ArrayList<Prenda> prendas =new ArrayList<>();
-        //prendas.add(new Prenda(getActivity().getResources().getDrawable(R.drawable.pantalon),"Vaqueros informales","Pantalon Vaquero","Zara","Azul marino"));
-        //prendas.add(new Prenda(getActivity().getResources().getDrawable(R.drawable.cami),"Camiseta del Madrid","Camiseta","Adidas","Blanco"));
         PrendaAdapter prendaAdapter =new PrendaAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendas);
         ListView lista = view.findViewById(R.id.listaPrendas);
         lista.setAdapter(prendaAdapter);

@@ -24,7 +24,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
     private class ViewHolder{
         TextView marca;
         TextView tipo;
-        TextView id;
+        TextView valoracion;
         TextView color;
         ImageView foto;
     }
@@ -39,18 +39,18 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
             holder.marca = convertView.findViewById(R.id.marca);
             holder.tipo = convertView.findViewById(R.id.tipoPrenda);
             holder.color = convertView.findViewById(R.id.color);
-            holder.id = convertView.findViewById(R.id.nombre);
+            holder.valoracion= convertView.findViewById(R.id.valoracion);
             holder.foto= convertView.findViewById(R.id.foto);
             convertView.setTag(holder);
         }
         else
             holder=(ViewHolder) convertView.getTag();
         holder.marca.setText(prenda.getMarca());
-        holder.id.setText(prenda.getId());
+        holder.valoracion.setText(String.valueOf(prenda.getValoracion()));
         holder.color.setText(prenda.getColor());
         holder.tipo.setText(prenda.getTipo());
         ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());
-        Drawable drw = Drawable.createFromStream(is, "articleImage");
+        Drawable drw = Drawable.createFromStream(is, "foto");
         holder.foto.setImageDrawable(drw);
         return convertView;
     }

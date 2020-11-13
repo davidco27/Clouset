@@ -47,7 +47,6 @@ public class AddPrenda extends Fragment {
         startActivityForResult(takePictureIntent,0);
         View view = inflater.inflate(R.layout.add_prenda, container, false);
         img=view.findViewById(R.id.fotoAdd);
-        img.setImageBitmap(bm);
         tipo= view.findViewById(R.id.tipo);
         ArrayList<String> tipos=new ArrayList<>();
         tipos.add("Calzado");
@@ -76,6 +75,7 @@ public class AddPrenda extends Fragment {
         color=view.findViewById(R.id.color);
        btnGuardar=view.findViewById(R.id.btn2);
 
+
         return view;
     }
 
@@ -83,6 +83,7 @@ public class AddPrenda extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
          bm =(Bitmap) data.getExtras().get("data");
+        img.setImageBitmap(bm);
 
     }
 
@@ -99,7 +100,7 @@ public class AddPrenda extends Fragment {
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
                 String colo = color.getText().toString();
-                Client.conectarseBD("/insertPrenda",new Prenda(9.5f,image,marc+Math.random()*1000,tipoPrenda,marc,colo ),"");
+                Client.conectarseBD("/insertPrenda",new Prenda(4.5f,image,marc+Math.round(Math.random()*1000000),tipoPrenda,marc,colo),"");
                 //Prenda p=Client.conectarseBD("/getPrendaId",null,"pnp").get(0);
                // Bitmap bitmap = BitmapFactory.decodeByteArray(p.getFoto() , 0,p.getFoto().length);
                // img.setImageBitmap(bitmap);

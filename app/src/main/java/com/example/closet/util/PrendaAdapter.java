@@ -1,6 +1,7 @@
 package com.example.closet.util;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,8 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
             holder=(ViewHolder) convertView.getTag();
         holder.marca.setText(prenda.getMarca());
         holder.valoracion.setText(String.valueOf(prenda.getValoracion()));
+        if(prenda.getValoracion()<5.0f)
+            holder.valoracion.setTextColor(Color.RED);
         holder.color.setText(prenda.getColor());
         holder.tipo.setText(prenda.getTipo());
         ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());

@@ -3,6 +3,8 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
    <ImageView
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft="10dp"
        android:id="@+id/foto"
        android:layout_width="125dp"
        android:layout_height="110dp"
@@ -11,6 +13,7 @@
    <TextView
        android:layout_marginTop="10dp"
        android:id="@+id/tipoPrenda"
+       android:textSize="20dp"
        android:layout_width="wrap_content"
        android:text="Pantalones"
        android:layout_height="wrap_content"
@@ -18,15 +21,17 @@
        android:layout_marginLeft="20dp" />
    <TextView
        android:id="@+id/marca"
+       android:textSize="20dp"
        android:layout_below="@+id/tipoPrenda"
        android:layout_marginTop="15dp"
-       android:layout_width="100dp"
+       android:layout_width="wrap_content"
        android:text="Stradivarius"
        android:layout_toRightOf="@+id/foto"
        android:layout_height="wrap_content"
        android:layout_marginLeft="20dp" />
    <TextView
        android:id="@+id/color"
+       android:textSize="20dp"
        android:layout_width="100dp"
        android:text="Verde"
        android:layout_height="wrap_content"

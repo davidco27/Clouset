@@ -32,7 +32,6 @@ import java.util.ArrayList;
 
 public class MiArmario extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton btnMenu;
-    private String prueba;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         ArrayList<Prenda> prendas= Client.conectarseBD("/getPrenda",null,"");

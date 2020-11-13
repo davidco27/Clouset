@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class AddPrenda extends Fragment {
     private Button btnGuardar;
     private Bitmap bm;
     private EditText marca,color;
+    private ImageView img;
     private String tipoPrenda;
    private Spinner tipo;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -41,9 +43,11 @@ public class AddPrenda extends Fragment {
             requestPermissions(new String[] {"android.permission.CAMERA"},1);
 
         }
-        View view = inflater.inflate(R.layout.add_prenda, container, false);
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent,0);
+        View view = inflater.inflate(R.layout.add_prenda, container, false);
+        img=view.findViewById(R.id.fotoAdd);
+        img.setImageBitmap(bm);
         tipo= view.findViewById(R.id.tipo);
         ArrayList<String> tipos=new ArrayList<>();
         tipos.add("Calzado");
@@ -95,7 +99,7 @@ public class AddPrenda extends Fragment {
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
                 String colo = color.getText().toString();
-                Client.conectarseBD("/insertPrenda",new Prenda(9.5f,image,marc+Math.random()/1000,tipoPrenda,marc,colo ),"");
+                Client.conectarseBD("/insertPrenda",new Prenda(9.5f,image,marc+Math.random()*1000,tipoPrenda,marc,colo ),"");
                 //Prenda p=Client.conectarseBD("/getPrendaId",null,"pnp").get(0);
                // Bitmap bitmap = BitmapFactory.decodeByteArray(p.getFoto() , 0,p.getFoto().length);
                // img.setImageBitmap(bitmap);

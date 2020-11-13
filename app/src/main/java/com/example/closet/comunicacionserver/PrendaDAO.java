@@ -27,9 +27,8 @@ public class PrendaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                //ByteArrayInputStream is = new ByteArrayInputStream(rs.getBytes(1));
-                //Drawable drw = Drawable.createFromStream(is, "articleImage");
-                lista.add(new Prenda((float)rs.getDouble(1),null,rs.getString(5),rs.getString(2),rs.getString(3),rs.getString(6),rs.getString(4)));
+
+                lista.add(new Prenda((float)rs.getDouble(1),rs.getBytes(6),rs.getString(4),rs.getString(2),rs.getString(3),rs.getString(5)));
             }
 
         } catch (SQLException ex) {
@@ -42,7 +41,7 @@ public class PrendaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                lista.add(new Prenda((float)rs.getDouble(1),rs.getBytes(7),rs.getString(5),rs.getString(2),rs.getString(3),rs.getString(6),rs.getString(4)));
+                lista.add(new Prenda((float)rs.getDouble(1),rs.getBytes(6),rs.getString(4),rs.getString(2),rs.getString(3),rs.getString(5)));
             }
 
         } catch (SQLException ex) {
@@ -54,7 +53,7 @@ public class PrendaDAO {
         Connection con=ConnectionDAO.getInstance().getConnection();
         try {
             PreparedStatement pst = con.prepareStatement("insert into \"Prendas\" values ('" +prenda.getValoracion()+
-                    "','"+prenda.getTipo()+"','"+prenda.getMarca()+"','"+prenda.getLink()+"','"+prenda.getId()+"','"+prenda.getColor()+"',?)");
+                    "','"+prenda.getTipo()+"','"+prenda.getMarca()+"','"+prenda.getId()+"','"+prenda.getColor()+"',?)");
             pst.setBytes(1,prenda.getFoto());
             ResultSet rs = pst.executeQuery();
         } catch (SQLException ex) {

@@ -4,16 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+        android:id="@+id/tituloAdd"
+        android:textSize="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Valores de la nueva prenda : "/>
+    <TextView
         android:id="@+id/tipoT"
         android:textSize="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/tituloAdd"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo de prenda :"/>
 <Spinner
+    android:layout_below="@+id/tituloAdd"
     android:layout_toRightOf="@+id/tipoT"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="20dp"
     android:id="@+id/tipo"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
@@ -22,42 +34,50 @@
         android:textSize="15dp"
         android:id="@+id/marcaT"
         android:layout_below="@id/tipoT"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Marca :"/>
     <EditText
         android:id="@+id/marca"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
         android:layout_below="@id/tipoT"
         android:layout_toRightOf="@+id/marcaT"
         android:layout_width="120dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         />
     <TextView
         android:textSize="15dp"
         android:id="@+id/colorT"
         android:layout_below="@id/marcaT"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Color :"/>
     <EditText
         android:id="@+id/color"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
         android:layout_below="@id/marcaT"
         android:layout_toRightOf="@+id/colorT"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         />
-
+    <ImageView
+        android:id="@+id/fotoAdd"
+        android:layout_below="@+id/colorT"
+        android:layout_width="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_height="150dp"/>
     <Button
         android:id="@+id/btn2"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@id/marca"
-        android:layout_marginTop="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_below="@id/fotoAdd"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar prenda"/>

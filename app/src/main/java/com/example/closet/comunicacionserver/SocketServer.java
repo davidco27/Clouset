@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SocketServer extends Thread {
-    public static final int PORT_NUMBER = 8080;
+    public static final int PORT_NUMBER = 1000;
 
     protected Socket socket;
 

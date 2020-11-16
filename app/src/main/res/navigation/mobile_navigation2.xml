@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@id/navigation_armario"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <fragment
+        android:id="@+id/navigation_armario"
+        android:name="com.example.closet.ui.MiArmario.MiArmarioHome"
+        android:label="Armario"
+        tools:layout="@layout/miarmario_main" >    </fragment>
+
+</navigation>

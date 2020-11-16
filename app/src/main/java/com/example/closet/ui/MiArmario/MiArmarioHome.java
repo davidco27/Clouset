@@ -1,14 +1,13 @@
 package com.example.closet.ui.MiArmario;
 
-import android.content.ClipData;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -20,32 +19,20 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;
 import com.example.closet.util.PrendaAdapter;
-import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 
-
-public class MiArmario extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageButton btnMenu;
+public class MiArmarioHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_miarmario, container, false);
-        final DrawerLayout drawer = view.findViewById(R.id.drawer_layout);
-        NavigationView navigationView = view.findViewById(R.id.nav_view2);
-        NavController navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
-        NavigationUI.setupWithNavController(navigationView, navController);
-        btnMenu= view.findViewById(R.id.btn1);
-        btnMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer.openDrawer(Gravity.LEFT);
-            }
-        });
-
+        //ArrayList<Prenda> prendas= Client.conectarseBD("/getPrenda",null,"");
+        View view = inflater.inflate(R.layout.miarmario_main, container, false);
+        ListView lista =view.findViewById(R.id.listaPrendas);
+        //lista.setAdapter(new PrendaAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendas));
 
         return view;
     }
@@ -58,8 +45,4 @@ public class MiArmario extends Fragment implements NavigationView.OnNavigationIt
 
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
 }

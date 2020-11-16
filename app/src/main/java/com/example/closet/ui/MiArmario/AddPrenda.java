@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.closet.R;
@@ -100,10 +102,19 @@ public class AddPrenda extends Fragment {
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
                 String colo = color.getText().toString();
-                Client.conectarseBD("/insertPrenda",new Prenda(4.5f,image,marc+Math.round(Math.random()*1000000),tipoPrenda,marc,colo),"");
-                //Prenda p=Client.conectarseBD("/getPrendaId",null,"pnp").get(0);
-               // Bitmap bitmap = BitmapFactory.decodeByteArray(p.getFoto() , 0,p.getFoto().length);
-               // img.setImageBitmap(bitmap);
+                //Client.conectarseBD("/insertPrenda",new Prenda(4.5f,image,marc+Math.round(Math.random()*1000000),tipoPrenda,marc,colo),"");
+                try {
+                    FragmentManager fragmentManager = getChildFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    Fragment fragment = new MiArmario();
+                    fragmentTransaction.replace(R.layout.add_prenda, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+                catch (Exception e){
+
+                }
+
             }
         });
 

@@ -24,7 +24,6 @@ import java.util.HashMap;
 
 public class Client {
     private String host;
-    private static Context activity;
     private int port;
 
 
@@ -32,7 +31,7 @@ public class Client {
         //Configure connections
         String host ="192.168.43.215";
                 //PropertiesISW.getInstance().getProperty("host");
-        int port = 8080;
+        int port = 1000;
                 //Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
         //Create a cliente class
         Client cliente = new Client(host, port);

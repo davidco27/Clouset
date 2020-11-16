@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
 import com.example.closet.R;
 
 import com.example.closet.dominio.Prenda;
@@ -18,10 +21,24 @@ import java.util.ArrayList;
 
 public class PrendaAdapter extends ArrayAdapter<Prenda> {
     private Activity ac;
+    private ArrayList<Prenda> prendas;
     public PrendaAdapter(Activity ac, int resource, ArrayList<Prenda> prendas){
         super(ac.getApplicationContext(),resource,prendas);
         this.ac=ac;
+        this.prendas=prendas;
     }
+
+    @Nullable
+    @Override
+    public Prenda getItem(int position) {
+        return prendas.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return prendas.size();
+    }
+
     private class ViewHolder{
         TextView marca;
         TextView tipo;
@@ -57,4 +74,5 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         holder.foto.setImageDrawable(drw);
         return convertView;
     }
+
 }

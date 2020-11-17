@@ -45,7 +45,7 @@ public class AddPrenda extends Fragment {
             requestPermissions(new String[] {"android.permission.CAMERA"},1);
 
         }
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+       Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent,0);
         View view = inflater.inflate(R.layout.add_prenda, container, false);
         img=view.findViewById(R.id.fotoAdd);
@@ -102,18 +102,8 @@ public class AddPrenda extends Fragment {
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
                 String colo = color.getText().toString();
-                //Client.conectarseBD("/insertPrenda",new Prenda(4.5f,image,marc+Math.round(Math.random()*1000000),tipoPrenda,marc,colo),"");
-                try {
-                    FragmentManager fragmentManager = getChildFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    Fragment fragment = new MiArmario();
-                    fragmentTransaction.replace(R.layout.add_prenda, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-                catch (Exception e){
-
-                }
+                Client.conectarseBD("/insertPrenda",new Prenda(4.5f,image,marc+Math.round(Math.random()*1000000),tipoPrenda,marc,colo),"");
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
 
             }
         });

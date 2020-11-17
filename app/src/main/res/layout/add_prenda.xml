@@ -2,12 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:id="@+id/navigation_add"
+    android:id="@+id/add_prenda"
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/tituloAdd"
         android:textSize="25dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

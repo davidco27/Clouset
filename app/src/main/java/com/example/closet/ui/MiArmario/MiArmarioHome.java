@@ -29,10 +29,10 @@ import java.util.ArrayList;
 public class MiArmarioHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //ArrayList<Prenda> prendas= Client.conectarseBD("/getPrenda",null,"");
+        ArrayList<Prenda> prendas= Client.conectarseBD("/getPrenda",null,"");
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
         ListView lista =view.findViewById(R.id.listaPrendas);
-        //lista.setAdapter(new PrendaAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendas));
+        lista.setAdapter(new PrendaAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendas));
 
         return view;
     }

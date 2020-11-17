@@ -8,6 +8,32 @@
         android:id="@+id/navigation_armario"
         android:name="com.example.closet.ui.MiArmario.MiArmarioHome"
         android:label="Armario"
-        tools:layout="@layout/miarmario_main" >    </fragment>
+        tools:layout="@layout/miarmario_main" >
+        <action
+            android:id="@+id/action_navigation_armario_to_navigation_post2"
+            app:destination="@id/navigation_post" />
+        <action
+            android:id="@+id/action_navigation_armario_to_navigation_add2"
+            app:destination="@id/navigation_add" />
+        <action
+            android:id="@+id/action_navigation_armario_to_navigation_filtrar2"
+            app:destination="@id/navigation_filtrar" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_filtrar"
+        android:name="com.example.closet.ui.MiArmario.Filter"
+        android:label="Filter"
+        tools:layout="@layout/prueba3" />
+    <fragment
+        android:id="@+id/navigation_post"
+        android:name="com.example.closet.ui.MiArmario.PostOutfit"
+        android:label="Post"
+        tools:layout="@layout/prueba2" />
+    <fragment
+        android:id="@+id/navigation_add"
+        android:name="com.example.closet.ui.MiArmario.AddPrenda"
+        android:label="Add"
+        tools:layout="@layout/add_prenda" >
+    </fragment>
 
 </navigation>

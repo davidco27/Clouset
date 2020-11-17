@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
-    public static InputStream is;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

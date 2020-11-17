@@ -1,5 +1,6 @@
 package com.example.closet.ui.MiArmario;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -30,6 +31,7 @@ import com.example.closet.dominio.Prenda;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class AddPrenda extends Fragment {
     private Button btnGuardar;
@@ -102,8 +104,16 @@ public class AddPrenda extends Fragment {
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
                 String colo = color.getText().toString();
-                Client.conectarseBD("/insertPrenda",new Prenda(4.5f,image,marc+Math.round(Math.random()*1000000),tipoPrenda,marc,colo),"");
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                try {
+                    Client.conectarseBD("/insertPrenda", new Prenda(4.5f, image, marc + Math.round(Math.random() * 1000000), tipoPrenda, marc, colo), "");
+                }
+                catch (Exception e){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Error de Conexion con el servidor")
+                            .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
+
+                }
+                    getActivity().getSupportFragmentManager().popBackStackImmediate();
 
             }
         });

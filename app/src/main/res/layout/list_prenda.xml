@@ -49,6 +49,14 @@
        android:layout_below="@+id/foto"
        android:layout_marginTop="5dp"
        android:layout_marginLeft="50dp"/>
+   <ImageButton
+       android:id="@+id/valorar_prenda"
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+      android:layout_toRightOf="@id/color"
+      android:layout_marginLeft="50dp"
+       android:src="@drawable/estrella"
+       />
 
 
 

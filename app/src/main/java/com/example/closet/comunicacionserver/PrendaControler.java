@@ -20,4 +20,7 @@ public class PrendaControler {
     public void insertPrenda(Prenda prenda) {
         PrendaDAO.insertPrendas(prenda);
     }
+    public float setValoracion(String id,float valoracion) {
+        return PrendaDAO.setValoracion(id,valoracion);
+    }
 }

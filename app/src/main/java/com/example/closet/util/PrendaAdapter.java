@@ -3,12 +3,17 @@ package com.example.closet.util;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +21,7 @@ import androidx.annotation.Nullable;
 
 import com.example.closet.R;
 
+import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;
 
 import java.io.ByteArrayInputStream;
@@ -31,6 +37,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         this.prendas=prendas;
     }
 
+
     @Nullable
     @Override
     public Prenda getItem(int position) {
@@ -42,17 +49,17 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         return prendas.size();
     }
 
-    private class ViewHolder{
+    public class ViewHolder{
         TextView marca;
         TextView tipo;
-        TextView valoracion;
+        public TextView valoracion;
         TextView color;
         ImageView foto;
-        ImageButton valorar;
+        public ImageButton valorar;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        final ViewHolder holder;
          prenda=getItem(position);
         LayoutInflater inflater = (LayoutInflater)ac.getApplicationContext().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if(convertView==null){
@@ -77,12 +84,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());
         Drawable drw = Drawable.createFromStream(is, "foto");
         holder.foto.setImageDrawable(drw);
-        holder.valorar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(),"Valorar la prenda con id "+prenda.getId(),Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return convertView;
     }
 

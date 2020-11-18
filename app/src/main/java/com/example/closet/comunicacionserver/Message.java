@@ -14,6 +14,7 @@ public class Message implements Serializable {
     private static final long serialVersionUID = 1L;
     private String context;
     private String idPrenda;
+    private float valoracion;
     private Map<String, Object> session;
 
 
@@ -21,6 +22,14 @@ public class Message implements Serializable {
         context=new String();
         session=new HashMap<String, Object>();
 
+    }
+
+    public float getValoracion() {
+        return valoracion;
+    }
+
+    public void setValoracion(float valoracion) {
+        this.valoracion = valoracion;
     }
 
     public void setIdPrenda(String idPrenda) {

@@ -64,6 +64,13 @@ public class SocketServer extends Thread {
                     mensajeOut.setContext("/insertPrendaResponse");
                     objectOutputStream.writeObject(mensajeOut);
                     break;
+                case "/changeValoracion":
+                     controler=new PrendaControler();
+                     float valoration=controler.setValoracion(mensajeIn.getIdPrenda(),mensajeIn.getValoracion());
+                    mensajeOut.setContext("/changeValoracionResponse");
+                    mensajeOut.setValoracion(valoration);
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
 
                 default:
                     System.out.println("\nParámetro no encontrado");

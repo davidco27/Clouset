@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,18 +26,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.example.closet.MainActivity;
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;
+import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
+
 
 public class AddPrenda extends Fragment {
-    private Button btnGuardar;
+    private Button btnGuardar,btnColor;
+    private int selectedColorR,selectedColorG,selectedColorB;
     private Bitmap bm;
-    private EditText marca,color;
+    private EditText marca;
     private ImageView img;
     private String tipoPrenda;
    private Spinner tipo;
@@ -76,7 +80,30 @@ public class AddPrenda extends Fragment {
             }
         });
         marca=view.findViewById(R.id.marca);
-        color=view.findViewById(R.id.color);
+        btnColor=view.findViewById(R.id.color);
+        final ColorPicker cp = new ColorPicker(getActivity(), 128, 128, 128);
+        btnColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cp.show();
+                Button okColor = cp.findViewById(R.id.okColorButton);
+                okColor.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        selectedColorR = cp.getRed();
+                        selectedColorG = cp.getGreen();
+                        selectedColorB = cp.getBlue();
+                        Toast.makeText(getContext(),Integer.toHexString(selectedColorR)+Integer.toHexString(selectedColorG)+Integer.toHexString(selectedColorB),Toast.LENGTH_SHORT).show();
+
+                        cp.dismiss();
+                    }
+                });
+            }
+        });
+
+
+
        btnGuardar=view.findViewById(R.id.btn2);
 
 
@@ -103,9 +130,9 @@ public class AddPrenda extends Fragment {
                  bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
-                String colo = color.getText().toString();
                 try {
-                    Client.conectarseBD("/insertPrenda", new Prenda(4.5f, image, marc + Math.round(Math.random() * 1000000), tipoPrenda, marc, colo), "");
+                    Client.conectarseBD("/insertPrenda", new Prenda(0, image, marc + Math.round(Math.random() * 1000000), tipoPrenda, marc,
+                            Integer.toHexString(selectedColorR)+Integer.toHexString(selectedColorG)+Integer.toHexString(selectedColorB)), "",0);
                 }
                 catch (Exception e){
                     new AlertDialog.Builder(getContext())

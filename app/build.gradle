@@ -26,6 +26,8 @@ android {
 }
 
 dependencies {
+
+        implementation 'com.pes.materialcolorpicker:library:1.2.5'
     implementation  group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'

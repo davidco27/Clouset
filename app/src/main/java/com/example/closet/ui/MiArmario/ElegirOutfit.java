@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.closet.R;
 
-public class Filter extends Fragment {
+public class ElegirOutfit extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.prueba3, container, false);

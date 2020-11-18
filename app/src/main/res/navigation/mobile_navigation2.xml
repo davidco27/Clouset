@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_filtrar"
-        android:name="com.example.closet.ui.MiArmario.Filter"
+        android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
         android:label="Filter"
         tools:layout="@layout/prueba3" />
     <fragment

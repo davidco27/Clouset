@@ -16,7 +16,8 @@ public class ElegirOutfit extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.elegir_outfit, container, false);
-System.out.println("ACK");
+        System.out.println("ACK");
+        System.out.println("6");
         return view;
     }
 

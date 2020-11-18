@@ -13,7 +13,7 @@
     <item
         android:id="@+id/navigation_filtrar"
         android:icon="@drawable/filter"
-        android:title="Filtrar" />
+        android:title="Elegir Outfits" />
 
 
 </menu>

@@ -18,7 +18,6 @@ public class PostOutfit extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.prueba2, container, false);
 
-
         return view;
     }
 

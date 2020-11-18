@@ -23,7 +23,7 @@ public class PrendaDAO {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void getPrendas(ArrayList<Prenda> lista) {
         Connection con = ConnectionDAO.getInstance().getConnection();
-        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Prendas\"");
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Prendas\" order by id");
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
@@ -75,9 +75,12 @@ public class PrendaDAO {
                 valoracion=valoracionNueva;
                 PreparedStatement pst3 = con.prepareStatement("update \"Prendas\" set nvaloraciones = " +(vecesValorado + 1)+" where id='" + id + "'");
                 pst3.executeQuery();
-                PreparedStatement pst2 = con.prepareStatement("update \"Prendas\" set valoration = " + valoracionNueva +
-                        " where id='" + id + "'");
-                pst2.executeQuery();
+                try (PreparedStatement pst2 = con.prepareStatement("update \"Prendas\" set valoration = " + valoracionNueva +
+                            " where id='" + id + "'");
+                    ResultSet rs3=pst2.executeQuery()) {
+
+                }
+
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }

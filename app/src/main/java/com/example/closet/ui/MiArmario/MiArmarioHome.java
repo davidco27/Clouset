@@ -35,47 +35,10 @@ public class MiArmarioHome extends Fragment {
             ArrayList<Prenda> prendas = Client.conectarseBD("/getPrenda", null, "",0);
             ListView lista = view.findViewById(R.id.listaPrendas);
             lista.setAdapter(new PrendaAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, prendas));
-            lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    final PrendaAdapter.ViewHolder holder =(PrendaAdapter.ViewHolder) view.getTag();
-                    final Prenda prenda=(Prenda) parent.getAdapter().getItem(position);
-                    Toast.makeText(getContext(),prenda.getId(), Toast.LENGTH_SHORT).show();
-                    holder.valorar.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getContext(),prenda.getId()+"pene", Toast.LENGTH_SHORT).show();
-                            final View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.popup_valorar, null);
-                            final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
-                            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                            popupWindow.setFocusable(true);
-                            popupWindow.setAttachedInDecor(true);
-                            Button getRating = popupView.findViewById(R.id.getRating);
-                            final RatingBar ratingBar = popupView.findViewById(R.id.rating);
-                            getRating.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    float valoracion=ratingBar.getProgress();
-                                    try {
-                                        float newValoration = Client.conectarseBD("/changeValoracion", null, prenda.getId(), valoracion).get(0).getValoracion();
-                                        popupWindow.dismiss();
-                                        holder.valoracion.setText(String.valueOf(newValoration));
-                                    }
-                                    catch (Exception e){
-                                        new AlertDialog.Builder(getContext())
-                                                .setTitle("Error de Conexion con el servidor")
-                                                .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
 
-                                    }
 
-                                    }
-                            });
-                        }
-                    });
 
-                }
-            });
-        }
+            }
         catch (Exception e){
             new AlertDialog.Builder(getContext())
                     .setTitle("Error de Conexion con el servidor")

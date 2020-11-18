@@ -1,6 +1,7 @@
 package com.example.closet.util;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -49,13 +50,13 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         return prendas.size();
     }
 
-    public class ViewHolder{
+    private class ViewHolder{
         TextView marca;
         TextView tipo;
-        public TextView valoracion;
+         TextView valoracion;
         TextView color;
         ImageView foto;
-        public ImageButton valorar;
+         ImageButton valorar;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -84,8 +85,48 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());
         Drawable drw = Drawable.createFromStream(is, "foto");
         holder.foto.setImageDrawable(drw);
+        holder.valorar.setOnClickListener(myClickListener);
+
 
         return convertView;
     }
+    private View.OnClickListener myClickListener = new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        int position = (Integer) view.getTag();
+        final Prenda prenda =(Prenda) getItem(position);
+        Toast.makeText(ac,prenda.getId(), Toast.LENGTH_SHORT).show();
+        final AlertDialog al=new AlertDialog.Builder(ac)
+                .setTitle("Valorar Prenda")
+                .setMessage("                                                                     ").setCancelable(false).create();
+        al.show();
+        final View popupView = LayoutInflater.from(ac).inflate(R.layout.popup_valorar, null);
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        popupWindow.setFocusable(true);
+        final Button getRating = popupView.findViewById(R.id.getRating);
+        final RatingBar ratingBar = popupView.findViewById(R.id.rating);
+        getRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float valoracion=ratingBar.getProgress();
+                try {
+                    float newValoration = Client.conectarseBD("/changeValoracion", null, prenda.getId(), valoracion).get(0).getValoracion();
+                    popupWindow.dismiss();
+                    al.dismiss();
+                    //holder.valoracion.setText(String.valueOf(newValoration));
+                }
+                catch (Exception e){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Error de Conexion con el servidor")
+                            .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
+
+                }
+
+            }
+        });
+    }
+};
 
 }

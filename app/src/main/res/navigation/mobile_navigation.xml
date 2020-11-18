@@ -43,7 +43,7 @@
         android:id="@+id/navigation_filtrar"
         android:name="com.example.closet.ui.MiArmario.Filter"
         android:label="Filter"
-        tools:layout="@layout/prueba3" />
+        tools:layout="@layout/elegir_outfit" />
     <fragment
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"

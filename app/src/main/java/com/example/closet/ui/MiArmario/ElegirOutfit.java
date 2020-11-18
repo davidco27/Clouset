@@ -17,7 +17,7 @@ public class ElegirOutfit extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.elegir_outfit, container, false);
         System.out.println("ACK");
-        System.out.println("6");
+        System.out.println("Le doy un sei");
         return view;
     }
 

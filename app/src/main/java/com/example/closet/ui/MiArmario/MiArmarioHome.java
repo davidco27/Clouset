@@ -28,11 +28,14 @@ import java.util.ArrayList;
 import javax.xml.datatype.Duration;
 
 public class MiArmarioHome extends Fragment {
+
+    private static ArrayList<Prenda> prendas;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
         try {
-            ArrayList<Prenda> prendas = Client.conectarseBD("/getPrenda", null, "",0);
+            prendas = Client.conectarseBD("/getPrenda", null, "",0);
             ListView lista = view.findViewById(R.id.listaPrendas);
             lista.setAdapter(new PrendaAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, prendas));
 
@@ -53,8 +56,8 @@ public class MiArmarioHome extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
     }
+
+    public static ArrayList<Prenda> getPrendasMiArmario() { return this.prendas;}
 
 }

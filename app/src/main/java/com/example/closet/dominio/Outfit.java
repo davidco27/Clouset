@@ -23,4 +23,11 @@ public class Outfit  {
     public String getNombre() {
         return nombre;
     }
+
+    public boolean containsPrenda(Prenda p) {
+        if(this.getPrendas().contains(p))
+            return true;
+        else
+            return false;
+    }
 }

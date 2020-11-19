@@ -45,4 +45,10 @@ public class Prenda implements Serializable {
     public String getMarca() {
         return marca;
     }
+
+    public byte[] getByteColorArray() {
+        Byte[] bytes = this.getColor().getBytes();
+
+        return bytes;
+    }
 }

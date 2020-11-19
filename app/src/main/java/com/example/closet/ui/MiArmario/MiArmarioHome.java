@@ -1,6 +1,7 @@
 package com.example.closet.ui.MiArmario;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -33,19 +34,24 @@ public class MiArmarioHome extends Fragment {
     private static ArrayList<Prenda> prendas;
 
     private static ArrayList<Outfit> outfits;
-
+    private static ListView lista;
+   private static Activity activity;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
-            prendas = Client.conectarseBD("/getPrenda", null, "",0,getActivity());
-            ListView lista = view.findViewById(R.id.listaPrendas);
-            lista.setAdapter(new PrendaAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, prendas));
+        activity=getActivity();
+         lista = view.findViewById(R.id.listaPrendas);
+         actualizarLista();
 
             /*
             outfits = Client.conectarseBD("/getOutfit", null, "", 0);
              */
 
         return view;
+    }
+    public static void actualizarLista(){
+        prendas = Client.conectarseBD("/getPrenda", null, "",0,activity);
+        lista.setAdapter(new PrendaAdapter(activity, R.layout.support_simple_spinner_dropdown_item, prendas));
     }
 
     @Override

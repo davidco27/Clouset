@@ -29,21 +29,17 @@ public class PrendaDAO {
         }
     }
 
-    public static void getPrendaId(ArrayList<Prenda> lista, String id) {
+    public static void deletePrendaId(String id) {
         Connection con = ConnectionDAO.getInstance().getConnection();
-        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Prendas\" where id = '" + id + "'");
-             ResultSet rs = pst.executeQuery()) {
-
-            while (rs.next()) {
-                lista.add(new Prenda((float) rs.getDouble(1), rs.getBytes(6), rs.getString(4), rs.getString(2), rs.getString(3), rs.getString(5)));
-            }
+        try {
+            PreparedStatement pst = con.prepareStatement("DELETE FROM \"Prendas\" where id = '" + id + "'");
+             pst.executeUpdate();
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void insertPrendas(Prenda prenda) {
         Connection con = ConnectionDAO.getInstance().getConnection();
         try {

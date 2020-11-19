@@ -48,14 +48,10 @@ public class SocketServer extends Thread {
                     mensajeOut.setSession(session);
                     objectOutputStream.writeObject(mensajeOut);
                     break;
-                case "/getPrendaId":
+                case "/deletePrendaId":
                      controler=new PrendaControler();
-                     lista=new ArrayList<Prenda>();
-                    controler.getPrendaId(lista,mensajeIn.getIdPrenda());
-                    mensajeOut.setContext("/getPrendaIdResponse");
-                     session=new HashMap<String, Object>();
-                    session.put("Prenda",lista);
-                    mensajeOut.setSession(session);
+                    controler.deletePrendaId(mensajeIn.getIdPrenda());
+                    mensajeOut.setContext("/deletePrendaIdResponse");
                     objectOutputStream.writeObject(mensajeOut);
                     break;
                 case "/insertPrenda":

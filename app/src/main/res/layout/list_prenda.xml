@@ -59,6 +59,16 @@
       android:layout_marginLeft="50dp"
        android:src="@drawable/estrella"
        />
+   <ImageButton
+       android:id="@+id/borrar_prenda"
+       android:focusable="false"
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+       android:layout_marginTop="70dp"
+       android:layout_toRightOf="@id/color"
+       android:layout_marginLeft="50dp"
+       android:src="@drawable/papelera"
+       />
 
 
 

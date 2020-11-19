@@ -3,13 +3,11 @@ import android.app.AlertDialog;
 import android.os.StrictMode;
 
 import com.example.closet.dominio.Prenda;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -100,8 +98,7 @@ public class Client {
             in.close();
             echoSocket.close();
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception();
+            throw e;
         }
 
 

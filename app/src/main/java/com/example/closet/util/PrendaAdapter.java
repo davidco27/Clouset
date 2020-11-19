@@ -2,6 +2,7 @@ package com.example.closet.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -72,12 +73,14 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
             holder.valoracion= convertView.findViewById(R.id.valoracion);
             holder.foto= convertView.findViewById(R.id.foto);
             holder.valorar=convertView.findViewById(R.id.valorar_prenda);
+            holder.valorar.setOnClickListener(myClickListener);
             convertView.setTag(holder);
         }
         else
             holder=(ViewHolder) convertView.getTag();
         holder.marca.setText(prenda.getMarca());
-        holder.valoracion.setText(String.valueOf(prenda.getValoracion()));
+        float val = Math.round(prenda.getValoracion() * 10) / 10.0f;
+        holder.valoracion.setText(String.valueOf(val));
         if(prenda.getValoracion()<5.0f)
             holder.valoracion.setTextColor(Color.RED);
         holder.color.setText(prenda.getColor());
@@ -85,7 +88,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());
         Drawable drw = Drawable.createFromStream(is, "foto");
         holder.foto.setImageDrawable(drw);
-        holder.valorar.setOnClickListener(myClickListener);
+        holder.valorar.setTag(position);
 
 
         return convertView;
@@ -94,14 +97,11 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
     @Override
     public void onClick(View view) {
         int position = (Integer) view.getTag();
-        final Prenda prenda =(Prenda) getItem(position);
-        Toast.makeText(ac,prenda.getId(), Toast.LENGTH_SHORT).show();
-        final AlertDialog al=new AlertDialog.Builder(ac)
-                .setTitle("Valorar Prenda")
-                .setMessage("                                                                     ").setCancelable(false).create();
-        al.show();
-        final View popupView = LayoutInflater.from(ac).inflate(R.layout.popup_valorar, null);
+        final ViewHolder holder =(ViewHolder) view.getTag();
+        final Prenda prenda = getItem(position);
 
+        LayoutInflater inflater = (LayoutInflater) ac.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.popup_valorar,null);
         final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         popupWindow.setFocusable(true);
@@ -110,15 +110,14 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         getRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                float valoracion=ratingBar.getProgress();
+                float valoracion=ratingBar.getRating();
                 try {
-                    float newValoration = Client.conectarseBD("/changeValoracion", null, prenda.getId(), valoracion).get(0).getValoracion();
+                    float newValoration = Client.conectarseBD("/changeValoracion", null, prenda.getId(), valoracion*2).get(0).getValoracion();
                     popupWindow.dismiss();
-                    al.dismiss();
                     //holder.valoracion.setText(String.valueOf(newValoration));
                 }
                 catch (Exception e){
-                    new AlertDialog.Builder(getContext())
+                    new AlertDialog.Builder(ac)
                             .setTitle("Error de Conexion con el servidor")
                             .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
 

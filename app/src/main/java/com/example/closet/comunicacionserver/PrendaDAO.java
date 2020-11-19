@@ -1,15 +1,8 @@
 package com.example.closet.comunicacionserver;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.widget.OverScroller;
-
 import androidx.annotation.RequiresApi;
 
 import com.example.closet.dominio.Prenda;
-
-import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,7 +50,8 @@ public class PrendaDAO {
             PreparedStatement pst = con.prepareStatement("insert into \"Prendas\" values ('" + 0 +
                     "','" + prenda.getTipo() + "','" + prenda.getMarca() + "','" + prenda.getId() + "','" + prenda.getColor() + "',?," + 0 + ")");
             pst.setBytes(1, prenda.getFoto());
-            ResultSet rs = pst.executeQuery();
+
+            pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -71,25 +65,15 @@ public class PrendaDAO {
             int vecesValorado = rs.getInt(1);
             float valoracionVieja = rs.getFloat(2);
             float valoracionNueva = (vecesValorado * valoracionVieja + valoracion) / (vecesValorado + 1);
-            try {
-                valoracion=valoracionNueva;
+            valoracion=valoracionNueva;
                 PreparedStatement pst3 = con.prepareStatement("update \"Prendas\" set nvaloraciones = " +(vecesValorado + 1)+" where id='" + id + "'");
-                pst3.executeQuery();
-                try (PreparedStatement pst2 = con.prepareStatement("update \"Prendas\" set valoration = " + valoracionNueva +
+                pst3.executeUpdate();
+                PreparedStatement pst5 = con.prepareStatement("update \"Prendas\" set valoration = " + valoracionNueva +
                             " where id='" + id + "'");
-                    ResultSet rs3=pst2.executeQuery()) {
+                pst5.executeUpdate();
 
-                }
-
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return  valoracion;
-
-
-    }
-}
-
+}}

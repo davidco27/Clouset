@@ -27,6 +27,8 @@ public class ElegirOutfit extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.elegir_outfit, container, false);
 
+        //Almacenamiento de la selccion del usuario
+
         //Algoritmo de selección de las mejores prendas
         //inicializacion
         Prenda eleccion;
@@ -43,7 +45,7 @@ public class ElegirOutfit extends Fragment {
                     for(Prenda prenda:prendas) {
                         float C = 1f;
                         for (Prenda sel:seleccion)
-                            C = C * calculaP(prenda, sel);
+                            C = C * calculaP(prenda, sel, outfits, estilo);
                         if (C > S) {
                             S = C;
                             eleccion = prenda;
@@ -67,16 +69,24 @@ public class ElegirOutfit extends Fragment {
     }
 
     //metodo para calcular la probabilidad de éxito
-    private float calculaP(Prenda p, Prenda s, Outfit[] outfits) {
+    private float calculaP(Prenda p, Prenda s, Outfit[] outfits, String estilo) {
 
-        return (calculaS() * PS) + (calculaC(p.getByteColorArray(), s.getByteColorArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
+        return (calculaS(estilo) * PS) + (calculaC(p.getByteColorArray(), s.getByteColorArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
     }
 
     //Algoritmo de estilo
-    private float calculaS() {
+    private float calculaS(String estilo) {
         float a;
 
+        if(estilo.equals("Casual")) {
 
+        }
+        else if () {
+
+        }
+        else {
+
+        }
 
         return a;
     }
@@ -88,7 +98,7 @@ public class ElegirOutfit extends Fragment {
         for(i = 0;:pb.length())
             bt = pb[i] * pb [i];
 
-        return (float) ( ()) + () + () / 765f;
+        return (() + () + ()) / 765f;
     }
 
     //Algoritmo de Valoración

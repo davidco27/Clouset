@@ -132,7 +132,7 @@ public class AddPrenda extends Fragment {
                 String marc = marca.getText().toString();
                 try {
                     Client.conectarseBD("/insertPrenda", new Prenda(0, image, marc + Math.round(Math.random() * 1000000), tipoPrenda, marc,
-                            Integer.toHexString(selectedColorR)+Integer.toHexString(selectedColorG)+Integer.toHexString(selectedColorB)), "",0);
+                            Integer.toHexString(selectedColorR)+Integer.toHexString(selectedColorG)+Integer.toHexString(selectedColorB)), "",0,getActivity());
                 }
                 catch (Exception e){
                     new AlertDialog.Builder(getContext())

@@ -21,9 +21,6 @@ public class Prenda implements Serializable {
     public float getValoracion() {
         return valoracion;
     }
-    public void setValoracion(float valoracion) {
-        this.valoracion = valoracion;
-    }
 
     public byte[] getFoto() {
         return foto;

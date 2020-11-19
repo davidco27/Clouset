@@ -27,7 +27,6 @@ import com.example.closet.util.PrendaAdapter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import javax.xml.datatype.Duration;
 
 public class MiArmarioHome extends Fragment {
 
@@ -38,22 +37,13 @@ public class MiArmarioHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
-        try {
-            prendas = Client.conectarseBD("/getPrenda", null, "",0);
+            prendas = Client.conectarseBD("/getPrenda", null, "",0,getActivity());
             ListView lista = view.findViewById(R.id.listaPrendas);
             lista.setAdapter(new PrendaAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, prendas));
 
             /*
             outfits = Client.conectarseBD("/getOutfit", null, "", 0);
              */
-
-            }
-        catch (Exception e){
-            new AlertDialog.Builder(getContext())
-                    .setTitle("Error de Conexion con el servidor")
-                    .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
-
-        }
 
         return view;
     }

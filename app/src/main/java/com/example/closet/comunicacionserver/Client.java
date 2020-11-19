@@ -1,5 +1,7 @@
 package com.example.closet.comunicacionserver;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.StrictMode;
 
 import com.example.closet.dominio.Prenda;
@@ -15,11 +17,13 @@ import java.util.HashMap;
 public class Client {
     private String host;
     private int port;
+    private static Activity ac;
 
 
-    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion) throws Exception {
+    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion,Activity activity) {
         //Configure connections
         String host = "192.168.43.215";
+        ac=activity;
         //PropertiesISW.getInstance().getProperty("host");
         int port = 1000;
         //Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
@@ -70,7 +74,7 @@ public class Client {
     }
 
 
-    public void sent(final Message messageOut, final Message messageIn) throws Exception {
+    public void sent(final Message messageOut, final Message messageIn) {
 
         Socket echoSocket = null;
         OutputStream out = null;
@@ -98,7 +102,9 @@ public class Client {
             in.close();
             echoSocket.close();
         } catch (Exception e) {
-            throw e;
+            new AlertDialog.Builder(ac)
+                    .setTitle("Error de Conexion con el servidor")
+                    .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
         }
 
 

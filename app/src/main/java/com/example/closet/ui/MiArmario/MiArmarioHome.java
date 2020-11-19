@@ -20,9 +20,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
+import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
 import com.example.closet.util.PrendaAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.xml.datatype.Duration;
@@ -30,6 +32,8 @@ import javax.xml.datatype.Duration;
 public class MiArmarioHome extends Fragment {
 
     private static ArrayList<Prenda> prendas;
+
+    private static ArrayList<Outfit> outfits;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,7 +43,9 @@ public class MiArmarioHome extends Fragment {
             ListView lista = view.findViewById(R.id.listaPrendas);
             lista.setAdapter(new PrendaAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, prendas));
 
-
+            /*
+            outfits = Client.conectarseBD("/getOutfit", null, "", 0);
+             */
 
             }
         catch (Exception e){
@@ -58,6 +64,7 @@ public class MiArmarioHome extends Fragment {
 
     }
 
-    public static ArrayList<Prenda> getPrendasMiArmario() { return this.prendas;}
+    public static ArrayList<Prenda> getPrendasMiArmario() { return prendas;}
+    public static ArrayList<Outfit> getOutfitsMiArmario() { return outfits;}
 
 }

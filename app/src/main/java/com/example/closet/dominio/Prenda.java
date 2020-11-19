@@ -21,7 +21,6 @@ public class Prenda implements Serializable {
     public float getValoracion() {
         return valoracion;
     }
-
     public void setValoracion(float valoracion) {
         this.valoracion = valoracion;
     }
@@ -46,9 +45,12 @@ public class Prenda implements Serializable {
         return marca;
     }
 
-    public byte[] getByteColorArray() {
-        Byte[] bytes = this.getColor().getBytes();
-
-        return bytes;
+    public  byte[] getRGBByteArray() {
+        byte[] data = new byte[3];
+        for (int i = 0; i < 6; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(color.charAt(i), 16) << 4)
+                    + Character.digit(color.charAt(i+1), 16));
+        }
+        return data;
     }
 }

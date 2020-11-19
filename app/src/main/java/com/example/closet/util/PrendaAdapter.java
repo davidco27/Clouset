@@ -97,9 +97,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
     @Override
     public void onClick(View view) {
         int position = (Integer) view.getTag();
-        final ViewHolder holder =(ViewHolder) view.getTag();
         final Prenda prenda = getItem(position);
-
         LayoutInflater inflater = (LayoutInflater) ac.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View popupView = inflater.inflate(R.layout.popup_valorar,null);
         final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);

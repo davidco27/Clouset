@@ -25,7 +25,6 @@ import com.example.closet.util.PrendaAdapter;
 
 import java.util.ArrayList;
 
-import javax.xml.datatype.Duration;
 
 public class MiArmarioHome extends Fragment {
 
@@ -58,6 +57,6 @@ public class MiArmarioHome extends Fragment {
 
     }
 
-    public static ArrayList<Prenda> getPrendasMiArmario() { return this.prendas;}
+    public static ArrayList<Prenda> getPrendasMiArmario() { return prendas;}
 
 }

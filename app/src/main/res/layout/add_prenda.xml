@@ -63,9 +63,6 @@
         android:layout_height="wrap_content"
         android:text="Marca :"/>
     //cuadro texto marca
-
-    //texto color
-
     <EditText
         android:id="@+id/marca"
         android:layout_width="250dp"
@@ -74,7 +71,7 @@
         android:layout_marginLeft="13dp"
         android:layout_marginTop="33dp"
         android:layout_toRightOf="@+id/marcaText" />
-
+    //texto color
     <TextView
         android:id="@+id/colorText"
         android:textSize="15dp"

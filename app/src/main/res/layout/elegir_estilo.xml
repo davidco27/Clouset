@@ -8,12 +8,13 @@
 
     <TextView
         android:id="@+id/estiloText"
-        android:layout_width="146dp"
-        android:layout_height="160dp"
-        android:text="¿Cuál es tu estilo hoy?"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="231dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="280dp"
+        android:layout_height="220dp"
+        android:text="    ¿Cuál \nes tu estilo \n      hoy?"
+        app:autoSizeTextType="uniform"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="255dp" />
 
     <ImageButton
         android:id="@+id/imageButton2"

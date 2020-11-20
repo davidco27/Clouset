@@ -67,6 +67,7 @@ public class AddPrenda extends Fragment {
 
         //Parte campos
         ArrayList<String> campos = new ArrayList<>(mapa.keySet());
+        campo=view.findViewById(R.id.campoSpinner);
         campo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, campos));
         campo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

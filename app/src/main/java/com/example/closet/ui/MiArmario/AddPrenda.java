@@ -30,10 +30,12 @@ import com.example.closet.MainActivity;
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;
+import com.example.closet.util.Util;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class AddPrenda extends Fragment {
@@ -56,16 +58,12 @@ public class AddPrenda extends Fragment {
         View view = inflater.inflate(R.layout.add_prenda, container, false);
         img=view.findViewById(R.id.fotoAdd);
         tipo= view.findViewById(R.id.tipo);
-        ArrayList<String> tipos=new ArrayList<>();
-        tipos.add("Calzado");
-        tipos.add("Camiseta");
-        tipos.add("Sudadera");
-        tipos.add("Pantalon");
-        tipos.add("Falda");
-        tipos.add("Vestido");
-        tipos.add("Polo");
-        tipos.add("Sombrero");
-        tipos.add("Camisa");
+        HashMap<String, ArrayList<String>> mapa = Util.getMap();
+        //Parte campos
+
+
+        //Parte de tipos
+        ArrayList<String> tipos = mapa.get(campoSelecionado);
         tipo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item,tipos));
         tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 

@@ -41,11 +41,12 @@ public class ElegirOutfit extends Fragment {
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
         ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
 
-        HashMap<String, ArrayList<String>> mapaTipos = Util.getMap();
+        Util.setCampos();
+        HashMap<String, ArrayList<String>> mapa = Util.getMap();
         Set<String> campos = mapaTipos.keySet();
 
         float P = 0f;
-        float S;
+        float S = 0f;
         Prenda eleccion = null;
 
         //si el usuario ha seleccionado al menos una prenda(seleccion)
@@ -112,7 +113,7 @@ public class ElegirOutfit extends Fragment {
         byte b;
 
         for(int i = 0; i < pb.length - 1; i++) {
-            byte  = (byte) (pb[i] | sb[i]);
+            b = (byte) (pb[i] | sb[i]);
             suma =+ Byte.toUnsignedInt(b);
         }
 

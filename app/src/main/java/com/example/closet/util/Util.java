@@ -48,12 +48,19 @@ public class Util {
         calzados.add("Náuticos");
         calzados.add("");
 
+        ArrayList<String> complementos = new ArrayList<String>();
+        complementos.add("Bolso");
+        complementos.add("Bufanda");
+        complementos.add("Pañuelo");
+        complementos.add("");
+
 
         campos.put("Abrigos",abrigos);
         campos.put("Conjunto", conjuntos);
         campos.put("ParteSuperior", superiores);
         campos.put("ParteInferior", inferiores);
         campos.put("Calzado", calzados);
+        campos.put("Complementos", complementos);
     }
 
     public static HashMap<String,ArrayList<String>> getMap() { return campos;}

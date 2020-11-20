@@ -94,7 +94,6 @@ public class AddPrenda extends Fragment {
                         selectedColorR = cp.getRed();
                         selectedColorG = cp.getGreen();
                         selectedColorB = cp.getBlue();
-                        Toast.makeText(getContext(),Integer.toHexString(selectedColorR)+Integer.toHexString(selectedColorG)+Integer.toHexString(selectedColorB),Toast.LENGTH_SHORT).show();
 
                         cp.dismiss();
                     }

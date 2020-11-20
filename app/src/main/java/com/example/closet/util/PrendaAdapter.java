@@ -93,6 +93,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         Drawable drw = Drawable.createFromStream(is, "foto");
         holder.foto.setImageDrawable(drw);
         holder.valorar.setTag(position);
+        holder.borrar.setTag(position);
 
 
         return convertView;
@@ -142,7 +143,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ac);
-        builder.setMessage("¿Está seguro de que quiere borrar la prenda?").setPositiveButton("Si", dialogClickListener)
+        builder.setTitle("¿Está seguro de que quiere borrar la prenda?").setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }
 };

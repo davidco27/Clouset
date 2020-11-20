@@ -36,7 +36,7 @@ public class ElegirOutfit extends Fragment {
         float P = 0f;
         float S;
         //si el usuario ha seleccionado al menos una prenda(seleccion)
-        if(seleccion!=null) {
+      /*  if(seleccion!=null) {
             // campo de prenda
             for (campo:campos) {
                 // tipos de prenda de cada campo
@@ -119,6 +119,7 @@ public class ElegirOutfit extends Fragment {
                 o = f;
         }
 
-        return o;
+        return o;*/
+      return view;
     }
 }

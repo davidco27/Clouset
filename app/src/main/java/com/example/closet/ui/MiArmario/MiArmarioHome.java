@@ -39,9 +39,7 @@ public class MiArmarioHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
-        activity=getActivity();
-         lista = view.findViewById(R.id.listaPrendas);
-         actualizarLista();
+
 
             /*
             outfits = Client.conectarseBD("/getOutfit", null, "", 0);
@@ -57,6 +55,9 @@ public class MiArmarioHome extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        activity=getActivity();
+        lista = view.findViewById(R.id.listaPrendas);
+        actualizarLista();
 
     }
 

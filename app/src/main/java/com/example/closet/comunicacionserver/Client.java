@@ -5,28 +5,30 @@ import android.content.Context;
 import android.os.StrictMode;
 
 import com.example.closet.dominio.Prenda;
+
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 
 public class Client {
     private String host;
     private int port;
-    private static Activity ac;
 
 
-    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion,Activity activity) {
+    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion,Activity ac) {
         //Configure connections
-        String host = "192.168.43.215";
-        ac=activity;
-        //PropertiesISW.getInstance().getProperty("host");
-        int port = 1000;
-        //Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
+        String host="192.168.43.215";
+        int port=1000;
         //Create a cliente class
         Client cliente = new Client(host, port);
         HashMap<String, Object> session = new HashMap<String, Object>();
@@ -37,7 +39,7 @@ public class Client {
         mensajeEnvio.setPrenda(prenda);
         mensajeEnvio.setValoracion(valoracion);
         mensajeEnvio.setIdPrenda(idPrenda);
-        cliente.sent(mensajeEnvio, mensajeVuelta);
+        cliente.sent(mensajeEnvio, mensajeVuelta,ac);
 
         ArrayList<Prenda> listaPrendas = null;
 
@@ -74,22 +76,19 @@ public class Client {
     }
 
 
-    public void sent(final Message messageOut, final Message messageIn) {
+    public void sent(final Message messageOut, final Message messageIn,Activity ac) {
 
         Socket echoSocket = null;
         OutputStream out = null;
         InputStream in = null;
 
-        try {
             StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
             StrictMode.setThreadPolicy(tp);
+            try{
             echoSocket = new Socket(host, port);
-
             in = echoSocket.getInputStream();
             out = echoSocket.getOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
-
-
             //Create the objetct to send
             objectOutputStream.writeObject(messageOut);
             // create a DataInputStream so we can read data from it.
@@ -101,11 +100,21 @@ public class Client {
             out.close();
             in.close();
             echoSocket.close();
-        } catch (Exception e) {
+        } catch (UnknownHostException uhe) {
             new AlertDialog.Builder(ac)
                     .setTitle("Error de Conexion con el servidor")
                     .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
         }
+    catch (IOException ioe) {
+        new AlertDialog.Builder(ac)
+                .setTitle("Error de Conexion con el servidor")
+                .setMessage("Compruebe su conexion  y vuelva a intentarlo").setCancelable(true).show();
+    }
+            catch (Exception e) {
+                new AlertDialog.Builder(ac)
+                        .setTitle("Error de Conexion")
+                        .setMessage("Compruebe su conexion a internet y vuelva a intentarlo").setCancelable(true).show();
+            }
 
 
     }

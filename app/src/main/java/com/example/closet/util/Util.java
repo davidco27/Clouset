@@ -2,13 +2,14 @@ package com.example.closet.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Util {
 
     private static HashMap<String, ArrayList<String>> campos;
 
     public static void setCampos() {
-        campos = new HashMap<String, ArrayList<String>>();
+        campos = new HashMap<>();
 
         ArrayList<String> abrigos = new ArrayList<String>();
         abrigos.add("Sudadera");
@@ -56,6 +57,19 @@ public class Util {
     }
 
     public static HashMap<String,ArrayList<String>> getMap() { return campos;}
+    public static String getCampos(String tipoPrenda){
+        Set<String > camposPos =campos.keySet() ;
+        for(String campo : camposPos){
+            ArrayList<String> tipos = campos.get(campo);
+            for(String tipo : tipos){
+                if(tipo.equals(tipoPrenda)){
+                    return campo;
+                }
+            }
+
+        }
+        return "";
+    }
 
 
 }

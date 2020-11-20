@@ -1,5 +1,6 @@
 package com.example.closet.ui.MiArmario;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,14 +8,20 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 
 import com.example.closet.R;
 import com.example.closet.dominio.Prenda;
 import com.example.closet.dominio.Outfit;
+import com.example.closet.util.Util;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
 
 public class ElegirOutfit extends Fragment {
 
@@ -27,20 +34,27 @@ public class ElegirOutfit extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.elegir_outfit, container, false);
 
-        //Almacenamiento de la selccion del usuario
+        //Almacenamiento de la seleccion del usuario
 
         //Algoritmo de selección de las mejores prendas
-        //inicializacion
-        Prenda eleccion;
+
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
+        ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
+
+        HashMap<String, ArrayList<String>> mapaTipos = Util.getMap();
+        Set<String> campos = mapaTipos.keySet();
+
         float P = 0f;
         float S;
+        Prenda eleccion = null;
+
         //si el usuario ha seleccionado al menos una prenda(seleccion)
       /*  if(seleccion!=null) {
             // campo de prenda
-            for (campo:campos) {
+            for (String campo:campos) {
                 // tipos de prenda de cada campo
-                for (tipo:tipos) {
+                Collection<String> tipos = mapaTipos.get(campo);
+                for (String tipo:tipos) {
                     // prendas de MiArmario
                     for(Prenda prenda:prendas) {
                         float C = 1f;
@@ -71,7 +85,7 @@ public class ElegirOutfit extends Fragment {
     //metodo para calcular la probabilidad de éxito
     private float calculaP(Prenda p, Prenda s, Outfit[] outfits, String estilo) {
 
-        return (calculaS(estilo) * PS) + (calculaC(p.getByteColorArray(), s.getByteColorArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
+        return (calculaS(estilo) * PS) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
     }
 
     //Algoritmo de estilo
@@ -92,13 +106,17 @@ public class ElegirOutfit extends Fragment {
     }
 
     //Algoritmo de color
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private float calculaC(byte[] pb, byte[] sb) {
-        byte[] bt;
-        int i;
-        for(i = 0;:pb.length())
-            bt = pb[i] * pb [i];
+        int suma = 0;
+        byte b;
 
-        return (() + () + ()) / 765f;
+        for(int i = 0; i < pb.length - 1; i++) {
+            byte  = (byte) (pb[i] | sb[i]);
+            suma =+ Byte.toUnsignedInt(b);
+        }
+
+        return (suma) / 765f;
     }
 
     //Algoritmo de Valoración

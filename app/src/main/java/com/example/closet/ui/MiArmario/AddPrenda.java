@@ -36,6 +36,7 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 
 public class AddPrenda extends Fragment {
@@ -45,7 +46,10 @@ public class AddPrenda extends Fragment {
     private EditText marca;
     private ImageView img;
     private String tipoPrenda;
-   private Spinner tipo;
+    private Spinner tipo;
+    private String campoSelecionado;
+    private Spinner campo;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         if (ContextCompat.checkSelfPermission(getContext(),"android.permission.CAMERA")== PackageManager.PERMISSION_DENIED);
@@ -60,17 +64,29 @@ public class AddPrenda extends Fragment {
         tipo= view.findViewById(R.id.tipo);
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
         //Parte campos
+        ArrayList<String> campos = new ArrayList<>(mapa.keySet());
+        campo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, campos));
+        campo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                campoSelecionado = campo.getItemAtPosition(position).toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //Parte de tipos
         ArrayList<String> tipos = mapa.get(campoSelecionado);
-        tipo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item,tipos));
+        tipo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, tipos));
         tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                                           @Override
-                                           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                               tipoPrenda = tipo.getItemAtPosition(position).toString();
-                                           }
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               tipoPrenda = tipo.getItemAtPosition(position).toString();
+           }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

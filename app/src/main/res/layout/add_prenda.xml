@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/add_prenda"
     android:layout_height="match_parent">
-    //texto titulo prenda
+
     <TextView
         android:id="@+id/tituloAdd"
         android:textSize="25dp"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:text="Valores de la nueva prenda : "/>
-    //texto campo prenda
+
     <TextView
         android:id="@+id/campoText"
         android:textSize="15dp"
@@ -24,16 +24,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Campo :"/>
-    //spinner campo prenda
+
     <Spinner
         android:id="@+id/campoSpinner"
-        android:layout_below="@+id/tituloAdd"
-        android:layout_toRightOf="@+id/campoText"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="150dp"
-        android:layout_height="wrap_content" />
-    //texto tipo prenda
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloAdd"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="29dp"
+        android:layout_toRightOf="@+id/campoText" />
+
     <TextView
         android:id="@+id/tipoText"
         android:textSize="15dp"
@@ -43,45 +43,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo de prenda :"/>
-    //spinner tipo prenda
+
     <Spinner
         android:id="@+id/tipoSpinner"
-        android:layout_below="@+id/campoSpinner"
-        android:layout_toRightOf="@+id/tipoText"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="150dp"
-        android:layout_height="wrap_content" />
-    //texto marca
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/campoSpinner"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="26dp"
+        android:layout_toRightOf="@+id/tipoText" />
+
     <TextView
         android:id="@+id/marcaText"
-        android:textSize="15dp"
-        android:layout_below="@id/tipoText"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Marca :"/>
-    //cuadro texto marca
+        android:layout_below="@id/tipoText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="28dp"
+        android:text="Marca :"
+        android:textSize="15dp" />
+
     <EditText
         android:id="@+id/marca"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/tipoText"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/marcaText" />
-    //texto color
+
     <TextView
         android:id="@+id/colorText"
-        android:textSize="15dp"
-        android:layout_below="@id/marcaText"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Color :" />
-    //botón color
+        android:layout_below="@id/marcaText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="38dp"
+        android:text="Color :"
+        android:textSize="15dp" />
+
     <Button
         android:id="@+id/color"
         android:layout_width="120dp"
@@ -91,21 +91,22 @@
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/colorText"
         android:text="SELECCIONAR COLOR" />
-    //Foto imagen
+
     <ImageView
         android:id="@+id/fotoAdd"
+        android:layout_width="217dp"
+        android:layout_height="214dp"
         android:layout_below="@+id/colorText"
-        android:layout_width="150dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_height="150dp"/>
-    //Boton imagen
+        android:layout_marginTop="71dp" />
+
     <Button
         android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/fotoAdd"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="122dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="35dp"
         android:text="Guardar prenda" />
+
 </RelativeLayout>

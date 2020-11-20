@@ -62,7 +62,7 @@ public class AddPrenda extends Fragment {
         startActivityForResult(takePictureIntent,0);
         View view = inflater.inflate(R.layout.add_prenda, container, false);
         img=view.findViewById(R.id.fotoAdd);
-        tipo= view.findViewById(R.id.tipo);
+        tipo= view.findViewById(R.id.tipoSpinner);
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
 
         //Parte campos

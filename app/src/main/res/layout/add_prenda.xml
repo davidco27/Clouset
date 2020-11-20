@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/add_prenda"
     android:layout_height="match_parent">
+    //texto titulo prenda
     <TextView
         android:id="@+id/tituloAdd"
         android:textSize="25dp"
@@ -13,8 +14,9 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:text="Valores de la nueva prenda : "/>
+    //texto campo prenda
     <TextView
-        android:id="@+id/tipoT"
+        android:id="@+id/campoText"
         android:textSize="15dp"
         android:layout_below="@+id/tituloAdd"
         android:layout_marginTop="30dp"
@@ -22,59 +24,82 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo de prenda :"/>
-<Spinner
-    android:layout_below="@+id/tituloAdd"
-    android:layout_toRightOf="@+id/tipoT"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="20dp"
-    android:id="@+id/tipo"
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    />
+    //spinner campo prenda
+    <Spinner
+        android:id="@+id/campoSpinner"
+        android:layout_below="@+id/tituloAdd"
+        android:layout_toRightOf="@+id/campoText"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    //texto tipo prenda
     <TextView
+        android:id="@+id/tipoText"
         android:textSize="15dp"
-        android:id="@+id/marcaT"
-        android:layout_below="@id/tipoT"
+        android:layout_below="@+id/campoText"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de prenda :"/>
+    //spinner tipo prenda
+    <Spinner
+        android:id="@+id/tipoSpinner"
+        android:layout_below="@+id/tituloAdd"
+        android:layout_toRightOf="@+id/tipoText"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    //texto marca
+    <TextView
+        android:id="@+id/marcaText"
+        android:textSize="15dp"
+        android:layout_below="@id/tipoText"
         android:layout_marginTop="45dp"
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Marca :"/>
+    //cuadro texto marca
     <EditText
         android:id="@+id/marca"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="15dp"
-        android:layout_below="@id/tipoT"
-        android:layout_toRightOf="@+id/marcaT"
+        android:layout_below="@id/tipoText"
+        android:layout_toRightOf="@+id/marcaText"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+    //texto color
     <TextView
+        android:id="@+id/colorText"
         android:textSize="15dp"
-        android:id="@+id/colorT"
-        android:layout_below="@id/marcaT"
+        android:layout_below="@id/marcaText"
         android:layout_marginTop="45dp"
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Color :"/>
+        android:text="Color :" />
+    //botón color
     <Button
-        android:text="SELECCIONAR COLOR"
         android:id="@+id/color"
+        android:text="SELECCIONAR COLOR"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
-        android:layout_below="@id/marcaT"
-        android:layout_toRightOf="@+id/colorT"
+        android:layout_below="@id/marcaText"
+        android:layout_toRightOf="@+id/colorText"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+    //Foto imagen
     <ImageView
         android:id="@+id/fotoAdd"
-        android:layout_below="@+id/colorT"
+        android:layout_below="@+id/colorText"
         android:layout_width="150dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="50dp"
         android:layout_height="150dp"/>
+    //Boton imagen
     <Button
         android:id="@+id/btn2"
         android:layout_marginLeft="100dp"

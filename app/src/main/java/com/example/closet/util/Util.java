@@ -64,6 +64,7 @@ public class Util {
     }
 
     public static HashMap<String,ArrayList<String>> getMap() { return campos;}
+
     public static String getCampos(String tipoPrenda){
         Set<String > camposPos =campos.keySet() ;
         for(String campo : camposPos){
@@ -76,6 +77,4 @@ public class Util {
         }
         return "";
     }
-
-
 }

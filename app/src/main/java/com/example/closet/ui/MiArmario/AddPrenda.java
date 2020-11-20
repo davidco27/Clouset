@@ -35,8 +35,8 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
 
 
 public class AddPrenda extends Fragment {
@@ -57,12 +57,14 @@ public class AddPrenda extends Fragment {
             requestPermissions(new String[] {"android.permission.CAMERA"},1);
 
         }
-       Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent,0);
         View view = inflater.inflate(R.layout.add_prenda, container, false);
         img=view.findViewById(R.id.fotoAdd);
         tipo= view.findViewById(R.id.tipo);
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
+
         //Parte campos
         ArrayList<String> campos = new ArrayList<>(mapa.keySet());
         campo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, campos));
@@ -79,7 +81,19 @@ public class AddPrenda extends Fragment {
         });
 
         //Parte de tipos
-        ArrayList<String> tipos = mapa.get(campoSelecionado);
+        ArrayList<String> tipos = new ArrayList<>();
+
+        if(campoSelecionado != null) {
+            tipos = mapa.get(campoSelecionado);
+        } else {
+            Collection<ArrayList<String>> col= mapa.values();
+            for(ArrayList<String> a:col) {
+                for(String s:a) {
+                    tipos.add(s);
+                }
+            }
+        }
+
         tipo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, tipos));
         tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 

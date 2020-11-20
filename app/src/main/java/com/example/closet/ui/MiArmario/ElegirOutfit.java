@@ -43,7 +43,7 @@ public class ElegirOutfit extends Fragment {
 
         Util.setCampos();
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
-        Set<String> campos = mapaTipos.keySet();
+        Set<String> campos = mapa.keySet();
 
         float P = 0f;
         float S = 0f;

@@ -63,15 +63,18 @@
         android:layout_height="wrap_content"
         android:text="Marca :"/>
     //cuadro texto marca
+
+    //texto color
+
     <EditText
         android:id="@+id/marca"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@id/tipoText"
-        android:layout_toRightOf="@+id/marcaText"
         android:layout_width="250dp"
-        android:layout_height="wrap_content" />
-    //texto color
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tipoText"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="33dp"
+        android:layout_toRightOf="@+id/marcaText" />
+
     <TextView
         android:id="@+id/colorText"
         android:textSize="15dp"
@@ -84,13 +87,13 @@
     //botón color
     <Button
         android:id="@+id/color"
-        android:text="SELECCIONAR COLOR"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@id/marcaText"
-        android:layout_toRightOf="@+id/colorText"
         android:layout_width="120dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/marcaText"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/colorText"
+        android:text="SELECCIONAR COLOR" />
     //Foto imagen
     <ImageView
         android:id="@+id/fotoAdd"
@@ -102,11 +105,11 @@
     //Boton imagen
     <Button
         android:id="@+id/btn2"
-        android:layout_marginLeft="100dp"
-        android:layout_below="@id/fotoAdd"
-        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar prenda"/>
+        android:layout_below="@id/fotoAdd"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="122dp"
+        android:text="Guardar prenda" />
 
 </RelativeLayout>

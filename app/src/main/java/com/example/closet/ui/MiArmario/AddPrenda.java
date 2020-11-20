@@ -88,9 +88,7 @@ public class AddPrenda extends Fragment {
         } else {
             Collection<ArrayList<String>> col= mapa.values();
             for(ArrayList<String> a:col) {
-                for(String s:a) {
-                    tipos.add(s);
-                }
+                tipos.addAll(a);
             }
         }
 

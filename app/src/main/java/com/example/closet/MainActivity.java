@@ -26,17 +26,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_miarmario,
-                R.id.navigation_sugerencias, R.id.navigation_busqueda,R.id.navigation_amigos)
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_miarmario,R.id.navigation_busqueda,R.id.navigation_amigos)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        //fuente de letra
-        //textView = findViewById(R.id.estiloText);
-        //Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/Sanchez-Regular.ttf");
-        //textView.setTypeface(customFont);
     }
     }
 

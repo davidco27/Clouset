@@ -35,11 +35,6 @@
         android:label="Busqueda"
         tools:layout="@layout/fragment_busqueda" />
     <fragment
-        android:id="@+id/navigation_sugerencias"
-        android:name="com.example.closet.ui.Sugerencias.SugerenciasFragment"
-        android:label="Sugerencias"
-        tools:layout="@layout/fragment_sugerencias" />
-    <fragment
         android:id="@+id/navigation_elegir"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
         android:label="Filter"

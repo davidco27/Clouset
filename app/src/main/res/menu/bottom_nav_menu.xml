@@ -5,10 +5,6 @@
         android:id="@+id/navigation_miarmario"
         android:title="MiArmario"
         android:icon="@drawable/mi_armario"/>
-    <item
-        android:id="@+id/navigation_sugerencias"
-        android:icon="@drawable/_suge3"
-        android:title="Sugerencias" />
 
     <item
         android:id="@+id/navigation_busqueda"

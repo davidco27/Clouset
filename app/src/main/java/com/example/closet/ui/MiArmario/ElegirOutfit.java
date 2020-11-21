@@ -1,14 +1,10 @@
 package com.example.closet.ui.MiArmario;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 
@@ -25,10 +21,10 @@ import java.util.Set;
 
 public class ElegirOutfit extends Fragment {
 
-    private static final float PS = 0.45f;
-    private static final float PC = 0.05f;
-    private static final float PV = 0.2f;
-    private static final float PO = 0.3f;
+    private static final float PERC_STILO = 0.45f;
+    private static final float PERC_COLOR = 0.05f;
+    private static final float PERC_VALORACION = 0.2f;
+    private static final float PERC_OUTFIT = 0.3f;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

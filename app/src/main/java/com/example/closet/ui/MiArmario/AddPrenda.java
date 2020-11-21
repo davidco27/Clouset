@@ -40,7 +40,7 @@ import java.util.HashMap;
 
 
 public class AddPrenda extends Fragment {
-    private Button btnGuardar,btnColor;
+    private Button btnGuardar;
     private int selectedColorR,selectedColorG,selectedColorB;
     private Bitmap bm;
     private EditText marca;
@@ -103,7 +103,7 @@ public class AddPrenda extends Fragment {
             }
         });
         marca=view.findViewById(R.id.marca);
-        btnColor=view.findViewById(R.id.color);
+        Button btnColor = view.findViewById(R.id.color);
         final ColorPicker cp = new ColorPicker(getActivity(), 128, 128, 128);
         btnColor.setOnClickListener(new View.OnClickListener() {
             @Override

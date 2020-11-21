@@ -40,7 +40,7 @@
         android:label="Sugerencias"
         tools:layout="@layout/fragment_sugerencias" />
     <fragment
-        android:id="@+id/navigation_filtrar"
+        android:id="@+id/navigation_elegir"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
         android:label="Filter"
         tools:layout="@layout/elegir_outfit" />
@@ -55,6 +55,5 @@
         android:label="Add"
         tools:layout="@layout/add_prenda" >
     </fragment>
-
 
 </navigation>

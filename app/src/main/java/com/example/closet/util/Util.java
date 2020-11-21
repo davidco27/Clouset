@@ -18,42 +18,47 @@ public class Util {
         abrigos.add("Abrigo");
         abrigos.add("Chaqueta");
         abrigos.add("Cazadora");
-        abrigos.add("");
+        abrigos.add("Blazer");
+        abrigos.add("Chaleco");
 
         ArrayList<String> conjuntos = new ArrayList<String>();
         conjuntos.add("Vestido");
         conjuntos.add("Peto");
         conjuntos.add("Overol");
         conjuntos.add("Mono");
-        conjuntos.add("");
 
         ArrayList<String> superiores = new ArrayList<String>();
         superiores.add("Camiseta");
         superiores.add("Camisa");
         superiores.add("Blusa");
         superiores.add("Top");
-        superiores.add("");
 
         ArrayList<String> inferiores = new ArrayList<String>();
         inferiores.add("Jeans");
         inferiores.add("Pantalón vestir");
         inferiores.add("Falda");
         inferiores.add("Shorts");
-        inferiores.add("");
+        inferiores.add("Leggins");
 
         ArrayList<String> calzados = new ArrayList<String>();
         calzados.add("Deportivas");
-        calzados.add("Tenis");
-        calzados.add("Sandalias");
         calzados.add("Botas");
+        calzados.add("Sandalias");
+        calzados.add("Mocasines");
         calzados.add("Náuticos");
-        calzados.add("");
+        calzados.add("Plataformas");
+        calzados.add("Zapato");
+        calzados.add("Zapatillas");
+        calzados.add("Tacones");
+        calzados.add("Chancletas");
 
         ArrayList<String> complementos = new ArrayList<String>();
         complementos.add("Bolso");
         complementos.add("Bufanda");
         complementos.add("Pañuelo");
-        complementos.add("");
+        complementos.add("Gorra");
+        complementos.add("Sombrero");
+        complementos.add("Cinturón");
 
         campos.put("Abrigos",abrigos);
         campos.put("Conjunto", conjuntos);

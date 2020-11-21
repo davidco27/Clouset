@@ -54,10 +54,10 @@ public class AddPrenda extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         if (ContextCompat.checkSelfPermission(getContext(),"android.permission.CAMERA")== PackageManager.PERMISSION_DENIED);
         {
-            requestPermissions(new String[] {"android.permission.CAMERA"},1);
+            requestPermissions(new String[]{"android.permission.CAMERA"}, 1);
 
         }
-
+        Util.setCampos();
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent,0);
         View view = inflater.inflate(R.layout.add_prenda, container, false);
@@ -70,10 +70,14 @@ public class AddPrenda extends Fragment {
         campo=view.findViewById(R.id.campoSpinner);
         campoSelecionado = "Todos";
         campo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, campos));
+        campo.setSelection(5);
         campo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 campoSelecionado = campo.getItemAtPosition(position).toString();
+                ArrayList<String> tipos = Util.getMap().get(campoSelecionado);
+
+                tipo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, tipos));
             }
 
             @Override

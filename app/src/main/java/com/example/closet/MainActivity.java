@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         //fuente de letra
-        textView = findViewById(R.id.estiloText);
-        Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/Sanchez-Regular.ttf");
-        textView.setTypeface(customFont);
+        //textView = findViewById(R.id.estiloText);
+        //Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/Sanchez-Regular.ttf");
+        //textView.setTypeface(customFont);
     }
     }
 

@@ -152,9 +152,24 @@ public class AddPrenda extends Fragment {
                  bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] image = stream.toByteArray();
                 String marc = marca.getText().toString();
+                String colorR;
+                if(selectedColorR>=15)
+                    colorR=Integer.toHexString(selectedColorR).toUpperCase();
+                else
+                    colorR="0"+Integer.toHexString(selectedColorR).toUpperCase();
+                String colorG;
+                if(selectedColorG>=15)
+                    colorG=Integer.toHexString(selectedColorG).toUpperCase();
+                else
+                    colorG="0"+Integer.toHexString(selectedColorG).toUpperCase();
+                String colorB;
+                if(selectedColorB>=15)
+                    colorB=Integer.toHexString(selectedColorR).toUpperCase();
+                else
+                    colorB="0"+Integer.toHexString(selectedColorR).toUpperCase();
                 try {
                     Client.conectarseBD("/insertPrenda", new Prenda(0, image, marc + Math.round(Math.random() * 1000000), tipoPrenda, marc,
-                            Integer.toHexString(selectedColorR)+Integer.toHexString(selectedColorG)+Integer.toHexString(selectedColorB)), "",0,getActivity());
+                            "#"+colorR+colorG+colorB), "",0,getActivity());
                 }
                 catch (Exception e){
                     new AlertDialog.Builder(getContext())

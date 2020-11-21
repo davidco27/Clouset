@@ -1,8 +1,6 @@
 package com.example.closet;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,13 +10,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

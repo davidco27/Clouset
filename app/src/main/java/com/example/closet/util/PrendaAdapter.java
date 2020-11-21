@@ -57,7 +57,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         TextView marca;
         TextView tipo;
          TextView valoracion;
-        TextView color;
+        View color;
         ImageView foto;
          ImageButton valorar,borrar;
     }
@@ -85,9 +85,9 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
         holder.marca.setText(prenda.getMarca());
         float val = Math.round(prenda.getValoracion() * 10) / 10.0f;
         holder.valoracion.setText(String.valueOf(val));
-        if(prenda.getValoracion()<5.0f)
+        if(val<5.0f)
             holder.valoracion.setTextColor(Color.RED);
-        holder.color.setText(prenda.getColor());
+        holder.color.setBackgroundColor (Color.parseColor(prenda.getColor()));
         holder.tipo.setText(prenda.getTipo());
         ByteArrayInputStream is = new ByteArrayInputStream(prenda.getFoto());
         Drawable drw = Drawable.createFromStream(is, "foto");

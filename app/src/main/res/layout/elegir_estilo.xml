@@ -17,7 +17,16 @@
         tools:layout_editor_absoluteY="255dp" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButtonCasual"
+        android:layout_width="89dp"
+        android:layout_height="86dp"
+        app:srcCompat="@drawable/_suge2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="540dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonFormal"
         android:layout_width="89dp"
         android:layout_height="86dp"
         app:srcCompat="@drawable/_suge2"
@@ -26,21 +35,12 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imageButtonSporty"
         android:layout_width="89dp"
         android:layout_height="86dp"
         app:srcCompat="@drawable/_suge2"
         tools:layout_editor_absoluteX="281dp"
         tools:layout_editor_absoluteY="540dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="96dp"
-        android:layout_height="85dp"
-        app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="541dp"
         tools:ignore="MissingConstraints" />
 
 

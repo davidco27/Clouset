@@ -16,14 +16,24 @@
             android:id="@+id/action_navigation_armario_to_navigation_add2"
             app:destination="@id/navigation_add" />
         <action
-            android:id="@+id/action_navigation_armario_to_navigation_filtrar2"
-            app:destination="@id/navigation_filtrar" />
+            android:id="@+id/action_navigation_armario_to_navigation_elegir2"
+            app:destination="@id/navigation_elegir" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_filtrar"
+        android:id="@+id/navigation_elegir"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
-        android:label="Filter"
-        tools:layout="@layout/elegir_outfit" />
+        android:label="Choose"
+        tools:layout="@layout/elegir_estilo"
+        app:destination="@id/navigation_seleccionar">
+        <action
+            android:id="@+id/action_navigation_elegir_to_navigation_seleccionar"
+            app:destination="@id/navigation_seleccionar" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_seleccionar"
+        android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
+        android:label="Select"
+        tools:layout="@layout/elegir_seleccionar"/>
     <fragment
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"
@@ -33,7 +43,6 @@
         android:id="@+id/navigation_add"
         android:name="com.example.closet.ui.MiArmario.AddPrenda"
         android:label="Add"
-        tools:layout="@layout/add_prenda" >
-    </fragment>
+        tools:layout="@layout/add_prenda" />
 
 </navigation>

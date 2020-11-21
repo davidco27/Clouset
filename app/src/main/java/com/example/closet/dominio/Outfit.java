@@ -5,17 +5,11 @@ import java.util.ArrayList;
 public class Outfit  {
     private String nombre;
     private ArrayList<Prenda> prendas;
-    private String id;
     private float valoracion;
-    public Outfit(String id,String nombre,ArrayList<Prenda> prendas,float valoracion){
+    public Outfit(String nombre,ArrayList<Prenda> prendas,float valoracion){
         this.nombre =nombre;
-        this.id=id;
         this.prendas=prendas;
         this.valoracion=valoracion;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public float getValoracion() {

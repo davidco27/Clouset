@@ -12,7 +12,7 @@ public class Util {
     public static void setCampos() {
         campos = new HashMap<>();
 
-        ArrayList<String> abrigos = new ArrayList<String>();
+        ArrayList<String> abrigos = new ArrayList<>();
         abrigos.add("Sudadera");
         abrigos.add("Jersey");
         abrigos.add("Abrigo");
@@ -21,26 +21,27 @@ public class Util {
         abrigos.add("Blazer");
         abrigos.add("Chaleco");
 
-        ArrayList<String> conjuntos = new ArrayList<String>();
+        ArrayList<String> conjuntos = new ArrayList<>();
         conjuntos.add("Vestido");
         conjuntos.add("Peto");
         conjuntos.add("Overol");
         conjuntos.add("Mono");
+        conjuntos.add("Chándal");
 
-        ArrayList<String> superiores = new ArrayList<String>();
+        ArrayList<String> superiores = new ArrayList<>();
         superiores.add("Camiseta");
         superiores.add("Camisa");
         superiores.add("Blusa");
         superiores.add("Top");
 
-        ArrayList<String> inferiores = new ArrayList<String>();
+        ArrayList<String> inferiores = new ArrayList<>();
         inferiores.add("Jeans");
         inferiores.add("Pantalón vestir");
         inferiores.add("Falda");
         inferiores.add("Shorts");
         inferiores.add("Leggins");
 
-        ArrayList<String> calzados = new ArrayList<String>();
+        ArrayList<String> calzados = new ArrayList<>();
         calzados.add("Deportivas");
         calzados.add("Botas");
         calzados.add("Sandalias");
@@ -52,7 +53,7 @@ public class Util {
         calzados.add("Tacones");
         calzados.add("Chancletas");
 
-        ArrayList<String> complementos = new ArrayList<String>();
+        ArrayList<String> complementos = new ArrayList<>();
         complementos.add("Bolso");
         complementos.add("Bufanda");
         complementos.add("Pañuelo");

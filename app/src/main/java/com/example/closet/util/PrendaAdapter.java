@@ -35,6 +35,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
     private Activity ac;
     private ArrayList<Prenda> prendas;
     private Prenda prenda;
+
     public PrendaAdapter(Activity ac, int resource, ArrayList<Prenda> prendas){
         super(ac.getApplicationContext(),resource,prendas);
         this.ac=ac;

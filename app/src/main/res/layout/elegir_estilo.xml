@@ -11,7 +11,7 @@
         android:layout_width="280dp"
         android:layout_height="220dp"
         android:text="    ¿Cuál \nes tu estilo \n      hoy?"
-        app:autoSizeTextType="uniform"
+        android:autoSizeTextType="uniform"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="65dp"
         tools:layout_editor_absoluteY="255dp" />

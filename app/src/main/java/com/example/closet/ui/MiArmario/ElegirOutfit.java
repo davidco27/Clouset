@@ -26,6 +26,7 @@ public class ElegirOutfit extends Fragment {
     private static final float PERC_VALORACION = 0.2f;
     private static final float PERC_OUTFIT = 0.3f;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.elegir_outfit, container, false);
@@ -46,11 +47,11 @@ public class ElegirOutfit extends Fragment {
         Prenda eleccion = null;
 
         //si el usuario ha seleccionado al menos una prenda(seleccion)
-      /*  if(seleccion!=null) {
+        if(seleccion!=null) {
             // campo de prenda
             for (String campo:campos) {
                 // tipos de prenda de cada campo
-                Collection<String> tipos = mapaTipos.get(campo);
+                Collection<String> tipos = mapa.get(campo);
                 for (String tipo:tipos) {
                     // prendas de MiArmario
                     for(Prenda prenda:prendas) {
@@ -66,9 +67,6 @@ public class ElegirOutfit extends Fragment {
                 prendas.add(eleccion);
             }
         }
-
-
-
         return view;
     }
 
@@ -76,29 +74,70 @@ public class ElegirOutfit extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
     }
 
     //metodo para calcular la probabilidad de éxito
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private float calculaP(Prenda p, Prenda s, Outfit[] outfits, String estilo) {
 
-        return (calculaS(estilo) * PS) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
+        return (calculaS(estilo, p.getTipo()) * PS) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
     }
 
     //Algoritmo de estilo
-    private float calculaS(String estilo) {
-        float a;
+    private float calculaS(String estilo, String tipo) {
+        float a = 0.3f;
 
         if(estilo.equals("Casual")) {
-
+            switch(tipo) {
+                case "Camiseta":
+                case "Jeans":
+                case "Zapatillas":
+                case "Botas":
+                case "Overol":
+                case "Abrigo":
+                case "Chaqueta":
+                case "Cazadora":
+                case "Sudadera":
+                case "Shorts":
+                    a = 1f;
+                    break;
+                case "Sandalias":
+                case "Top":
+                    a = 0.8f;
+                    break;
+                case "Zapato":
+                    a = 0.7f;
+                    break;
+                default:
+                    break;
+            }
         }
-        else if () {
-
+        else if(estilo.equals("Formal")) {
+            switch(tipo) {
+                case "Camisa":
+                case "Blusa":
+                case "Pantalón vestir":
+                case "Abrigo":
+                case "Chaleco":
+                case "":
+                    a = 1f;
+                    break;
+                case "Jeans":
+                    a = 0.5f;
+                    break;
+                default:
+                    break;
+            }
         }
         else {
-
+            switch(tipo) {
+                case "":
+                    a = 1f;
+                    break;
+                default:
+                    break;
+            }
         }
-
         return a;
     }
 
@@ -122,19 +161,18 @@ public class ElegirOutfit extends Fragment {
     //Algoritmo de Outfit
     private float calculaO(Outfit[] outfits, Prenda p) {
         float o = 0f;
-        for(Outfit outfit: outfits) {
+        for (Outfit outfit : outfits) {
             float f = 0f;
 
-            if(outfit.containsPrenda(p))
+            if (outfit.containsPrenda(p))
                 f = 1f;
 
-            f += 0.02f * outfit.getValoracion();
+            f += 0.2f * outfit.getValoracion();
 
-            if(f > o)
+            if (f > o)
                 o = f;
         }
 
-        return o;*/
-      return view;
+        return o;
     }
 }

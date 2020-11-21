@@ -1,10 +1,13 @@
 package com.example.closet.ui.MiArmario;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 
@@ -29,7 +32,7 @@ public class ElegirOutfit extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.elegir_outfit, container, false);
+        View view = inflater.inflate(R.layout.elegir_estilo, container, false);
 
         //Almacenamiento de la seleccion del usuario
 
@@ -38,7 +41,20 @@ public class ElegirOutfit extends Fragment {
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
         ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private ArrayList<Prenda> buscar(ArrayList<Prenda> prendas, Outfit[] outfits, ArrayList<Prenda> seleccion, String estilo) {
         Util.setCampos();
+
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
         Set<String> campos = mapa.keySet();
 
@@ -64,23 +80,17 @@ public class ElegirOutfit extends Fragment {
                         }
                     }
                 }
-                prendas.add(eleccion);
+                seleccion.add(eleccion);
             }
         }
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
+        return seleccion;
     }
 
     //metodo para calcular la probabilidad de éxito
     @RequiresApi(api = Build.VERSION_CODES.O)
     private float calculaP(Prenda p, Prenda s, Outfit[] outfits, String estilo) {
 
-        return (calculaS(estilo, p.getTipo()) * PS) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PC) + (calculaV(p.getValoracion()) * PV) + (calculaO(outfits, p) * PO);
+        return (calculaS(estilo, p.getTipo()) * PERC_STILO) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PERC_COLOR) + (calculaV(p.getValoracion()) * PERC_VALORACION) + (calculaO(outfits, p) * PERC_OUTFIT);
     }
 
     //Algoritmo de estilo
@@ -175,4 +185,6 @@ public class ElegirOutfit extends Fragment {
 
         return o;
     }
+
+
 }

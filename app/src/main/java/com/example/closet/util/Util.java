@@ -1,6 +1,7 @@
 package com.example.closet.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -54,13 +55,21 @@ public class Util {
         complementos.add("Pañuelo");
         complementos.add("");
 
-
         campos.put("Abrigos",abrigos);
         campos.put("Conjunto", conjuntos);
         campos.put("ParteSuperior", superiores);
         campos.put("ParteInferior", inferiores);
         campos.put("Calzado", calzados);
         campos.put("Complementos", complementos);
+
+        ArrayList<String> todos = new ArrayList<>();
+        Collection<ArrayList<String>> col = campos.values();
+        for (ArrayList<String> a : col) {
+            todos.addAll(a);
+        }
+
+        campos.put("Todos",todos);
+
     }
 
     public static HashMap<String,ArrayList<String>> getMap() { return campos;}

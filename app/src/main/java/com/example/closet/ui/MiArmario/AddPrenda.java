@@ -68,6 +68,7 @@ public class AddPrenda extends Fragment {
         //Parte campos
         ArrayList<String> campos = new ArrayList<>(mapa.keySet());
         campo=view.findViewById(R.id.campoSpinner);
+        campoSelecionado = "Todos";
         campo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, campos));
         campo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -82,16 +83,7 @@ public class AddPrenda extends Fragment {
         });
 
         //Parte de tipos
-        ArrayList<String> tipos = new ArrayList<>();
-
-        if(campoSelecionado != null) {
-            tipos = mapa.get(campoSelecionado);
-        } else {
-            Collection<ArrayList<String>> col= mapa.values();
-            for(ArrayList<String> a:col) {
-                tipos.addAll(a);
-            }
-        }
+        ArrayList<String> tipos = mapa.get(campoSelecionado);
 
         tipo.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, tipos));
         tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

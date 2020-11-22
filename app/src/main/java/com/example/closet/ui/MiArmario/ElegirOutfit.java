@@ -401,16 +401,18 @@ public class ElegirOutfit extends Fragment {
     //Algoritmo de Outfit
     private float calculaO(ArrayList<Outfit> outfits, Prenda p) {
         float o = 0f;
-        for (Outfit outfit : outfits) {
-            float f = 0f;
+        if(!outfits.isEmpty()) {
+            for (Outfit outfit : outfits) {
+                float f = 0f;
 
-            if (outfit.containsPrenda(p))
-                f = 1f;
+                if (outfit.containsPrenda(p))
+                    f = 1f;
 
-            f += 0.2f * outfit.getValoracion();
+                f += 0.2f * outfit.getValoracion();
 
-            if (f > o)
-                o = f;
+                if (f > o)
+                    o = f;
+            }
         }
         return o;
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="#FFDFCB"
     android:layout_height="match_parent">
 
     <ImageView
@@ -59,7 +60,7 @@
         android:text="Repetir"
         android:textColor="#FFDFCB"
         android:layout_marginLeft="270dp"
-        android:layout_marginTop="510dp" />/>
+        android:layout_marginTop="510dp" />
 
     <Button
         android:id="@+id/btnGuardar"
@@ -69,7 +70,7 @@
         android:text="Guardar Outfit"
         android:textColor="#FFDFCB"
         android:layout_marginLeft="270dp"
-        android:layout_marginTop="580dp" />/>
+        android:layout_marginTop="580dp" />
 
     <Button
         android:id="@+id/btnOk"
@@ -79,7 +80,6 @@
         android:text="¡Me lo pongo!"
         android:textColor="#FFDFCB"
         android:layout_marginLeft="270dp"
-        android:layout_marginTop="650dp" />/>
-
+        android:layout_marginTop="650dp" />
 
 </RelativeLayout>

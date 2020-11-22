@@ -1,5 +1,6 @@
 package com.example.closet.ui.MiArmario;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -23,6 +24,7 @@ import com.example.closet.dominio.Outfit;
 import com.example.closet.util.PrendaSeleccionAdapter;
 import com.example.closet.util.Util;
 
+import java.io.ByteArrayInputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -87,8 +89,26 @@ public class ElegirOutfit extends Fragment {
 
         //Algoritmo de selección de las mejores prendas
 
-       // seleccion = buscar(seleccion, estilo);
+             //seleccion = buscar(seleccion, estilo);
 
+        //Mostrar los resultados
+
+        for(Prenda seleccionada: seleccion) {
+            ByteArrayInputStream is = new ByteArrayInputStream(seleccionada.getFoto));
+
+            Drawable drw = Drawable.createFromStream(is, "foto");
+
+            switch (seleccionada.getTipo())
+            {
+                case "Camiseta":
+                    imgAbrigo.setImageDrawable(drw);
+                    break;
+                case "Jeans":
+                    imgInferior.setImageDrawble(drw);
+                    break;
+            }
+        }
+        
         return view2;
     }
     private void pasarASeleccion(View view){

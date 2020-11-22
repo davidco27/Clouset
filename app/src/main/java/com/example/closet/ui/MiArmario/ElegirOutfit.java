@@ -178,21 +178,42 @@ public class ElegirOutfit extends Fragment {
         for(Prenda seleccionada: prendas) {
             ByteArrayInputStream is = new ByteArrayInputStream(seleccionada.getFoto());
             Drawable drw = Drawable.createFromStream(is, "foto");
-            switch (seleccionada.getTipo()) {
+            switch (Util.getCampos(seleccionada.getTipo())) {
                 case "Abrigo":
                     ImageView imgAbrigo = popupView.findViewById(R.id.imgAbrigo);
                     imgAbrigo.setImageDrawable(drw);
                     break;
 
-                case "Jeans":
+                case "ParteSuperior":
+                    ImageView imgSuperior = popupView.findViewById(R.id.imgSuperior);
+                    imgSuperior.setImageDrawable(drw);
+                    break;
+
+                case "ParteInferior":
                     ImageView imgInferior = popupView.findViewById(R.id.imgInferior);
                     imgInferior.setImageDrawable(drw);
+                    break;
+
+                case "Completo":
+                    ImageView imgCompleto = popupView.findViewById(R.id.imgCompleto);
+                    imgCompleto.setImageDrawable(drw);
+                    break;
+
+                case "Calzado":
+                    ImageView imgCalzado = popupView.findViewById(R.id.imgCalzado);
+                    imgCalzado.setImageDrawable(drw);
+                    break;
+
+                case "Accesorios":
+                    ImageView imgAccesorios = popupView.findViewById(R.id.imgAccesorios);
+                    imgAccesorios.setImageDrawable(drw);
                     break;
 
                 default:
                     break;
             }
         }
+        getActivity().getSupportFragmentManager().popBackStackImmediate();
 
     }
 

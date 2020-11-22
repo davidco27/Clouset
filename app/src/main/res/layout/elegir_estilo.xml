@@ -51,5 +51,4 @@
         android:src="@drawable/Sporty"
         android:scaleType="fitCenter"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

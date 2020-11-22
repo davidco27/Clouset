@@ -16,15 +16,15 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/colorText"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="270dp"
         android:layout_marginTop="300dp" />
 
     <ImageView
         android:id="@+id/imgCompleto"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_below="@+id/colorText"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="250dp" />
 
     <ImageView

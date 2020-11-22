@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ListView
+        android:layout_marginLeft="220dp"
+        android:id="@+id/listaSeleccion"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"/>
+ <ImageButton
+     android:layout_marginTop="50dp"
+     android:layout_marginLeft="45dp"
+     android:id="@+id/btnAbrigo"
+     android:layout_width="100dp"
+     android:layout_height="100dp"
+     android:src=""/>
+    <ImageButton
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/btnAbrigo"
+        android:id="@+id/btnConjunto"
+        android:layout_width="95dp"
+        android:layout_height="200dp"
+        android:src=""/>
+    <ImageButton
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="110dp"
+        android:layout_below="@+id/btnAbrigo"
+        android:id="@+id/btnParteArriba"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src=""/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/btnParteAbajo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/btnParteArriba"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="15dp"
+        android:src="" />
+    <ImageButton
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="45dp"
+        android:layout_below="@+id/btnParteAbajo"
+        android:id="@+id/btnCalzado"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src=""/>
+    <ImageButton
+        android:layout_below="@+id/btnCalzado"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="45dp"
+        android:id="@+id/btnComplementos"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src=""/>
+
+
+</RelativeLayout>

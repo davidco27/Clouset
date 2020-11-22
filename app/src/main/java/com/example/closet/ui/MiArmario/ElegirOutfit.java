@@ -4,16 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.closet.R;
 import com.example.closet.dominio.Prenda;
 import com.example.closet.dominio.Outfit;
+import com.example.closet.util.PrendaSeleccionAdapter;
 import com.example.closet.util.Util;
 
 import java.nio.ByteBuffer;
@@ -29,17 +34,34 @@ public class ElegirOutfit extends Fragment {
     private static final float PERC_VALORACION = 0.2f;
     private static final float PERC_OUTFIT = 0.3f;
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.elegir_estilo, container, false);
-
+        View view = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+        Util.setCampos();
+        ListView lista = view.findViewById(R.id.listaSeleccion);
+        HashMap<String,ArrayList<String>> mapa = Util.getMap();
+        String campoSelect = "Abrigos";
+        ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
+        ArrayList<String> tipos=mapa.get("Abrigos");
+        final ArrayList<Prenda> prendasDeCampo =new ArrayList<>();
+        for(Prenda p : prendas){
+            if(tipos.contains(p.getTipo()))
+                prendasDeCampo.add(p);
+        }
+        PrendaSeleccionAdapter ad = new PrendaSeleccionAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendasDeCampo);
+        lista.setAdapter(ad);
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Prenda seleccionada = prendasDeCampo.get(i);
+            }
+        });
         //Almacenamiento de la seleccion del usuario
 
         //Algoritmo de selección de las mejores prendas
-
-        ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
-        ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
+        //ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
 
         return view;
     }

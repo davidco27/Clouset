@@ -282,9 +282,6 @@ public class ElegirOutfit extends Fragment {
             if (f > o)
                 o = f;
         }
-
         return o;
     }
-
-
 }

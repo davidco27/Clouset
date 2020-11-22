@@ -23,7 +23,7 @@
         android:layout_marginTop="540dp"
         android:background="#FFDFCB"
         android:scaleType="fitCenter"
-        android:src="@drawable/casual_emoji" />
+        android:src="@drawable/casual" />
 
     <ImageButton
         android:id="@+id/btnFormal"
@@ -33,7 +33,7 @@
         android:layout_marginTop="540dp"
         android:background="#FFDFCB"
         android:scaleType="fitCenter"
-        android:src="@drawable/formal_emoji" />
+        android:src="@drawable/formal" />
 
     <ImageButton
         android:id="@+id/btnSporty"
@@ -43,7 +43,7 @@
         android:layout_marginTop="540dp"
         android:background="#FFDFCB"
         android:scaleType="fitCenter"
-        android:src="@drawable/_sporty" />
+        android:src="@drawable/sporty" />
 
 
 </RelativeLayout>

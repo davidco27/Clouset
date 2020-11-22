@@ -220,8 +220,8 @@ public class ElegirOutfit extends Fragment {
                 case "Abrigo":
                 case "Chaqueta":
                 case "Cazadora":
-                case "Sudadera":
                 case "Shorts":
+                case "Chancletas":
                     a = 1f;
                     break;
                 case "Sandalias":
@@ -242,6 +242,10 @@ public class ElegirOutfit extends Fragment {
                 case "Pantalón vestir":
                 case "Abrigo":
                 case "Chaleco":
+                case "Mocasines":
+                case "Náuticos":
+                case "Plataformas":
+                case "Tacones":
                 case "":
                     a = 1f;
                     break;
@@ -252,9 +256,10 @@ public class ElegirOutfit extends Fragment {
                     break;
             }
         }
-        else {
+        else if(estilo.equals("Sporty")){
             switch(tipo) {
-                case "":
+                case "Zapatillas":
+                case "Sudadera":
                     a = 1f;
                     break;
                 default:

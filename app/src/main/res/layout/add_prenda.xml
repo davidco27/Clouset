@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/add_prenda"
+    android:background="#FFDFCB"
     android:layout_height="match_parent">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:textColor="#674F07"
         android:text="Valores de la nueva prenda : "/>
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#674F07"
         android:text="Campo :"/>
 
     <Spinner
@@ -32,7 +34,8 @@
         android:layout_below="@+id/tituloAdd"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/campoText" />
+        android:layout_toRightOf="@+id/campoText"
+        android:textColor="#674F07"/>
 
     <TextView
         android:id="@+id/tipoText"
@@ -42,7 +45,8 @@
         android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tipo de prenda :"/>
+        android:text="Tipo de prenda :"
+        android:textColor="#674F07"/>
 
     <Spinner
         android:id="@+id/tipoSpinner"
@@ -50,7 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="150dp"
-        android:layout_toRightOf="@+id/tipoText" />
+        android:layout_toRightOf="@+id/tipoText"
+        android:textColor="#674F07"/>
 
     <TextView
         android:id="@+id/marcaText"
@@ -60,7 +65,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="28dp"
         android:text="Marca :"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:textColor="#674F07"/>
 
     <EditText
         android:id="@+id/marca"
@@ -69,7 +75,8 @@
         android:layout_below="@id/tipoText"
         android:layout_marginLeft="34dp"
         android:layout_marginTop="15dp"
-        android:layout_toRightOf="@+id/marcaText" />
+        android:layout_toRightOf="@+id/marcaText"
+        android:textColor="#674F07"/>
 
     <TextView
         android:id="@+id/colorText"
@@ -79,7 +86,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="38dp"
         android:text="Color :"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:textColor="#674F07"/>
 
     <Button
         android:id="@+id/color"
@@ -89,7 +97,9 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/colorText"
-        android:text="SELECCIONAR COLOR" />
+        android:background="#674F07"
+        android:text="SELECCIONAR COLOR"
+        android:textColor="#FFDFCB"/>
 
     <ImageView
         android:id="@+id/fotoAdd"
@@ -106,6 +116,8 @@
         android:layout_below="@id/fotoAdd"
         android:layout_marginLeft="130dp"
         android:layout_marginTop="35dp"
-        android:text="Guardar prenda" />
+        android:background="#674F07"
+        android:text="Guardar prenda"
+        android:textColor="#FFDFCB"/>
 
 </RelativeLayout>

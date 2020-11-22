@@ -124,12 +124,12 @@ public class ElegirOutfit extends Fragment {
         //Almacenamiento de la seleccion del usuario
 
         //Algoritmo de selección de las mejores prendas
-        //ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
+
         return view;
     }
     private void refrescarLista(String campoSelect){
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
-        ArrayList<String> tipos=Util.getMap().get(campoSelect);
+        ArrayList<String> tipos =Util.getMap().get(campoSelect);
         prendasDeCampo =new ArrayList<>();
         for(Prenda p : prendas){
             if(tipos.contains(p.getTipo()))
@@ -147,11 +147,12 @@ public class ElegirOutfit extends Fragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<Prenda> buscar(ArrayList<Prenda> prendas, ArrayList<Outfit> outfits, ArrayList<Prenda> seleccion, String estilo) {
+    private ArrayList<Prenda> buscar(ArrayList<Prenda> prendas, ArrayList<Prenda> seleccion, String estilo) {
         Util.setCampos();
 
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
         Set<String> campos = mapa.keySet();
+        ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
 
         float P = 0f;
         float S = 0f;

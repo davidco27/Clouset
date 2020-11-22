@@ -8,28 +8,25 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"/>
  <ImageButton
-     android:layout_marginTop="50dp"
+     android:layout_marginTop="30dp"
      android:layout_marginLeft="45dp"
      android:id="@+id/btnAbrigo"
      android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:src=""/>
+     android:layout_height="100dp"/>
     <ImageButton
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/btnAbrigo"
         android:id="@+id/btnConjunto"
         android:layout_width="95dp"
-        android:layout_height="200dp"
-        android:src=""/>
+        android:layout_height="200dp" />
     <ImageButton
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="110dp"
         android:layout_below="@+id/btnAbrigo"
         android:id="@+id/btnParteArriba"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src=""/>
+        android:layout_height="100dp" />
 
     <ImageButton
         android:id="@+id/btnParteAbajo"
@@ -37,24 +34,29 @@
         android:layout_height="100dp"
         android:layout_below="@+id/btnParteArriba"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="15dp"
-        android:src="" />
+        android:layout_marginTop="15dp" />
     <ImageButton
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="45dp"
         android:layout_below="@+id/btnParteAbajo"
         android:id="@+id/btnCalzado"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src=""/>
+        android:layout_height="100dp"/>
     <ImageButton
         android:layout_below="@+id/btnCalzado"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="45dp"
         android:id="@+id/btnComplementos"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src=""/>
+        android:layout_height="100dp"/>
+    <Button
+        android:layout_below="@+id/btnComplementos"
+        android:layout_marginTop="20dp"
+        android:text="GENERAR OUTFIT"
+        android:layout_marginLeft="45dp"
+        android:id="@+id/btnGenerarOutfit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

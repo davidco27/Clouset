@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -33,37 +34,83 @@ public class ElegirOutfit extends Fragment {
     private static final float PERC_COLOR = 0.05f;
     private static final float PERC_VALORACION = 0.2f;
     private static final float PERC_OUTFIT = 0.3f;
-
+    private ListView lista;
+    private ArrayList<Prenda> prendasDeCampo;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.elegir_seleccionar, container, false);
         Util.setCampos();
-        ListView lista = view.findViewById(R.id.listaSeleccion);
-        HashMap<String,ArrayList<String>> mapa = Util.getMap();
-        String campoSelect = "Abrigos";
-        ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
-        ArrayList<String> tipos=mapa.get("Abrigos");
-        final ArrayList<Prenda> prendasDeCampo =new ArrayList<>();
-        for(Prenda p : prendas){
-            if(tipos.contains(p.getTipo()))
-                prendasDeCampo.add(p);
-        }
-        PrendaSeleccionAdapter ad = new PrendaSeleccionAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendasDeCampo);
-        lista.setAdapter(ad);
+        lista = view.findViewById(R.id.listaSeleccion);
+        refrescarLista("Abrigos");
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Prenda seleccionada = prendasDeCampo.get(i);
             }
         });
+        ImageButton btnAbrigo = view.findViewById(R.id.btnAbrigo);
+        ImageButton btnConjunto = view.findViewById(R.id.btnConjunto);
+        ImageButton btnParteSup = view.findViewById(R.id.btnParteArriba);
+        ImageButton btnParteInf = view.findViewById(R.id.btnParteAbajo);
+        ImageButton btnCalzado = view.findViewById(R.id.btnCalzado);
+        ImageButton btnComp = view.findViewById(R.id.btnComplementos);
+
+        btnAbrigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Abrigos");
+            }
+        });
+        btnConjunto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Conjunto");
+            }
+        });
+        btnParteSup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("ParteSuperior");
+            }
+        });
+        btnParteInf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("ParteInferior");
+            }
+        });
+        btnCalzado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Calzado");
+            }
+        });
+        btnComp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Complementos");
+            }
+        });
+
         //Almacenamiento de la seleccion del usuario
 
         //Algoritmo de selección de las mejores prendas
         //ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
 
         return view;
+    }
+    private void refrescarLista(String campoSelect){
+        ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
+        ArrayList<String> tipos=Util.getMap().get(campoSelect);
+        prendasDeCampo =new ArrayList<>();
+        for(Prenda p : prendas){
+            if(tipos.contains(p.getTipo()))
+                prendasDeCampo.add(p);
+        }
+        PrendaSeleccionAdapter ad = new PrendaSeleccionAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,prendasDeCampo);
+        lista.setAdapter(ad);
     }
 
     @Override

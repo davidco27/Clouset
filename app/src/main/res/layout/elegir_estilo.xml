@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="255dp" />
 
     <ImageButton
-        android:id="@+id/imageButtonCasual"
+        android:id="@+id/btnCasual"
         android:layout_width="89dp"
         android:layout_height="86dp"
         app:srcCompat="@drawable/_suge2"
@@ -26,7 +26,7 @@
         tools:layout_editor_absoluteY="540dp" />
 
     <ImageButton
-        android:id="@+id/imageButtonFormal"
+        android:id="@+id/btnFormal"
         android:layout_width="89dp"
         android:layout_height="86dp"
         app:srcCompat="@drawable/_suge2"
@@ -35,7 +35,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButtonSporty"
+        android:id="@+id/btnSporty"
         android:layout_width="89dp"
         android:layout_height="86dp"
         app:srcCompat="@drawable/_suge2"

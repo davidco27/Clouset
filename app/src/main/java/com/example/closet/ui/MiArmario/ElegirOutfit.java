@@ -119,12 +119,13 @@ public class ElegirOutfit extends Fragment {
         return view2;
     }
     private void pasarASeleccion(View view){
+        final ArrayList<Prenda> seleccion= new ArrayList<>();
         lista = view.findViewById(R.id.listaSeleccion);
         refrescarLista("Abrigos");
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Prenda seleccionada = prendasDeCampo.get(i);
+                seleccion.add(prendasDeCampo.get(i));
             }
         });
 
@@ -170,7 +171,15 @@ public class ElegirOutfit extends Fragment {
             public void onClick(View view) {
                 refrescarLista("Complementos");
 
-        }});}
+        }});
+        btnGenerar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                buscar(seleccion,estilo);
+            }
+        });
+    }
 
     private void refrescarLista(String campoSelect){
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();

@@ -117,7 +117,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
                     float valoracion=ratingBar.getRating();
                         Client.conectarseBD("/changeValoracion", null, prenda.getId(), valoracion*2,ac);
                     MiArmarioHome.actualizarLista();
-                        popupWindow.dismiss();
+                         popupWindow.dismiss();
             }});
         }
     };

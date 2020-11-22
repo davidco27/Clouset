@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_miarmario" >
         <action
             android:id="@+id/action_navigation_miarmario_to_navigation_filtrar2"
-            app:destination="@id/navigation_filtrar"
+            app:destination="@id/navigation_elegir"
             app:popUpTo="@layout/fragment_miarmario"
             app:popUpToInclusive="true"/>
         <action
@@ -37,8 +37,8 @@
     <fragment
         android:id="@+id/navigation_elegir"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
-        android:label="Filter"
-        tools:layout="@layout/elegir_outfit" />
+        android:label="ElegirOutfit"
+        tools:layout="@layout/elegir_seleccionar" />
     <fragment
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"

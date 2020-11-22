@@ -11,7 +11,7 @@
         android:title="Postear Outfits" />
 
     <item
-        android:id="@+id/navigation_filtrar"
+        android:id="@+id/navigation_elegir"
         android:icon="@drawable/filter"
         android:title="Elegir Outfits" />
 

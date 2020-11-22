@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -13,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.example.closet.R;
 import com.example.closet.dominio.Prenda;
@@ -98,7 +95,6 @@ public class ElegirOutfit extends Fragment {
 
         //Algoritmo de selección de las mejores prendas
         //ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
-
         return view;
     }
     private void refrescarLista(String campoSelect){

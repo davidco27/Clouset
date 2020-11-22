@@ -1,5 +1,4 @@
 package com.example.closet.comunicacionserver;
-
 import com.example.closet.dominio.Prenda;
 
 import java.io.Serializable;
@@ -11,7 +10,7 @@ public class Message implements Serializable {
      *
      */
     private Prenda prenda;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 56L;
     private String context;
     private String idPrenda;
     private float valoracion;

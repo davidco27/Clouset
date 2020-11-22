@@ -38,7 +38,7 @@
         android:id="@+id/navigation_elegir"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
         android:label="ElegirOutfit"
-        tools:layout="@layout/elegir_seleccionar" />
+        tools:layout="@layout/elegir_estilo" />
     <fragment
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"

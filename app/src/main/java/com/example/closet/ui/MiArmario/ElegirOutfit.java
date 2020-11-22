@@ -1,12 +1,17 @@
 package com.example.closet.ui.MiArmario;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,22 +39,24 @@ public class ElegirOutfit extends Fragment {
     private ListView lista;
     private ArrayList<Prenda> prendasDeCampo;
     private String estilo;
+    private Button btnGenerar;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+    public View onCreateView(@NonNull final LayoutInflater inflater,
+                             final ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.elegir_estilo, container, false);
         Util.setCampos();
 
         //Parte elegir estilo
         ImageButton btnCasual = view.findViewById(R.id.btnCasual);
         ImageButton btnFormal = view.findViewById(R.id.btnFormal);
         ImageButton btnSporty = view.findViewById(R.id.btnSporty);
-
         btnCasual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 estilo = "Casual";
+                View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+                pasarASeleccion(view2);
             }
         });
 
@@ -57,6 +64,8 @@ public class ElegirOutfit extends Fragment {
             @Override
             public void onClick(View view) {
                 estilo = "Formal";
+                View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+                pasarASeleccion(view2);
             }
         });
 
@@ -64,10 +73,23 @@ public class ElegirOutfit extends Fragment {
             @Override
             public void onClick(View view) {
                 estilo = "Sporty";
+                View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+                pasarASeleccion(view2);
             }
         });
 
         //Parte Seleccionar Prendas
+
+        //Almacenamiento de la seleccion del usuario
+
+
+        //Algoritmo de selección de las mejores prendas
+
+       // seleccion = buscar(seleccion, estilo);
+
+        return view;
+    }
+    private void pasarASeleccion(View view){
         lista = view.findViewById(R.id.listaSeleccion);
         refrescarLista("Abrigos");
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,17 +141,8 @@ public class ElegirOutfit extends Fragment {
             public void onClick(View view) {
                 refrescarLista("Complementos");
             }
-        });
+        });}
 
-        //Almacenamiento de la seleccion del usuario
-
-
-        //Algoritmo de selección de las mejores prendas
-
-        seleccion = buscar(seleccion, estilo);
-
-        return view;
-    }
     private void refrescarLista(String campoSelect){
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
         ArrayList<String> tipos =Util.getMap().get(campoSelect);

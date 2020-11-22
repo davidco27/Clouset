@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#FFDFCB"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ViewStub
+        android:id="@+id/layout_stub"
+        android:inflatedId="@+id/message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/estiloText"
-        android:layout_width="280dp"
-        android:layout_height="220dp"
+        android:layout_width="315dp"
+        android:layout_height="230dp"
+        android:layout_marginLeft="65dp"
+        android:textSize="60dp"
         android:text="    ¿Cuál \nes tu estilo \n      hoy?"
-        android:autoSizeTextType="uniform"
-        android:textColor="#674F07"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="255dp" />
+        android:layout_marginTop="150dp"
+        android:textColor="#674F07" />
 
     <ImageButton
         android:id="@+id/btnCasual"
-        android:background="#FFDFCB"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="540dp"
-        android:src="@drawable/CasualEmoji"
-        android:scaleType="fitCenter"/>
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="540dp"
+        android:background="#FFDFCB"
+        android:scaleType="fitCenter"
+        android:src="@drawable/casual_emoji" />
 
     <ImageButton
         android:id="@+id/btnFormal"
-        android:background="#FFDFCB"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="540dp"
-        tools:ignore="MissingConstraints"
-        android:src="@drawable/FormalEmoji"
-        android:scaleType="fitCenter"/>
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="540dp"
+        android:background="#FFDFCB"
+        android:scaleType="fitCenter"
+        android:src="@drawable/formal_emoji" />
 
     <ImageButton
         android:id="@+id/btnSporty"
-        android:background="#FFDFCB"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="540dp"
-        tools:ignore="MissingConstraints"
-        android:src="@drawable/Sporty"
-        android:scaleType="fitCenter"/>
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="540dp"
+        android:background="#FFDFCB"
+        android:scaleType="fitCenter"
+        android:src="@drawable/_sporty" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

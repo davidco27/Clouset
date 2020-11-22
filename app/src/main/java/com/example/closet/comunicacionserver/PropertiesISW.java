@@ -32,23 +32,6 @@ public class PropertiesISW extends Properties{
             e.printStackTrace();
         };
     }
-    public static Properties getMyProperties(Context c){
-        Properties properties= new Properties();
-        try{
-                AssetManager assetManager = c.getAssets();
-            InputStream inputStream = assetManager.open("properties.xml");
-
-            properties.load(inputStream);
-            inputStream.close();
-
-        }catch (IOException e){
-            new AlertDialog.Builder(c)
-                    .setTitle("Error de Conexion con el servidor")
-                    .setMessage(e.getMessage()).setCancelable(true).show();
-        }
-
-        return properties;
-    }
     public static PropertiesISW getInstance() {
         if (prop==null) {
             prop=new PropertiesISW();

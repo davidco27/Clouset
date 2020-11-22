@@ -6,6 +6,7 @@ import android.os.StrictMode;
 
 import com.example.closet.dominio.Prenda;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,11 +14,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
 
 
 public class Client {
@@ -27,7 +26,15 @@ public class Client {
 
     public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion,Activity ac) {
         //Configure connections
-        String host="192.168.43.215";
+        String host="";
+        try {
+            BufferedReader br= new BufferedReader( new InputStreamReader(ac.getAssets().open("properties.txt")));
+           host=br.readLine().trim();
+
+        }
+        catch (IOException ioe){
+
+        }
         int port=1000;
         //Create a cliente class
         Client cliente = new Client(host, port);

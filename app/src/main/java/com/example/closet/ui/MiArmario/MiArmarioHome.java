@@ -32,18 +32,20 @@ import java.util.ArrayList;
 public class MiArmarioHome extends Fragment {
 
     private static ArrayList<Prenda> prendas;
-
     private static ArrayList<Outfit> outfits;
     private static ListView lista;
-   private static Activity activity;
+    private static Activity activity;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
 
-
             /*
+            SPRINT3 OUTFITS
             outfits = Client.conectarseBD("/getOutfit", null, "", 0);
              */
+
+        outfits = null;
 
         return view;
     }

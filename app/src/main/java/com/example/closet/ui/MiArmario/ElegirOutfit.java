@@ -36,6 +36,7 @@ public class ElegirOutfit extends Fragment {
     private static final float PERC_OUTFIT = 0.3f;
     private ListView lista;
     private ArrayList<Prenda> prendasDeCampo;
+    private String estilo;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,6 +51,35 @@ public class ElegirOutfit extends Fragment {
                 Prenda seleccionada = prendasDeCampo.get(i);
             }
         });
+
+
+        //Parte elegir estilo
+        ImageButton btnCasual = view.findViewById(R.id.btnCasual);
+        ImageButton btnFormal = view.findViewById(R.id.btnFormal);
+        ImageButton btnSporty = view.findViewById(R.id.btnSporty);
+
+        btnCasual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                estilo = "Casual";
+            }
+        });
+
+        btnFormal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                estilo = "Formal";
+            }
+        });
+
+        btnSporty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                estilo = "Sporty";
+            }
+        });
+
+        //Parte Seleccionar Prendas
         ImageButton btnAbrigo = view.findViewById(R.id.btnAbrigo);
         ImageButton btnConjunto = view.findViewById(R.id.btnConjunto);
         ImageButton btnParteSup = view.findViewById(R.id.btnParteArriba);

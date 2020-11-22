@@ -216,9 +216,9 @@ public class ElegirOutfit extends Fragment {
             }
         }
 
-        final ImageButton btnRepetir = view.findViewById(R.id.btnRepetir);
-        final ImageButton btnGuardar = view.findViewById(R.id.btnGuardar);
-        final ImageButton btnOk = view.findViewById(R.id.btnOk);
+       final Button btnRepetir = popupView.findViewById(R.id.btnRepetir);
+        final Button btnGuardar = popupView.findViewById(R.id.btnGuardar);
+        final Button btnOk = popupView.findViewById(R.id.btnOk);
 
         btnRepetir.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -229,7 +229,7 @@ public class ElegirOutfit extends Fragment {
             }
         });
 
-        btnGuardar.setOnClickListener(new View.OnClickListener() {
+        btnOk.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
@@ -238,7 +238,7 @@ public class ElegirOutfit extends Fragment {
             }
         });
 
-        btnOk.setOnClickListener(new View.OnClickListener() {
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
@@ -249,8 +249,8 @@ public class ElegirOutfit extends Fragment {
                 Outfit nuevo = new Outfit(  , prendas, (INTRODUCIR NOTA));
                                           ^
                 llamar a la funcion crear nuevo outfit para ponerle nombre
+*/
 
-                 */
             }
         });
     }
@@ -280,7 +280,6 @@ public class ElegirOutfit extends Fragment {
 
         HashMap<String, ArrayList<String>> mapa = Util.getMap();
         Set<String> campos = mapa.keySet();
-        ArrayList<Outfit> outfits = MiArmarioHome.getOutfitsMiArmario();
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
 
         float P = 0f;
@@ -298,7 +297,7 @@ public class ElegirOutfit extends Fragment {
                     for(Prenda prenda:prendas) {
                         float C = 1f;
                         for (Prenda sel:seleccion)
-                            C = C * calculaP(prenda, sel, outfits, estilo);
+                            C = C * calculaP(prenda, sel, estilo);
                         if (C > S) {
                             S = C;
                             eleccion = prenda;
@@ -313,9 +312,9 @@ public class ElegirOutfit extends Fragment {
 
     //metodo para calcular la probabilidad de éxito
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private float calculaP(Prenda p, Prenda s, ArrayList<Outfit> outfits, String estilo) {
+    private float calculaP(Prenda p, Prenda s, String estilo) {
 
-        return (calculaS(estilo, p.getTipo()) * PERC_STILO) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PERC_COLOR) + (calculaV(p.getValoracion()) * PERC_VALORACION) + (calculaO(outfits, p) * PERC_OUTFIT);
+        return (calculaS(estilo, p.getTipo()) * PERC_STILO) + (calculaC(p.getRGBByteArray(), s.getRGBByteArray()) * PERC_COLOR) + (calculaV(p.getValoracion()) * PERC_VALORACION);
     }
 
     //Algoritmo de estilo

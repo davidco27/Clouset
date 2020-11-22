@@ -44,7 +44,7 @@ public class MiArmarioHome extends Fragment {
             SPRINT3 OUTFITS
             outfits = Client.conectarseBD("/getOutfit", null, "", 0);
              */
-        
+
         outfits = null;
 
         return view;

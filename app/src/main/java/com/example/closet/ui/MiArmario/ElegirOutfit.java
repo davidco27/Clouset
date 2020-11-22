@@ -172,9 +172,11 @@ public class ElegirOutfit extends Fragment {
     }
     private void mostrarResultados(ArrayList<Prenda> prendas,View view){
         final View popupView = getLayoutInflater().inflate(R.layout.elegir_resultado,null);
+
         final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         popupWindow.setFocusable(true);
+
         for(Prenda seleccionada: prendas) {
             ByteArrayInputStream is = new ByteArrayInputStream(seleccionada.getFoto());
             Drawable drw = Drawable.createFromStream(is, "foto");
@@ -213,8 +215,37 @@ public class ElegirOutfit extends Fragment {
                     break;
             }
         }
-        getActivity().getSupportFragmentManager().popBackStackImmediate();
 
+        final ImageButton btnRepetir = view.findViewById(R.id.btnRepetir);
+        final ImageButton btnGuardar = view.findViewById(R.id.btnGuardar);
+        final ImageButton btnOk = view.findViewById(R.id.btnOk);
+
+        btnRepetir.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                //manda al usuario a elegir_eleccion
+
+            }
+        });
+
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                //manda al ususario de vuelta a MiArmario
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
+            }
+        });
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                //manda al ususario al menu de Outfits
+                
+            }
+        });
     }
 
     private void refrescarLista(String campoSelect){

@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
@@ -100,15 +101,21 @@ public class ElegirOutfit extends Fragment {
 
             switch (seleccionada.getTipo())
             {
-                case "Camiseta":
+                case "Abrigo":
+                    ImageView imgAbrigo = popupView.findViewById(R.id.imgAbrigo);
                     imgAbrigo.setImageDrawable(drw);
                     break;
+
                 case "Jeans":
-                    imgInferior.setImageDrawble(drw);
+                    ImageView imgInferior = popupView.findViewById(R.id.imgInferior);
+                    imgInferior.setImageDrawable(drw);
+                    break;
+
+                default:
                     break;
             }
         }
-        
+
         return view2;
     }
     private void pasarASeleccion(View view){

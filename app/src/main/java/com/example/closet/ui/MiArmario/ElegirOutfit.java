@@ -242,8 +242,15 @@ public class ElegirOutfit extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                //manda al ususario al menu de Outfits
-                
+                /*
+                manda al ususario al menu de Outfits y muestra el nuevo creado
+                SPRINT 3!!!
+
+                Outfit nuevo = new Outfit(  , prendas, (INTRODUCIR NOTA));
+                                          ^
+                llamar a la funcion crear nuevo outfit para ponerle nombre
+
+                 */
             }
         });
     }

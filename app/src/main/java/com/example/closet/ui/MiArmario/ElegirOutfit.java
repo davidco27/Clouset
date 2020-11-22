@@ -38,10 +38,11 @@ public class ElegirOutfit extends Fragment {
     private static final float PERC_COLOR = 0.05f;
     private static final float PERC_VALORACION = 0.2f;
     private static final float PERC_OUTFIT = 0.3f;
+    private ImageButton btnActivo;
     private ListView lista;
     private ArrayList<Prenda> prendasDeCampo;
     private String estilo;
-    private Button btnGenerar;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull final LayoutInflater inflater,
@@ -94,13 +95,90 @@ public class ElegirOutfit extends Fragment {
 
         //Mostrar los resultados
 
-        for(Prenda seleccionada: seleccion) {
-            ByteArrayInputStream is = new ByteArrayInputStream(seleccionada.getFoto));
 
+        return view2;
+    }
+    private void pasarASeleccion(View view){
+        final ArrayList<Prenda> seleccion= new ArrayList<>();
+        lista = view.findViewById(R.id.listaSeleccion);
+        refrescarLista("Abrigos");
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                seleccion.add(prendasDeCampo.get(i));
+                ByteArrayInputStream is = new ByteArrayInputStream(prendasDeCampo.get(i).getFoto());
+                Drawable drw = Drawable.createFromStream(is, "foto");
+                btnActivo.setImageDrawable(drw);}
+        });
+
+        final ImageButton btnAbrigo = view.findViewById(R.id.btnAbrigo);
+        final ImageButton btnConjunto = view.findViewById(R.id.btnConjunto);
+        final ImageButton btnParteSup = view.findViewById(R.id.btnParteArriba);
+        final ImageButton btnParteInf = view.findViewById(R.id.btnParteAbajo);
+        final ImageButton btnCalzado = view.findViewById(R.id.btnCalzado);
+        final ImageButton btnComp = view.findViewById(R.id.btnComplementos);
+        Button btnGenerar = view.findViewById(R.id.btnGenerarOutfit);
+        btnActivo =btnAbrigo;
+
+        btnAbrigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Abrigos");
+                btnActivo=btnAbrigo;
+            }
+        });
+        btnConjunto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Conjunto");
+                btnActivo=btnConjunto;
+            }
+        });
+        btnParteSup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("ParteSuperior");
+                 btnActivo=btnParteSup;
+            }
+        });
+        btnParteInf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("ParteInferior");
+                btnActivo=btnParteInf;
+            }
+        });
+        btnCalzado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Calzado");
+                btnActivo=btnCalzado;
+            }
+        });
+        btnComp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refrescarLista("Complementos");
+                btnActivo=btnComp;
+
+        }});
+        btnGenerar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                mostrarResultados(buscar(seleccion,estilo),view);
+            }
+        });
+    }
+    private void mostrarResultados(ArrayList<Prenda> prendas,View view){
+        final View popupView = getLayoutInflater().inflate(R.layout.elegir_resultado,null);
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        popupWindow.setFocusable(true);
+        for(Prenda seleccionada: prendas) {
+            ByteArrayInputStream is = new ByteArrayInputStream(seleccionada.getFoto());
             Drawable drw = Drawable.createFromStream(is, "foto");
-
-            switch (seleccionada.getTipo())
-            {
+            switch (seleccionada.getTipo()) {
                 case "Abrigo":
                     ImageView imgAbrigo = popupView.findViewById(R.id.imgAbrigo);
                     imgAbrigo.setImageDrawable(drw);
@@ -116,69 +194,6 @@ public class ElegirOutfit extends Fragment {
             }
         }
 
-        return view2;
-    }
-    private void pasarASeleccion(View view){
-        final ArrayList<Prenda> seleccion= new ArrayList<>();
-        lista = view.findViewById(R.id.listaSeleccion);
-        refrescarLista("Abrigos");
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                seleccion.add(prendasDeCampo.get(i));
-            }
-        });
-
-        ImageButton btnAbrigo = view.findViewById(R.id.btnAbrigo);
-        ImageButton btnConjunto = view.findViewById(R.id.btnConjunto);
-        ImageButton btnParteSup = view.findViewById(R.id.btnParteArriba);
-        ImageButton btnParteInf = view.findViewById(R.id.btnParteAbajo);
-        ImageButton btnCalzado = view.findViewById(R.id.btnCalzado);
-        ImageButton btnComp = view.findViewById(R.id.btnComplementos);
-
-        btnAbrigo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refrescarLista("Abrigos");
-            }
-        });
-        btnConjunto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refrescarLista("Conjunto");
-            }
-        });
-        btnParteSup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refrescarLista("ParteSuperior");
-            }
-        });
-        btnParteInf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refrescarLista("ParteInferior");
-            }
-        });
-        btnCalzado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refrescarLista("Calzado");
-            }
-        });
-        btnComp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refrescarLista("Complementos");
-
-        }});
-        btnGenerar.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View view) {
-                buscar(seleccion,estilo);
-            }
-        });
     }
 
     private void refrescarLista(String campoSelect){

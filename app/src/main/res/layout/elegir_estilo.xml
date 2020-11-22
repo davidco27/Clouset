@@ -18,30 +18,36 @@
 
     <ImageButton
         android:id="@+id/btnCasual"
+        android:background="#FFFF"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        app:srcCompat="@drawable/_suge2"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="540dp" />
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="540dp"
+        android:src="@drawable/CasualEmoji"
+        android:scaleType="fitCenter"/>/>
 
     <ImageButton
         android:id="@+id/btnFormal"
+        android:background="#FFFF"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        app:srcCompat="@drawable/_suge2"
-        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="540dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:src="@drawable/FormalEmoji"
+        android:scaleType="fitCenter"/>
 
     <ImageButton
         android:id="@+id/btnSporty"
+        android:background="#FFFF"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        app:srcCompat="@drawable/_suge2"
         tools:layout_editor_absoluteX="281dp"
         tools:layout_editor_absoluteY="540dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:src="@drawable/Sporty"
+        android:scaleType="fitCenter"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

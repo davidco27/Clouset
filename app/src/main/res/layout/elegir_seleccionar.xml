@@ -48,8 +48,8 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="15dp"
         android:scaleType="fitCenter"
-        android:background="#FFDFCB"
-        android:src="@drawable/pantalon"/>
+        android:src="@drawable/pantalon"
+        android:background="#FFDFCB"/>
     <ImageButton
         android:layout_marginTop="15dp"
         android:layout_marginLeft="45dp"
@@ -58,8 +58,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="fitCenter"
-        android:background="#FFDFCB"
-        android:src="@drawable/zapato"/>
+        android:src="@drawable/zapato"
+        android:background="#FFDFCB"/>
     <ImageButton
         android:layout_below="@+id/btnCalzado"
         android:layout_marginTop="15dp"

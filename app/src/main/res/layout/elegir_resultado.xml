@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imgAbrigo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp" />
+
+    <ImageView
+        android:id="@+id/imgAccesorios"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="300dp" />
+
+    <ImageView
+        android:id="@+id/imgCompleto"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="250dp" />
+
+    <ImageView
+        android:id="@+id/imgSuperior"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="250dp" />
+
+    <ImageView
+        android:id="@+id/imgInferior"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="350dp" />
+
+    <ImageView
+        android:id="@+id/imgCalzado"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="500dp" />
+
+    <Button
+        android:id="@+id/btnRepetir"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="#674F07"
+        android:text="Repetir"
+        android:textColor="#FFDFCB"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="510dp" />/>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="#674F07"
+        android:text="Guardar Outfit"
+        android:textColor="#FFDFCB"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="580dp" />/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="#674F07"
+        android:text="¡Me lo pongo!"
+        android:textColor="#FFDFCB"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="650dp" />/>
+
+
+</RelativeLayout>

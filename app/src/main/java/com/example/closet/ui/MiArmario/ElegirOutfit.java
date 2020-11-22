@@ -2,17 +2,16 @@ package com.example.closet.ui.MiArmario;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
-
+import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -44,18 +43,21 @@ public class ElegirOutfit extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.elegir_estilo, container, false);
+        final View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
         Util.setCampos();
-
+        final View popupView = inflater.inflate(R.layout.elegir_estilo,null);
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        popupWindow.showAtLocation(view2, Gravity.CENTER, 0, 0);
+        popupWindow.setFocusable(true);
         //Parte elegir estilo
-        ImageButton btnCasual = view.findViewById(R.id.btnCasual);
-        ImageButton btnFormal = view.findViewById(R.id.btnFormal);
-        ImageButton btnSporty = view.findViewById(R.id.btnSporty);
+        ImageButton btnCasual = popupView.findViewById(R.id.btnCasual);
+        ImageButton btnFormal = popupView.findViewById(R.id.btnFormal);
+        ImageButton btnSporty = popupView.findViewById(R.id.btnSporty);
         btnCasual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 estilo = "Casual";
-                View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+                popupWindow.dismiss();
                 pasarASeleccion(view2);
             }
         });
@@ -64,7 +66,7 @@ public class ElegirOutfit extends Fragment {
             @Override
             public void onClick(View view) {
                 estilo = "Formal";
-                View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+                popupWindow.dismiss();
                 pasarASeleccion(view2);
             }
         });
@@ -73,7 +75,7 @@ public class ElegirOutfit extends Fragment {
             @Override
             public void onClick(View view) {
                 estilo = "Sporty";
-                View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
+                popupWindow.dismiss();
                 pasarASeleccion(view2);
             }
         });
@@ -87,7 +89,7 @@ public class ElegirOutfit extends Fragment {
 
        // seleccion = buscar(seleccion, estilo);
 
-        return view;
+        return view2;
     }
     private void pasarASeleccion(View view){
         lista = view.findViewById(R.id.listaSeleccion);
@@ -140,8 +142,8 @@ public class ElegirOutfit extends Fragment {
             @Override
             public void onClick(View view) {
                 refrescarLista("Complementos");
-            }
-        });}
+
+        }});}
 
     private void refrescarLista(String campoSelect){
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();

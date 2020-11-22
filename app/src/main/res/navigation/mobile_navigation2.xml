@@ -42,7 +42,7 @@
         android:id="@+id/navigation_resultado"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
         android:label="Choose"
-        tools:layout="@layout/elegir_resultado"
+        tools:layout="@layout/elegir_resultado"/>
     <fragment
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"

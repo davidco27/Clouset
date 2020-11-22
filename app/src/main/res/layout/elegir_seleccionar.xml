@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="#FFDFCB"
     android:layout_height="match_parent">
     <ListView
         android:layout_marginLeft="240dp"
         android:id="@+id/listaSeleccion"
+        android:background="#FFDFCB"
         android:layout_marginTop="30dp"
         android:layout_width="200dp"
         android:layout_height="match_parent"/>
  <ImageButton
-     android:background="#FFFF"
      android:layout_marginTop="50dp"
      android:layout_marginLeft="45dp"
      android:id="@+id/btnAbrigo"
      android:layout_width="100dp"
      android:layout_height="100dp"
+     android:background="#FFDFCB"
      android:src="@drawable/sudadera"
      android:scaleType="fitCenter"/>
     <ImageButton
-        android:background="#FFFF"
+        android:background="#FFDFCB"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/btnAbrigo"
@@ -36,7 +38,7 @@
         android:layout_height="100dp"
         android:src="@drawable/camiseta"
         android:scaleType="fitCenter"
-        android:background="#FFFF"/>
+        android:background="#FFDFCB"/>
 
     <ImageButton
         android:id="@+id/btnParteAbajo"
@@ -46,7 +48,7 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="15dp"
         android:scaleType="fitCenter"
-        android:background="#FFFF"
+        android:background="#FFDFCB"
         android:src="@drawable/pantalon"/>
     <ImageButton
         android:layout_marginTop="15dp"
@@ -56,7 +58,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="fitCenter"
-        android:background="#FFFF"
+        android:background="#FFDFCB"
         android:src="@drawable/zapato"/>
     <ImageButton
         android:layout_below="@+id/btnCalzado"
@@ -66,12 +68,14 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="fitCenter"
-        android:background="#FFFF"
+        android:background="#FFDFCB"
         android:src="@drawable/bolso"/>
     <Button
         android:layout_below="@+id/btnComplementos"
         android:layout_marginTop="20dp"
+        android:background="#674F07"
         android:text="GENERAR OUTFIT"
+        android:textColor="#FFDFCB"
         android:layout_marginLeft="45dp"
         android:id="@+id/btnGenerarOutfit"
         android:layout_width="100dp"

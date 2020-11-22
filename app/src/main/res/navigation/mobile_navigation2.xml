@@ -33,7 +33,16 @@
         android:id="@+id/navigation_seleccionar"
         android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
         android:label="Select"
-        tools:layout="@layout/elegir_seleccionar"/>
+        tools:layout="@layout/elegir_seleccionar">
+        <action
+            android:id="@+id/action_navigation_seleccionar_to_navigation_resultado"
+            app:destination="@id/navigation_resultado" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_resultado"
+        android:name="com.example.closet.ui.MiArmario.ElegirOutfit"
+        android:label="Choose"
+        tools:layout="@layout/elegir_resultado"
     <fragment
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"

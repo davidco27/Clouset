@@ -8,4 +8,7 @@ public class OutfitControler {
     public void getOutfits(ArrayList<Outfit> outfits){
         OutfitDAO.getOutfits(outfits);
     }
+    public void insertOutfit(Outfit outfit){
+        OutfitDAO.insertOutfit(outfit);
+    }
 }

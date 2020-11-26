@@ -71,6 +71,12 @@ public class SocketServer extends Thread {
                     mensajeOut.setContext("/insertPrendaResponse");
                     objectOutputStream.writeObject(mensajeOut);
                     break;
+                case "/insertOutfit":
+                     controlador=new OutfitControler();
+                    controlador.insertOutfit(mensajeIn.getOutfit());
+                    mensajeOut.setContext("/insertOutfitResponse");
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
                 case "/changeValoracion":
                      controler=new PrendaControler();
                      float valoration=controler.setValoracion(mensajeIn.getIdPrenda(),mensajeIn.getValoracion());

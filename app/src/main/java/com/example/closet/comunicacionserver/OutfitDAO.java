@@ -28,4 +28,22 @@ public class OutfitDAO {
             System.out.println(ex.getMessage());
         }
     }
+    public static void insertOutfit(Outfit outfit){
+            Connection con = ConnectionDAO.getInstance().getConnection();
+            try {
+                StringBuilder builder = new StringBuilder();
+                for (Prenda p : outfit.getPrendas()){
+                    builder.append(p.getId());
+                    builder.append(",");
+                }
+                String prendas = builder.toString();
+                PreparedStatement pst = con.prepareStatement("insert into \"Outfits\" values ('" +outfit.getId() +
+                        "','" + prendas + "','" + 0+"')");
+
+                pst.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+
 }

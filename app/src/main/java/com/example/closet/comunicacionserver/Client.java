@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.StrictMode;
 
+import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
 
 import java.io.BufferedReader;
@@ -75,7 +76,49 @@ public class Client {
         }
         return listaPrendas;
     }
+    public static ArrayList<Outfit> conectarseBDOutfits(String peticion,float valoracion, Activity ac,Outfit outfit) {
+        //Configure connections
+        String host="";
+        try {
+            BufferedReader br= new BufferedReader( new InputStreamReader(ac.getAssets().open("properties.txt")));
+            host=br.readLine().trim();
 
+        }
+        catch (IOException ioe){
+
+        }
+        int port=1000;
+        //Create a cliente class
+        Client cliente = new Client(host, port);
+        HashMap<String, Object> session = new HashMap<String, Object>();
+        Message mensajeEnvio = new Message();
+        Message mensajeVuelta = new Message();
+        mensajeEnvio.setContext(peticion);
+        mensajeEnvio.setSession(session);
+        mensajeEnvio.setOutfit(outfit);
+        mensajeEnvio.setValoracion(valoracion);
+        cliente.sent(mensajeEnvio, mensajeVuelta,ac);
+
+        ArrayList<Outfit> listaOutfits = null;
+
+        switch (mensajeVuelta.getContext()) {
+            case "/getOutfitResponse":
+                listaOutfits = (ArrayList<Outfit>) (mensajeVuelta.getSession().get("Outfit"));
+
+                break;
+            case "/insertOutfitResponse":
+                System.out.println("PRENDA GUARDADA CORRECTAMENTE");
+                break;
+            case "/changeValoracionResponse":
+                System.out.println("VALORACION CAMBIADA CORRECTAMENTE");
+                break;
+            default:
+                System.out.println("\nError a la vuelta");
+                break;
+
+        }
+        return listaOutfits;
+    }
 
     public Client(String host, int port) {
         this.host = host;

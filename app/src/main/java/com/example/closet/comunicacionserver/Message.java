@@ -1,4 +1,5 @@
 package com.example.closet.comunicacionserver;
+import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ public class Message implements Serializable {
      *
      */
     private Prenda prenda;
+    private Outfit outfit;
     private static final long serialVersionUID = 56L;
     private String context;
     private String idPrenda;
@@ -21,6 +23,14 @@ public class Message implements Serializable {
         context=new String();
         session=new HashMap<String, Object>();
 
+    }
+
+    public void setOutfit(Outfit outfit) {
+        this.outfit = outfit;
+    }
+
+    public Outfit getOutfit() {
+        return outfit;
     }
 
     public float getValoracion() {

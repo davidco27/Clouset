@@ -3,11 +3,11 @@ package com.example.closet.dominio;
 import java.util.ArrayList;
 
 public class Outfit  {
-    private String nombre;
+    private String id;
     private ArrayList<Prenda> prendas;
     private float valoracion;
-    public Outfit(String nombre,ArrayList<Prenda> prendas,float valoracion){
-        this.nombre =nombre;
+    public Outfit(String id,ArrayList<Prenda> prendas,float valoracion){
+        this.id =id;
         this.prendas=prendas;
         this.valoracion=valoracion;
     }
@@ -20,8 +20,8 @@ public class Outfit  {
         return prendas;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getId() {
+        return id;
     }
 
     public boolean containsPrenda(Prenda p) {

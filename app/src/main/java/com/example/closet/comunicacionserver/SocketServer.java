@@ -1,6 +1,7 @@
 package com.example.closet.comunicacionserver;
 
 
+import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
 
 import java.io.IOException;
@@ -46,6 +47,16 @@ public class SocketServer extends Thread {
                     HashMap<String,Object> session=new HashMap<String, Object>();
                     session.put("Prenda",lista);
                     mensajeOut.setSession(session);
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
+                case "/getOutfit":
+                    OutfitControler controlador=new OutfitControler();
+                    ArrayList<Outfit> listaOutfits=new ArrayList<>();
+                    controlador.getOutfits(listaOutfits);
+                    mensajeOut.setContext("/getOutfitResponse");
+                    HashMap<String,Object> session2=new HashMap<String, Object>();
+                    session2.put("Outfit",listaOutfits);
+                    mensajeOut.setSession(session2);
                     objectOutputStream.writeObject(mensajeOut);
                     break;
                 case "/deletePrendaId":

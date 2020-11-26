@@ -29,6 +29,22 @@ public class PrendaDAO {
         }
     }
 
+
+    public static Prenda getPrendaById(String id){
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Prendas\"  where id = '" + id + "'");
+             ResultSet rs = pst.executeQuery()) {
+
+            rs.next();
+            return new Prenda((float) rs.getDouble(1), rs.getBytes(6), rs.getString(4), rs.getString(2), rs.getString(3), rs.getString(5));
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return  null;
+        }
+
+    }
+
     public static void deletePrendaId(String id) {
         Connection con = ConnectionDAO.getInstance().getConnection();
         try {

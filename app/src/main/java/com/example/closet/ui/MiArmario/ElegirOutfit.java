@@ -282,19 +282,21 @@ public class ElegirOutfit extends Fragment {
         Set<String> campos = mapa.keySet();
         ArrayList<Prenda> prendas = MiArmarioHome.getPrendasMiArmario();
 
-        float P = 0f;
-        float S = 0f;
-        Prenda eleccion = null;
+        Prenda eleccion;
 
         //si el usuario ha seleccionado al menos una prenda(seleccion)
         if(seleccion!=null) {
             // campo de prenda
             for (String campo:campos) {
                 // tipos de prenda de cada campo
+                eleccion = null;
+                float S = 0f;
                 Collection<String> tipos = mapa.get(campo);
                 for (String tipo:tipos) {
                     // prendas de MiArmario
-                    for(Prenda prenda:prendas) {
+                    ArrayList<Prenda> prendasTipo = getPrendasXtipo(prendas, tipo);
+
+                    for(Prenda prenda:prendasTipo) {
                         float C = 1f;
                         for (Prenda sel:seleccion)
                             C = C * calculaP(prenda, sel, estilo);
@@ -304,7 +306,8 @@ public class ElegirOutfit extends Fragment {
                         }
                     }
                 }
-                seleccion.add(eleccion);
+                if(eleccion != null)
+                    seleccion.add(eleccion);
             }
         }
         return seleccion;
@@ -321,61 +324,63 @@ public class ElegirOutfit extends Fragment {
     private float calculaS(String estilo, String tipo) {
         float a = 0.3f;
 
-        if(estilo.equals("Casual")) {
-            switch(tipo) {
-                case "Camiseta":
-                case "Jeans":
-                case "Zapatillas":
-                case "Botas":
-                case "Overol":
-                case "Abrigo":
-                case "Chaqueta":
-                case "Cazadora":
-                case "Shorts":
-                case "Chancletas":
-                    a = 1f;
-                    break;
-                case "Sandalias":
-                case "Top":
-                    a = 0.8f;
-                    break;
-                case "Zapato":
-                    a = 0.7f;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if(estilo.equals("Formal")) {
-            switch(tipo) {
-                case "Camisa":
-                case "Blusa":
-                case "Pantalón vestir":
-                case "Abrigo":
-                case "Chaleco":
-                case "Mocasines":
-                case "Náuticos":
-                case "Plataformas":
-                case "Tacones":
-                case "":
-                    a = 1f;
-                    break;
-                case "Jeans":
-                    a = 0.5f;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if(estilo.equals("Sporty")){
-            switch(tipo) {
-                case "Zapatillas":
-                case "Sudadera":
-                    a = 1f;
-                    break;
-                default:
-                    break;
-            }
+        switch (estilo) {
+            case "Casual":
+                switch (tipo) {
+                    case "Camiseta":
+                    case "Jeans":
+                    case "Zapatillas":
+                    case "Botas":
+                    case "Overol":
+                    case "Abrigo":
+                    case "Chaqueta":
+                    case "Cazadora":
+                    case "Shorts":
+                    case "Chancletas":
+                        a = 1f;
+                        break;
+                    case "Sandalias":
+                    case "Top":
+                        a = 0.8f;
+                        break;
+                    case "Zapato":
+                        a = 0.7f;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Formal":
+                switch (tipo) {
+                    case "Camisa":
+                    case "Blusa":
+                    case "Pantalón vestir":
+                    case "Abrigo":
+                    case "Chaleco":
+                    case "Mocasines":
+                    case "Náuticos":
+                    case "Plataformas":
+                    case "Tacones":
+                    case "":
+                        a = 1f;
+                        break;
+                    case "Jeans":
+                        a = 0.5f;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Sporty":
+                switch (tipo) {
+                    case "Zapatillas":
+                    case "Sudadera":
+                        a = 1f;
+                        break;
+                    default:
+                        break;
+                }
+                break;
         }
         return a;
     }
@@ -386,9 +391,9 @@ public class ElegirOutfit extends Fragment {
         int suma = 0;
         byte b;
 
-        for(int i = 0; i < pb.length - 1; i++) {
+        for(int i = 0; i < pb.length; i++) {
             b = (byte) (pb[i] | sb[i]);
-            suma =+ Byte.toUnsignedInt(b);
+            suma += Byte.toUnsignedInt(b);
         }
 
         return (suma) / 765f;
@@ -397,6 +402,7 @@ public class ElegirOutfit extends Fragment {
     //Algoritmo de Valoración
     private float calculaV(float valoracion) { return valoracion / 10f; }
 
+    /*
     //Algoritmo de Outfit
     private float calculaO(ArrayList<Outfit> outfits, Prenda p) {
         float o = 0f;
@@ -414,5 +420,18 @@ public class ElegirOutfit extends Fragment {
             }
         }
         return o;
+    }
+    */
+
+    public ArrayList<Prenda> getPrendasXtipo(ArrayList<Prenda> prendas, String tipo) {
+
+        ArrayList<Prenda> prendasXtipo = new ArrayList<Prenda>();
+
+        for(Prenda p: prendas) {
+            if(p.getTipo().equals(tipo))
+                prendasXtipo.add(p);
+        }
+
+        return prendasXtipo;
     }
 }

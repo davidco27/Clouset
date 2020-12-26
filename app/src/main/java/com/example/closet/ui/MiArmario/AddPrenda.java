@@ -22,11 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-
-import com.example.closet.MainActivity;
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;

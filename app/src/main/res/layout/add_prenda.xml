@@ -98,8 +98,9 @@
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/colorText"
         android:background="#674F07"
+        android:textColor="#FFDFCB"
         android:text="SELECCIONAR COLOR"
-        android:textColor="#FFDFCB"/>
+        />
 
     <ImageView
         android:id="@+id/fotoAdd"

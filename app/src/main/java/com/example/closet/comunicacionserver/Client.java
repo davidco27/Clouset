@@ -17,6 +17,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -75,6 +76,30 @@ public class Client {
 
         }
         return listaPrendas;
+    }
+    public static boolean checkPassword(String usuario,byte[] password,Activity ac){
+        String host="";
+        try {
+            BufferedReader br= new BufferedReader( new InputStreamReader(ac.getAssets().open("properties.txt")));
+            host=br.readLine().trim();
+
+        }
+        catch (IOException ioe){
+
+        }
+        int port=1000;
+        //Create a cliente class
+        Client cliente = new Client(host, port);
+        HashMap<String, Object> session = new HashMap<String, Object>();
+        Message mensajeEnvio = new Message();
+        Message mensajeVuelta = new Message();
+        mensajeEnvio.setContext("/checkPassword");
+        mensajeEnvio.setSession(session);
+        mensajeEnvio.setUser(usuario);
+        cliente.sent(mensajeEnvio, mensajeVuelta,ac);
+        byte[] passwordSaved = mensajeVuelta.getPassword();
+        return Arrays.equals(password,passwordSaved);
+
     }
     public static ArrayList<Outfit> conectarseBDOutfits(String peticion,float valoracion, Activity ac,Outfit outfit) {
         //Configure connections

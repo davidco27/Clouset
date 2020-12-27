@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.closet.comunicacionserver.Client;
+import com.example.closet.dominio.Usuario;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -48,6 +49,15 @@ public class signupScreen extends Activity {
                             .setTitle("Error")
                             .setMessage("Debe elegir un avatar de su galeria").setCancelable(true).show();
                 else{
+                    byte[] bytesOfMessage = password1.getBytes();
+                    MessageDigest md = null;
+                    try {
+                        md = MessageDigest.getInstance("MD5");
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
+                    byte[] encriptada = md.digest(bytesOfMessage);
+                    Client.registerUser(new Usuario(image,encriptada,usuario),signupScreen.this);
                     new AlertDialog.Builder(signupScreen.this)
                             .setTitle("EXITO")
                             .setMessage("USUARIO REGISTRADO CORRECTAMENTE").setCancelable(true).show();

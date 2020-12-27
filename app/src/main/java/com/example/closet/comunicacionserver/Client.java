@@ -6,6 +6,7 @@ import android.os.StrictMode;
 
 import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
+import com.example.closet.dominio.Usuario;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -77,6 +78,25 @@ public class Client {
         }
         return listaPrendas;
     }
+    public static void registerUser(Usuario user,Activity ac){
+        String host="";
+        try {
+            BufferedReader br= new BufferedReader( new InputStreamReader(ac.getAssets().open("properties.txt")));
+            host=br.readLine().trim();
+
+        }
+        catch (IOException ioe){
+
+        }
+        int port=1000;
+        Client cliente = new Client(host, port);
+        Message mensajeEnvio = new Message();
+        Message mensajeVuelta = new Message();
+        mensajeEnvio.setContext("/insertUser");
+        mensajeEnvio.setUsuario(user);
+        cliente.sent(mensajeEnvio, mensajeVuelta,ac);
+
+    }
     public static boolean checkPassword(String usuario,byte[] password,Activity ac){
         String host="";
         try {
@@ -88,13 +108,10 @@ public class Client {
 
         }
         int port=1000;
-        //Create a cliente class
         Client cliente = new Client(host, port);
-        HashMap<String, Object> session = new HashMap<String, Object>();
         Message mensajeEnvio = new Message();
         Message mensajeVuelta = new Message();
         mensajeEnvio.setContext("/checkPassword");
-        mensajeEnvio.setSession(session);
         mensajeEnvio.setUser(usuario);
         cliente.sent(mensajeEnvio, mensajeVuelta,ac);
         byte[] passwordSaved = mensajeVuelta.getPassword();

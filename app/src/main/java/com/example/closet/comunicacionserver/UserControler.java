@@ -8,5 +8,6 @@ public class UserControler {
        return UserDAO.getPassword(user);
     }
     public void insertUser(Usuario user){
+        UserDAO.insertUser(user);
     }
 }

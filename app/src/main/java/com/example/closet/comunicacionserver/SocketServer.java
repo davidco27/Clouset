@@ -54,6 +54,11 @@ public class SocketServer extends Thread {
                     mensajeOut.setPassword(control.getPassword(mensajeIn.getUser()));
                     objectOutputStream.writeObject(mensajeOut);
                     break;
+                case "/insertUser":
+                     control=new UserControler();
+                    control.insertUser(mensajeIn.getUsuario());
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
                 case "/getOutfit":
                     OutfitControler controlador=new OutfitControler();
                     ArrayList<Outfit> listaOutfits=new ArrayList<>();

@@ -34,6 +34,14 @@ public class loginScreen extends Activity {
 
             }
         });
+        findViewById(R.id.link_signup).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent intent = new Intent(loginScreen.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+            }
+        });
 
     }
     public boolean comprobarDatos(String usuario,String password){

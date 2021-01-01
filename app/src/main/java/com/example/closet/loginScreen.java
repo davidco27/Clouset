@@ -1,6 +1,7 @@
 package com.example.closet;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.example.closet.comunicacionserver.Client;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 public class loginScreen extends Activity {
 
@@ -31,13 +33,18 @@ public class loginScreen extends Activity {
                     startActivity(intent);
                     finish();
                 }
+                else{
+                    new AlertDialog.Builder(loginScreen.this)
+                            .setTitle("ERROR")
+                            .setMessage("EL USUARIO O LA CONTRASEÑA SON INCORRECTOS").setCancelable(true).show();
+                }
 
             }
         });
         findViewById(R.id.link_signup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intent = new Intent(loginScreen.this, MainActivity.class);
+                    Intent intent = new Intent(loginScreen.this, signupScreen.class);
                     startActivity(intent);
                     finish();
             }
@@ -53,6 +60,9 @@ public class loginScreen extends Activity {
             e.printStackTrace();
         }
         byte[] encriptada = md.digest(bytesOfMessage);
+        new AlertDialog.Builder(loginScreen.this)
+                .setTitle("ÉXITO")
+                .setMessage(Arrays.toString(encriptada)).setCancelable(true).show();
         return Client.checkPassword(usuario,encriptada,this);
     }
 }

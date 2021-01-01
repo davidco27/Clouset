@@ -1,9 +1,11 @@
 package com.example.closet.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Outfit  {
+public class Outfit implements Serializable {
     private String id;
+    private static final long serialVersionUID = 40L;
     private ArrayList<Prenda> prendas;
     private float valoracion;
     public Outfit(String id,ArrayList<Prenda> prendas,float valoracion){

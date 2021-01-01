@@ -15,9 +15,10 @@ public class UserDAO {
         Connection con = ConnectionDAO.getInstance().getConnection();
         try (PreparedStatement pst = con.prepareStatement("SELECT password FROM \"Usuarios\"  where nombre_usuario = '"+user +"'");
              ResultSet rs = pst.executeQuery()) {
-
-            rs.next();
+            if(rs.next())
             return rs.getBytes(1);
+            else
+                return null;
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

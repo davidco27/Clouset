@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 public class signupScreen extends Activity {
     private byte[] image=null;
@@ -59,11 +61,16 @@ public class signupScreen extends Activity {
                     byte[] encriptada = md.digest(bytesOfMessage);
                     Client.registerUser(new Usuario(image,encriptada,usuario),signupScreen.this);
                     new AlertDialog.Builder(signupScreen.this)
-                            .setTitle("EXITO")
-                            .setMessage("USUARIO REGISTRADO CORRECTAMENTE").setCancelable(true).show();
-                    Intent intent = new Intent(signupScreen.this, loginScreen.class);
-                    startActivity(intent);
-                    finish();
+                            .setTitle("ÉXITO")
+                            .setMessage(Arrays.toString(encriptada)).setCancelable(true).show();
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            Intent intent = new Intent(signupScreen.this, loginScreen.class);
+                            startActivity(intent);
+                            finish();
+                        };
+                    }, 10000);
+
                 }
 
             }

@@ -24,7 +24,7 @@ public class Message implements Serializable {
 
 
     public Message () {
-        context=new String();
+        context= "";
         session=new HashMap<String, Object>();
 
     }

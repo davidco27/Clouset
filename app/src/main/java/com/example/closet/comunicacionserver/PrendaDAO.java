@@ -14,9 +14,9 @@ public class PrendaDAO {
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static void getPrendas(ArrayList<Prenda> lista) {
+    public static void getPrendas(ArrayList<Prenda> lista,String usuario) {
         Connection con = ConnectionDAO.getInstance().getConnection();
-        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Prendas\" order by id");
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Prendas\" where nombre_usuario='"+usuario+"'");
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
@@ -56,11 +56,11 @@ public class PrendaDAO {
         }
     }
 
-    public static void insertPrendas(Prenda prenda) {
+    public static void insertPrendas(Prenda prenda,String usuario) {
         Connection con = ConnectionDAO.getInstance().getConnection();
         try {
             PreparedStatement pst = con.prepareStatement("insert into \"Prendas\" values ('" + 0 +
-                    "','" + prenda.getTipo() + "','" + prenda.getMarca() + "','" + prenda.getId() + "','" + prenda.getColor() + "',?," + 0 + ")");
+                    "','" + prenda.getTipo() + "','" + prenda.getMarca() + "','" + prenda.getId() + "','" + prenda.getColor() + "',?," + 0 + ",'"+usuario+"')");
             pst.setBytes(1, prenda.getFoto());
 
             pst.executeUpdate();

@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.example.closet.MainActivity;
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Prenda;
@@ -164,7 +166,7 @@ public class AddPrenda extends Fragment {
                     colorB="0"+Integer.toHexString(selectedColorR).toUpperCase();
                 try {
                     Client.conectarseBD("/insertPrenda", new Prenda(0, image, marc + Math.round(Math.random() * 1000000), tipoPrenda, marc,
-                            "#"+colorR+colorG+colorB), "",0,getActivity());
+                            "#"+colorR+colorG+colorB), "",0, MainActivity.getUsuario(),getActivity());
                 }
                 catch (Exception e){
                     new AlertDialog.Builder(getContext())

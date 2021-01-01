@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class SocketServer extends Thread {
@@ -42,7 +43,7 @@ public class SocketServer extends Thread {
                 case "/getPrenda":
                     PrendaControler controler=new PrendaControler();
                     ArrayList<Prenda> lista=new ArrayList<Prenda>();
-                    controler.getPrenda(lista);
+                    controler.getPrenda(lista,mensajeIn.getUser());
                     mensajeOut.setContext("/getPrendaResponse");
                     HashMap<String,Object> session=new HashMap<String, Object>();
                     session.put("Prenda",lista);
@@ -52,7 +53,6 @@ public class SocketServer extends Thread {
                 case "/checkPassword":
                     UserControler control=new UserControler();
                     mensajeOut.setPassword(control.getPassword(mensajeIn.getUser()));
-                    System.out.println(control.getPassword(mensajeIn.getUser()).toString());
                     objectOutputStream.writeObject(mensajeOut);
                     break;
                 case "/insertUser":
@@ -63,7 +63,7 @@ public class SocketServer extends Thread {
                 case "/getOutfit":
                     OutfitControler controlador=new OutfitControler();
                     ArrayList<Outfit> listaOutfits=new ArrayList<>();
-                    controlador.getOutfits(listaOutfits);
+                    controlador.getOutfits(listaOutfits,mensajeIn.getUser());
                     mensajeOut.setContext("/getOutfitResponse");
                     HashMap<String,Object> session2=new HashMap<String, Object>();
                     session2.put("Outfit",listaOutfits);
@@ -78,13 +78,13 @@ public class SocketServer extends Thread {
                     break;
                 case "/insertPrenda":
                     PrendaControler controler2=new PrendaControler();
-                    controler2.insertPrenda(mensajeIn.getPrenda());
+                    controler2.insertPrenda(mensajeIn.getPrenda(),mensajeIn.getUser());
                     mensajeOut.setContext("/insertPrendaResponse");
                     objectOutputStream.writeObject(mensajeOut);
                     break;
                 case "/insertOutfit":
                      controlador=new OutfitControler();
-                    controlador.insertOutfit(mensajeIn.getOutfit());
+                    controlador.insertOutfit(mensajeIn.getOutfit(),mensajeIn.getUser());
                     mensajeOut.setContext("/insertOutfitResponse");
                     objectOutputStream.writeObject(mensajeOut);
                     break;

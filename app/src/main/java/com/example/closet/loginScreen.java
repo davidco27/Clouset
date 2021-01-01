@@ -30,6 +30,7 @@ public class loginScreen extends Activity {
             public void onClick(View view) {
                 if(comprobarDatos(txtUser.getText().toString(),txtPassword.getText().toString())){
                     Intent intent = new Intent(loginScreen.this, MainActivity.class);
+                    intent.putExtra("user",txtUser.getText().toString());
                     startActivity(intent);
                     finish();
                 }
@@ -60,9 +61,6 @@ public class loginScreen extends Activity {
             e.printStackTrace();
         }
         byte[] encriptada = md.digest(bytesOfMessage);
-        new AlertDialog.Builder(loginScreen.this)
-                .setTitle("ÉXITO")
-                .setMessage(Arrays.toString(encriptada)).setCancelable(true).show();
         return Client.checkPassword(usuario,encriptada,this);
     }
 }

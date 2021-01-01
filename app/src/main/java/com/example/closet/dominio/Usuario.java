@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
     private String nombreUsuario;
-    private byte[] fotoPerfil,password;
+    private byte[] fotoPerfil;
+    private byte[] password;
     private static final long serialVersionUID = 23L;
 
-    public Usuario(byte[] fotoPerfil,byte[] password,String nombreUsuario) {
+    public Usuario(byte[] fotoPerfil,byte [] password,String nombreUsuario) {
         this.fotoPerfil = fotoPerfil;
         this.nombreUsuario=nombreUsuario;
         this.password=password;

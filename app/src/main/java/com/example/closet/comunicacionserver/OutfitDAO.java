@@ -10,9 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OutfitDAO {
-    public static void getOutfits(ArrayList<Outfit> lista) {
+    public static void getOutfits(ArrayList<Outfit> lista,String usuario) {
         Connection con = ConnectionDAO.getInstance().getConnection();
-        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Outfits\" order by id");
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM \"Outfits\" where nombre_usuario='"+usuario+"'");
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
@@ -28,7 +28,7 @@ public class OutfitDAO {
             System.out.println(ex.getMessage());
         }
     }
-    public static void insertOutfit(Outfit outfit){
+    public static void insertOutfit(Outfit outfit,String usuario){
             Connection con = ConnectionDAO.getInstance().getConnection();
             try {
                 StringBuilder builder = new StringBuilder();
@@ -38,7 +38,7 @@ public class OutfitDAO {
                 }
                 String prendas = builder.toString();
                 PreparedStatement pst = con.prepareStatement("insert into \"Outfits\" values ('" +outfit.getId() +
-                        "','" + prendas + "','" + 0+"')");
+                        "','" + prendas + "','"+usuario+"','" + 0+"')");
 
                 pst.executeUpdate();
             } catch (SQLException ex) {

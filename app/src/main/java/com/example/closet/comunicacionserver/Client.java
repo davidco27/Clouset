@@ -7,6 +7,7 @@ import android.os.StrictMode;
 import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
 import com.example.closet.dominio.Usuario;
+import com.example.closet.signupScreen;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class Client {
     private int port;
 
 
-    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion,Activity ac) {
+    public static ArrayList<Prenda> conectarseBD(String peticion, Prenda prenda, String idPrenda, float valoracion,String usuario,Activity ac) {
         //Configure connections
         String host="";
         try {
@@ -47,6 +48,7 @@ public class Client {
         mensajeEnvio.setContext(peticion);
         mensajeEnvio.setSession(session);
         mensajeEnvio.setPrenda(prenda);
+        mensajeEnvio.setUser(usuario);
         mensajeEnvio.setValoracion(valoracion);
         mensajeEnvio.setIdPrenda(idPrenda);
         cliente.sent(mensajeEnvio, mensajeVuelta,ac);
@@ -97,7 +99,7 @@ public class Client {
         cliente.sent(mensajeEnvio, mensajeVuelta,ac);
 
     }
-    public static boolean checkPassword(String usuario,byte[] password,Activity ac){
+    public static boolean checkPassword(String usuario,byte [] password,Activity ac){
         String host="";
         try {
             BufferedReader br= new BufferedReader( new InputStreamReader(ac.getAssets().open("properties.txt")));
@@ -115,10 +117,10 @@ public class Client {
         mensajeEnvio.setUser(usuario);
         cliente.sent(mensajeEnvio, mensajeVuelta,ac);
         byte[] passwordSaved = mensajeVuelta.getPassword();
-        return Arrays.equals(password,passwordSaved);
+        return Arrays.equals(passwordSaved,password);
 
     }
-    public static ArrayList<Outfit> conectarseBDOutfits(String peticion,float valoracion, Activity ac,Outfit outfit) {
+    public static ArrayList<Outfit> conectarseBDOutfits(String peticion,float valoracion, Activity ac,Outfit outfit,String usuario) {
         //Configure connections
         String host="";
         try {
@@ -138,6 +140,7 @@ public class Client {
         mensajeEnvio.setContext(peticion);
         mensajeEnvio.setSession(session);
         mensajeEnvio.setOutfit(outfit);
+        mensajeEnvio.setUser(usuario);
         mensajeEnvio.setValoracion(valoracion);
         cliente.sent(mensajeEnvio, mensajeVuelta,ac);
 
@@ -188,6 +191,7 @@ public class Client {
             Message msg = (Message) objectInputStream.readObject();
             messageIn.setContext(msg.getContext());
             messageIn.setSession(msg.getSession());
+            messageIn.setPassword(msg.getPassword());
             /** Closing all the resources */
             out.close();
             in.close();

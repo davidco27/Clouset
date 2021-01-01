@@ -62,14 +62,14 @@ public class signupScreen extends Activity {
                     Client.registerUser(new Usuario(image,encriptada,usuario),signupScreen.this);
                     new AlertDialog.Builder(signupScreen.this)
                             .setTitle("ÉXITO")
-                            .setMessage(Arrays.toString(encriptada)).setCancelable(true).show();
+                            .setMessage("USUARIO REGISTRADO CORRECTAMENTE").setCancelable(true).show();
                     new Handler().postDelayed(new Runnable() {
                         public void run() {
                             Intent intent = new Intent(signupScreen.this, loginScreen.class);
                             startActivity(intent);
                             finish();
                         };
-                    }, 10000);
+                    }, 2000);
 
                 }
 

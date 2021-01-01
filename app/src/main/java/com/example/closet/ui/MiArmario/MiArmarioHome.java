@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.closet.MainActivity;
 import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Outfit;
@@ -30,11 +32,11 @@ import java.util.ArrayList;
 
 
 public class MiArmarioHome extends Fragment {
-
+   private static String usuario;
     private static ArrayList<Prenda> prendas;
     private static ArrayList<Outfit> outfits;
-    private static ListView lista;
-    private static Activity activity;
+    private  static ListView lista;
+    private  static Activity activity;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +52,8 @@ public class MiArmarioHome extends Fragment {
         return view;
     }
     public static void actualizarLista(){
-        prendas = Client.conectarseBD("/getPrenda", null, "",0,activity);
+        usuario = MainActivity.getUsuario();
+        prendas = Client.conectarseBD("/getPrenda", null, "",0,usuario,activity);
         lista.setAdapter(new PrendaAdapter(activity, R.layout.support_simple_spinner_dropdown_item, prendas));
     }
 

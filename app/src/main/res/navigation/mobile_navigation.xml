@@ -43,7 +43,7 @@
         android:id="@+id/navigation_post"
         android:name="com.example.closet.ui.MiArmario.PostOutfit"
         android:label="Post"
-        tools:layout="@layout/prueba2" />
+        tools:layout="@layout/post_outfit" />
     <fragment
         android:id="@+id/navigation_add"
         android:name="com.example.closet.ui.MiArmario.AddPrenda"

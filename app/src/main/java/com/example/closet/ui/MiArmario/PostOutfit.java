@@ -1,7 +1,6 @@
 package com.example.closet.ui.MiArmario;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import com.example.closet.R;
 public class PostOutfit extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.prueba2, container, false);
+        View view = inflater.inflate(R.layout.post_outfit, container, false);
 
         return view;
     }

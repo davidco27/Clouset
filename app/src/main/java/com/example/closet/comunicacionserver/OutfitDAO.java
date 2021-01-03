@@ -38,7 +38,7 @@ public class OutfitDAO {
                 }
                 String prendas = builder.toString();
                 PreparedStatement pst = con.prepareStatement("insert into \"Outfits\" values ('" +outfit.getId() +
-                        "','" + prendas + "','"+usuario+"','" + 0+"')");
+                        "','" + prendas + "',"+0+",'"+usuario+"','" + 0+"')");
 
                 pst.executeUpdate();
             } catch (SQLException ex) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="400dp"
+    android:layout_width="match_parent" android:layout_height="275dp"
     android:background="#FFDFCB">
     <TextView
         android:layout_marginTop="60dp"
@@ -11,6 +11,8 @@
         android:textColor="#674F07"
         android:layout_height="wrap_content"/>
     <EditText
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:hint="Nombre del outfit"
         android:id="@+id/nombre"
         android:layout_marginTop="130dp"

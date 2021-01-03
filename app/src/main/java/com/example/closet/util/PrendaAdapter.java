@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.closet.MainActivity;
 import com.example.closet.R;
 
 import com.example.closet.comunicacionserver.Client;
@@ -115,7 +116,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
                 @Override
                 public void onClick(View v) {
                     float valoracion=ratingBar.getRating();
-                        Client.conectarseBD("/changeValoracion", null, prenda.getId(), valoracion*2,ac);
+                        Client.conectarseBD("/changeValoracion", null, prenda.getId(),valoracion*2, MainActivity.getUsuario(),ac);
                     MiArmarioHome.actualizarLista();
                          popupWindow.dismiss();
             }});
@@ -131,7 +132,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        Client.conectarseBD("/deletePrendaId", null, prenda.getId(), 0,ac);
+                        Client.conectarseBD("/deletePrendaId", null, prenda.getId(), 0, MainActivity.getUsuario(),ac);
                         MiArmarioHome.actualizarLista();
                         dialog.dismiss();
                         break;

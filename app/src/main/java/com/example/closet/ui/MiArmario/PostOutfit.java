@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -118,12 +119,13 @@ public class PostOutfit extends Fragment {
                 popupWindow.showAtLocation(view2, Gravity.CENTER, 0, 0);
                 popupWindow.setFocusable(true);
                 final EditText txtNombre = popupView.findViewById(R.id.nombre);
+                txtNombre.requestFocus();
                 popupView.findViewById(R.id.btnConfirmar).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         try {
                             String nombre = txtNombre.getText().toString();
-                            Client.conectarseBDOutfits("/insertPrenda", 0,new Outfit(nombre,seleccion,0),getActivity(),MainActivity.getUsuario());
+                            Client.conectarseBDOutfits("/insertOutfit", 0,new Outfit(nombre,seleccion,0),getActivity(),MainActivity.getUsuario());
                             popupWindow.dismiss();
                             getActivity().getSupportFragmentManager().popBackStackImmediate();
                         }

@@ -105,7 +105,12 @@ public class ElegirOutfit extends Fragment {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                seleccion.add(prendasDeCampo.get(i));
+                Prenda prendaSeleccionada = prendasDeCampo.get(i);
+                for(Prenda  p : seleccion){
+                    if (Util.getCampos(p.getTipo()).equals(Util.getCampos(prendaSeleccionada.getTipo())))
+                        seleccion.remove(p);
+                }
+                seleccion.add(prendaSeleccionada);
                 ByteArrayInputStream is = new ByteArrayInputStream(prendasDeCampo.get(i).getFoto());
                 Drawable drw = Drawable.createFromStream(is, "foto");
                 btnActivo.setImageDrawable(drw);}

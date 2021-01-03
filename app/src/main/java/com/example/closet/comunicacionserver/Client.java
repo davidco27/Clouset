@@ -120,7 +120,7 @@ public class Client {
         return Arrays.equals(passwordSaved,password);
 
     }
-    public static ArrayList<Outfit> conectarseBDOutfits(String peticion,float valoracion, Activity ac,Outfit outfit,String usuario) {
+    public static ArrayList<Outfit> conectarseBDOutfits(String peticion,float valoracion,Outfit outfit, Activity ac,String usuario) {
         //Configure connections
         String host="";
         try {

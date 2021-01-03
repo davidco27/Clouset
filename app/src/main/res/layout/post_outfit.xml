@@ -1,23 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:background="#FFDFCB"
     android:layout_height="match_parent">
+    <ListView
+        android:layout_marginLeft="240dp"
+        android:id="@+id/listaSeleccion"
+        android:background="#FFDFCB"
+        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"/>
+    <ImageButton
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="45dp"
+        android:id="@+id/btnAbrigo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#FFDFCB"
+        android:src="@drawable/sudadera"
+        android:scaleType="fitCenter"/>
+    <ImageButton
+        android:background="#FFDFCB"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/btnAbrigo"
+        android:id="@+id/btnConjunto"
+        android:layout_width="95dp"
+        android:layout_height="180dp"
+        android:src="@drawable/vestido"
+        android:scaleType="fitCenter"/>
+    <ImageButton
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="110dp"
+        android:layout_below="@+id/btnAbrigo"
+        android:id="@+id/btnParteArriba"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/camiseta"
+        android:scaleType="fitCenter"
+        android:background="#FFDFCB"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="347dp"
-        android:layout_height="297dp"
-        android:layout_marginEnd="360dp"
-        android:layout_marginRight="360dp"
-        android:layout_marginBottom="712dp"
-        android:text="Postear Outfits"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <ImageButton
+        android:id="@+id/btnParteAbajo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/btnParteArriba"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pantalon"
+        android:background="#FFDFCB"/>
+    <ImageButton
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="45dp"
+        android:layout_below="@+id/btnParteAbajo"
+        android:id="@+id/btnCalzado"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/zapato"
+        android:background="#FFDFCB"/>
+    <ImageButton
+        android:layout_below="@+id/btnCalzado"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="45dp"
+        android:id="@+id/btnComplementos"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:background="#FFDFCB"
+        android:src="@drawable/bolso"/>
+    <Button
+        android:layout_below="@+id/btnComplementos"
+        android:layout_marginTop="20dp"
+        android:background="#674F07"
+        android:text="GUARDAR OUTFIT"
+        android:textColor="#FFDFCB"
+        android:layout_marginLeft="45dp"
+        android:id="@+id/btnGuardarOutfit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

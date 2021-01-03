@@ -1,6 +1,7 @@
 package com.example.closet.ui.MiArmario;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -114,10 +115,9 @@ public class PostOutfit extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                final AlertDialog dialogBuilder = new AlertDialog.Builder(getActivity()).create();
                 final View popupView = inflater.inflate(R.layout.poner_nombre_outfit,null);
-                final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
-                popupWindow.showAtLocation(view2, Gravity.CENTER, 0, 0);
-                popupWindow.setFocusable(true);
+
                 final EditText txtNombre = popupView.findViewById(R.id.nombre);
                 txtNombre.requestFocus();
                 popupView.findViewById(R.id.btnConfirmar).setOnClickListener(new View.OnClickListener() {
@@ -126,7 +126,7 @@ public class PostOutfit extends Fragment {
                         try {
                             String nombre = txtNombre.getText().toString();
                             Client.conectarseBDOutfits("/insertOutfit", 0,new Outfit(nombre,seleccion,0),getActivity(),MainActivity.getUsuario());
-                            popupWindow.dismiss();
+                            dialogBuilder.dismiss();
                             getActivity().getSupportFragmentManager().popBackStackImmediate();
                         }
                         catch (Exception e){
@@ -139,11 +139,13 @@ public class PostOutfit extends Fragment {
 
                     }
                 });
+                dialogBuilder.setView(popupView);
+                dialogBuilder.show();
 
             popupView.findViewById(R.id.btnCancelar).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    popupWindow.dismiss();
+                    dialogBuilder.dismiss();
                 }
             });
         }

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="275dp"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="#FFDFCB">
     <TextView
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="29dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="27dp"
         android:text="Ponle un nombre a tu outfit"
         android:layout_width="wrap_content"
         android:textColor="#674F07"
         android:layout_height="wrap_content"/>
     <EditText
         android:focusable="true"
-        android:focusableInTouchMode="true"
         android:hint="Nombre del outfit"
         android:id="@+id/nombre"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="80dp"
         android:textColor="#674F07"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="300dp"
         android:layout_height="50dp"/>
     <Button
@@ -26,7 +26,7 @@
         android:background="#674F07"
         android:text="CONFIRMAR"
         android:textColor="#FFDFCB"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="60dp"
         android:id="@+id/btnConfirmar"
         android:layout_width="100dp"
         android:layout_height="wrap_content"/>
@@ -36,9 +36,10 @@
         android:background="#674F07"
         android:text="CANCELAR"
         android:textColor="#FFDFCB"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="180dp"
         android:id="@+id/btnCancelar"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"/>
 
 </RelativeLayout>

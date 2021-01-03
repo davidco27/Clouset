@@ -4,17 +4,11 @@ package com.example.closet.ui.MiArmario;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.Button;
+
 import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RatingBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

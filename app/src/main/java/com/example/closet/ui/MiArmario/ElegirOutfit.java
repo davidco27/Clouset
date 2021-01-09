@@ -211,7 +211,7 @@ public class ElegirOutfit extends Fragment {
                     imgCalzado.setImageDrawable(drw);
                     break;
 
-                case "Accesorios":
+                case "Complementos":
                     ImageView imgAccesorios = popupView.findViewById(R.id.imgAccesorios);
                     imgAccesorios.setImageDrawable(drw);
                     break;

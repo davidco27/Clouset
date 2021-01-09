@@ -117,8 +117,7 @@ public class OutfitAdapter extends ArrayAdapter<Outfit> {
                 case "Calzado":
                     holder.calzado.setImageDrawable(drw);
                     break;
-
-                case "Accesorios":
+                case "Complementos":
                     holder.accesorios.setImageDrawable(drw);
                     break;
 

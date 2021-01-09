@@ -186,7 +186,7 @@ public class ElegirOutfit extends Fragment {
             ByteArrayInputStream is = new ByteArrayInputStream(seleccionada.getFoto());
             Drawable drw = Drawable.createFromStream(is, "foto");
             switch (Util.getCampos(seleccionada.getTipo())) {
-                case "Abrigo":
+                case "Abrigos":
                     ImageView imgAbrigo = popupView.findViewById(R.id.imgAbrigo);
                     imgAbrigo.setImageDrawable(drw);
                     break;
@@ -201,7 +201,7 @@ public class ElegirOutfit extends Fragment {
                     imgInferior.setImageDrawable(drw);
                     break;
 
-                case "Completo":
+                case "Conjunto":
                     ImageView imgCompleto = popupView.findViewById(R.id.imgCompleto);
                     imgCompleto.setImageDrawable(drw);
                     break;

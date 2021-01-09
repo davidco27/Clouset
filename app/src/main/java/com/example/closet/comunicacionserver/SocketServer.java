@@ -95,6 +95,18 @@ public class SocketServer extends Thread {
                     mensajeOut.setValoracion(valoration);
                     objectOutputStream.writeObject(mensajeOut);
                     break;
+                case "/changeValoracionOutfit":
+                    controlador=new OutfitControler();
+                    controlador.setValoracion(mensajeIn.getIdOutfit(),mensajeIn.getValoracion());
+                    mensajeOut.setContext("/changeValoracionOutfitResponse");
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
+                case "/deleteOutfit":
+                    controlador=new OutfitControler();
+                    controlador.deleteOutfit(mensajeIn.getIdOutfit());
+                    mensajeOut.setContext("/deleteOutfitResponse");
+                    objectOutputStream.writeObject(mensajeOut);
+                    break;
 
                 default:
                     System.out.println("\nParámetro no encontrado");

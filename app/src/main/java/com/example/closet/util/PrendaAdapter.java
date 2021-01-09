@@ -117,7 +117,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
                 public void onClick(View v) {
                     float valoracion=ratingBar.getRating();
                         Client.conectarseBD("/changeValoracion", null, prenda.getId(),valoracion*2, MainActivity.getUsuario(),ac);
-                    MiArmarioHome.actualizarLista();
+                    MiArmarioHome.actualizarLista(true);
                          popupWindow.dismiss();
             }});
         }
@@ -133,7 +133,7 @@ public class PrendaAdapter extends ArrayAdapter<Prenda> {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
                         Client.conectarseBD("/deletePrendaId", null, prenda.getId(), 0, MainActivity.getUsuario(),ac);
-                        MiArmarioHome.actualizarLista();
+                        MiArmarioHome.actualizarLista(true);
                         dialog.dismiss();
                         break;
 

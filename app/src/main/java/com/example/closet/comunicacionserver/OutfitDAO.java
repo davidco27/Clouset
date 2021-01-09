@@ -28,6 +28,38 @@ public class OutfitDAO {
             System.out.println(ex.getMessage());
         }
     }
+
+    public static float setValoracion(String id, float valoracion) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT nvaloraciones,valoracion FROM \"Outfits\" where id = '" + id + "'");
+             ResultSet rs = pst.executeQuery()) {
+            rs.next();
+            int vecesValorado = rs.getInt(1);
+            float valoracionVieja = rs.getFloat(2);
+            float valoracionNueva = (vecesValorado * valoracionVieja + valoracion) / (vecesValorado + 1);
+            valoracion=valoracionNueva;
+            PreparedStatement pst3 = con.prepareStatement("update \"Outfits\" set nvaloraciones = " +(vecesValorado + 1)+" where id='" + id + "'");
+            pst3.executeUpdate();
+            PreparedStatement pst5 = con.prepareStatement("update \"Outfits\" set valoracion = " + valoracionNueva +
+                    " where id='" + id + "'");
+            pst5.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  valoracion;
+    }
+    public static void deleteOutfit(String id) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try {
+            PreparedStatement pst = con.prepareStatement("DELETE FROM \"Outfits\" where id = '" + id + "'");
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public static void insertOutfit(Outfit outfit,String usuario){
             Connection con = ConnectionDAO.getInstance().getConnection();
             try {

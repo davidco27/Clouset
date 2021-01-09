@@ -20,6 +20,7 @@ import com.example.closet.R;
 import com.example.closet.comunicacionserver.Client;
 import com.example.closet.dominio.Outfit;
 import com.example.closet.dominio.Prenda;
+import com.example.closet.util.OutfitAdapter;
 import com.example.closet.util.PrendaAdapter;
 
 import java.lang.reflect.Array;
@@ -33,19 +34,30 @@ public class MiArmarioHome extends Fragment {
     private  static ListView lista;
     private  static Activity activity;
     private  static Button btnPrendas,btnOutfits;
+    private static View rayaPrendas,rayaOutfits;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.miarmario_main, container, false);
          btnPrendas = view.findViewById(R.id.btnPrendas);
          btnOutfits = view.findViewById(R.id.btnOutfits);
+         rayaOutfits= view.findViewById(R.id.outfits);
+        rayaPrendas = view.findViewById(R.id.prendas);
         return view;
     }
-    public static void actualizarLista(){
+    public static void actualizarLista(boolean listaPrendas){
         usuario = MainActivity.getUsuario();
         prendas = Client.conectarseBD("/getPrenda", null, "",0,usuario,activity);
         outfits = Client.conectarseBDOutfits("/getOutfit", 0, null, activity,usuario);
+        if (listaPrendas){
         lista.setAdapter(new PrendaAdapter(activity, R.layout.support_simple_spinner_dropdown_item, prendas));
+        rayaOutfits.setVisibility(View.INVISIBLE);
+        rayaPrendas.setVisibility(View.VISIBLE);}
+        else{
+            lista.setAdapter(new OutfitAdapter(activity, R.layout.support_simple_spinner_dropdown_item, outfits));
+            rayaOutfits.setVisibility(View.VISIBLE);
+            rayaPrendas.setVisibility(View.INVISIBLE);}
+
     }
 
     @Override
@@ -53,20 +65,20 @@ public class MiArmarioHome extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         activity=getActivity();
         lista = view.findViewById(R.id.listaPrendas);
-        actualizarLista();
+        actualizarLista(true);
         btnOutfits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnOutfits.setVisibility(View.INVISIBLE);
-                btnPrendas.setVisibility(View.VISIBLE);
-                //lista.setAdapter(new OutfitAdapter(activity, R.layout.support_simple_spinner_dropdown_item, prendas));
+                rayaOutfits.setVisibility(View.VISIBLE);
+                rayaPrendas.setVisibility(View.INVISIBLE);
+                lista.setAdapter(new OutfitAdapter(activity, R.layout.support_simple_spinner_dropdown_item, outfits));
             }
         });
         btnPrendas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnOutfits.setVisibility(View.VISIBLE);
-                btnPrendas.setVisibility(View.INVISIBLE);
+                rayaOutfits.setVisibility(View.INVISIBLE);
+                rayaPrendas.setVisibility(View.VISIBLE);
                 lista.setAdapter(new PrendaAdapter(activity, R.layout.support_simple_spinner_dropdown_item, prendas));
             }
         });

@@ -139,6 +139,8 @@ public class Client {
         Message mensajeVuelta = new Message();
         mensajeEnvio.setContext(peticion);
         mensajeEnvio.setSession(session);
+        if(outfit != null)
+           mensajeEnvio.setIdOutfit(outfit.getId());
         mensajeEnvio.setOutfit(outfit);
         mensajeEnvio.setUser(usuario);
         mensajeEnvio.setValoracion(valoracion);
@@ -154,7 +156,10 @@ public class Client {
             case "/insertOutfitResponse":
                 System.out.println("PRENDA GUARDADA CORRECTAMENTE");
                 break;
-            case "/changeValoracionResponse":
+            case "/changeValoracionOutfitResponse":
+                System.out.println("VALORACION CAMBIADA CORRECTAMENTE");
+                break;
+            case "/deleteOutfitResponse":
                 System.out.println("VALORACION CAMBIADA CORRECTAMENTE");
                 break;
             default:

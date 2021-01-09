@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imgAbrigo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/imgAccesorios"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="340dp" />
+
+    <TextView
+        android:id="@+id/nombreOutfit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="50dp"
+        android:text="NOMBRE DEL OUTFIT"
+        android:textSize="25dp" />
+
+    <TextView
+        android:textColor="#4CAF50"
+        android:id="@+id/valoracion"
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:text="5.5"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nombreOutfit"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="250dp"/>
+    <ImageButton
+        android:id="@+id/valorar_prenda"
+        android:focusable="false"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/valoracion"
+        android:layout_marginLeft="200dp"
+        android:src="@drawable/estrella"
+        />
+    <ImageButton
+        android:id="@+id/borrar_prenda"
+        android:focusable="false"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/valoracion"
+        android:layout_toRightOf="@+id/valorar_prenda"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/papelera"
+        />
+
+    <ImageView
+        android:id="@+id/imgCompleto"
+        android:layout_width="110dp"
+        android:layout_height="180dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="150dp" />
+
+    <ImageView
+        android:id="@+id/imgSuperior"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="140dp" />
+
+    <ImageView
+        android:id="@+id/imgInferior"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/colorText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="250dp" />
+
+    <ImageView
+        android:id="@+id/imgCalzado"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/imgInferior"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp" />
+</RelativeLayout>

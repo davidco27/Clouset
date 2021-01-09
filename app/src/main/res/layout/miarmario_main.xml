@@ -5,29 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MiArmario.MiArmario">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="95dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="80dp"
         android:background="#674F07">
         <Button
             android:id="@+id/btnPrendas"
-            android:visibility="invisible"
             android:layout_width="205dp"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:textColor="#FFFFFF"
             android:background="#674F07"
             android:text="Prendas"/>
         <Button
             android:id="@+id/btnOutfits"
+            android:layout_height="48dp"
             android:layout_width="202dp"
-            android:layout_height="match_parent"
+            android:layout_marginLeft="205dp"
             android:textColor="#FFFFFF"
             android:background="#674F07"
             android:text="Outfits"/>
+        <View
+            android:id="@+id/prendas"
+            android:layout_below="@id/btnPrendas"
+            android:layout_width="205dp"
+            android:layout_height="7dp"
+            android:background="#000000"/>
+        <View
+            android:id="@+id/outfits"
+            android:layout_below="@id/btnPrendas"
+            android:layout_width="202dp"
+            android:layout_marginLeft="205dp"
+            android:layout_height="7dp"
+            android:background="#000000"/>
 
 
-    </LinearLayout>
+
+    </RelativeLayout>
     <ListView
         android:id="@+id/listaPrendas"
         android:layout_marginTop="135dp"

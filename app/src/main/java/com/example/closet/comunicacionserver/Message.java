@@ -16,7 +16,7 @@ public class Message implements Serializable {
     private Outfit outfit;
     private static final long serialVersionUID = 56L;
     private String context;
-    private String idPrenda;
+    private String idPrenda,idOutfit;
     private String user;
     private byte[] password;
     private float valoracion;
@@ -27,6 +27,14 @@ public class Message implements Serializable {
         context= "";
         session=new HashMap<String, Object>();
 
+    }
+
+    public void setIdOutfit(String idOutfit) {
+        this.idOutfit = idOutfit;
+    }
+
+    public String getIdOutfit() {
+        return idOutfit;
     }
 
     public Usuario getUsuario() {

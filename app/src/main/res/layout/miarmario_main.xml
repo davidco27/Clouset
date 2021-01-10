@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFDFCB"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +15,7 @@
             android:id="@+id/btnPrendas"
             android:layout_width="205dp"
             android:layout_height="48dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#FFDFCB"
             android:background="#674F07"
             android:text="Prendas"/>
         <Button
@@ -22,7 +23,7 @@
             android:layout_height="48dp"
             android:layout_width="202dp"
             android:layout_marginLeft="205dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#FFDFCB"
             android:background="#674F07"
             android:text="Outfits"/>
         <View
@@ -30,6 +31,7 @@
             android:layout_below="@id/btnPrendas"
             android:layout_width="205dp"
             android:layout_height="7dp"
+            android:textColor="#674F07"
             android:background="#000000"/>
         <View
             android:id="@+id/outfits"
@@ -37,6 +39,7 @@
             android:layout_width="202dp"
             android:layout_marginLeft="205dp"
             android:layout_height="7dp"
+            android:textColor="#674F07"
             android:background="#000000"/>
 
 

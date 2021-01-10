@@ -53,7 +53,6 @@ public class ElegirOutfit extends Fragment {
         final View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
         Util.setCampos();
 
-
         inicializarVista(view2);
 
         return view2;

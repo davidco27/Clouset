@@ -52,15 +52,16 @@ public class ElegirOutfit extends Fragment {
                              final ViewGroup container, Bundle savedInstanceState) {
         final View view2 = inflater.inflate(R.layout.elegir_seleccionar, container, false);
         Util.setCampos();
-        final View popupView = inflater.inflate(R.layout.elegir_estilo, null);
-        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
-            inicializarVista(view2, popupView, popupWindow);
+
+        inicializarVista(view2);
 
         return view2;
     }
 
-    private void inicializarVista(final View view2, final View popupView, final PopupWindow popupWindow){
+    private void inicializarVista(final View view2){
+        final View popupView = getLayoutInflater().inflate(R.layout.elegir_estilo, null);
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         popupWindow.showAtLocation(view2, Gravity.CENTER, 0, 0);
         popupWindow.setFocusable(true);
 
@@ -228,8 +229,7 @@ public class ElegirOutfit extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                //manda al usuario a elegir_eleccion
-                inicializarVista(view2, , );
+                inicializarVista(view);
             }
         });
 
